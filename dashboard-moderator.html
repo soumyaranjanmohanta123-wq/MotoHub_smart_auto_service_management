@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderator Dashboard - MOTOHUB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/components.js" defer></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/add-product-modal.js" defer></script>
+</head>
+
+<body>
+
+    <section class="page-header db-hero">
+        <div class="container">
+            <h1>MODERATOR DASHBOARD</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> Moderator
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-section container">
+        <div class="dashboard-layout">
+
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+                <div class="user-profile-summary">
+                    <div class="avatar">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3>John Moderator</h3>
+                    <p>mod@motohub.com</p>
+                    <span class="role-badge moderator">Moderator</span>
+                </div>
+
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li><button class="db-tab-btn active" data-target="overview-sec"><i
+                                    class="fa-solid fa-chart-bar"></i> Overview</button></li>
+                        <li><button class="db-tab-btn" data-target="appointments-sec"><i
+                                    class="fa-regular fa-calendar-check"></i> Appointments</button></li>
+                        <li><button class="db-tab-btn" data-target="orders-sec"><i class="fa-solid fa-box-open"></i>
+                                Orders</button></li>
+                        <li><button class="db-tab-btn" data-target="products-sec"><i class="fa-solid fa-tags"></i>
+                                Products</button></li>
+                        <li><button class="db-tab-btn" data-target="support-sec"><i class="fa-regular fa-message"></i>
+                                Support</button></li>
+                        <li><button class="db-tab-btn" data-target="reviews-sec"><i class="fa-regular fa-star"></i>
+                                Reviews</button></li>
+                        <li><button class="db-tab-btn" data-target="ads-sec"><i class="fa-solid fa-rectangle-ad"></i>
+                                Ads</button></li>
+                        <li><a href="login.html" class="logout-link"><i
+                                    class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <main class="dashboard-content">
+
+                <!-- 1. Overview -->
+                <div class="db-section active" id="overview-sec">
+                    <div class="db-header">
+                        <h2>Today's Overview</h2>
+                        <span style="font-size:13px;color:var(--text-muted);">April 1, 2026</span>
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-clock"></i></div>
+                            <div class="stat-info">
+                                <h4>14</h4>
+                                <p>Pending Appointments</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-box-open"></i></div>
+                            <div class="stat-info">
+                                <h4>8</h4>
+                                <p>Orders to Process</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple"><i class="fa-regular fa-message"></i></div>
+                            <div class="stat-info">
+                                <h4>5</h4>
+                                <p>Open Support Tickets</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-regular fa-star"></i></div>
+                            <div class="stat-info">
+                                <h4>3</h4>
+                                <p>Reviews Awaiting</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="db-header">
+                        <h2>Pending Appointment Requests</h2>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Ref #</th>
+                                    <th>Customer</th>
+                                    <th>Service</th>
+                                    <th>Requested Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#SA-1101</td>
+                                    <td>Rahul Sharma</td>
+                                    <td>Home Service – Oil Change</td>
+                                    <td>Apr 05, 2026</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn approve" title="Assign"><i
+                                                    class="fa-solid fa-check"></i></button><button
+                                                class="action-btn delete" title="Reject"><i
+                                                    class="fa-solid fa-xmark"></i></button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#SA-1102</td>
+                                    <td>Sneha Reddy</td>
+                                    <td>Inspection</td>
+                                    <td>Apr 06, 2026</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn approve" title="Assign"><i
+                                                    class="fa-solid fa-check"></i></button><button
+                                                class="action-btn delete" title="Reject"><i
+                                                    class="fa-solid fa-xmark"></i></button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#SA-1103</td>
+                                    <td>Arjun Patel</td>
+                                    <td>Garage Service – Engine</td>
+                                    <td>Apr 07, 2026</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn approve" title="Assign"><i
+                                                    class="fa-solid fa-check"></i></button><button
+                                                class="action-btn delete" title="Reject"><i
+                                                    class="fa-solid fa-xmark"></i></button></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. Appointments -->
+                <div class="db-section" id="appointments-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Appointments Management</h2>
+                        <button class="btn btn-red btn-sm"
+                            style="background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);"><i
+                                class="fa-solid fa-file-export"></i> Export CSV</button>
+                    </div>
+
+                    <!-- Appointments Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
+                            <div class="stat-info">
+                                <h4>215</h4>
+                                <p>Appointments</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-check-double"></i></div>
+                            <div class="stat-info">
+                                <h4>150</h4>
+                                <p>Confirmed</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <div class="stat-info">
+                                <h4>50</h4>
+                                <p>Pending</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-ban"></i></div>
+                            <div class="stat-info">
+                                <h4>15</h4>
+                                <p>Cancelled</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search & Filter Bar -->
+                    <div class="users-search-bar">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="appointments-search-input" placeholder="Search ID, Customer…"
+                                oninput="filterAppointmentsTable()">
+                        </div>
+                        <select id="appointments-type-filter" class="users-filter-select"
+                            onchange="filterAppointmentsTable()">
+                            <option value="">All Services</option>
+                            <option value="inspection">Simple Inspection</option>
+                            <option value="home">Home Service</option>
+                            <option value="garage">Major Garage Service</option>
+                        </select>
+                        <select id="appointments-status-filter" class="users-filter-select"
+                            onchange="filterAppointmentsTable()">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="db-table-responsive">
+                        <table class="db-table" id="appointments-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Type & Vehicle</th>
+                                    <th>Garage</th>
+                                    <th>Date & Time</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointments-tbody">
+                                <tr data-type="home" data-status="pending">
+                                    <td><strong>#SA-1101</strong></td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div><span class="user-name">Rahul Sharma</span><br><small
+                                                    class="user-role-label">+91 98765 43210</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Home Service<br><small class="user-role-label"
+                                            style="color:var(--text-muted);">Toyota Fortuner</small></td>
+                                    <td><span style="color:var(--text-muted);">Unassigned</span></td>
+                                    <td>Apr 05, 2026<br><small class="user-role-label">10:00 AM</small></td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View Details"
+                                                onclick="viewAppointment('#SA-1101')"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn assign" title="Assign Garage"
+                                                onclick="openAssignGarageModal(this)"><i
+                                                    class="fa-solid fa-warehouse"></i></button>
+                                            <button class="action-btn approve" title="Update Status"
+                                                onclick="openAppointmentStatusModal(this)"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-type="garage" data-status="in-progress">
+                                    <td><strong>#SA-1098</strong></td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div><span class="user-name">Priya Nair</span><br><small
+                                                    class="user-role-label">+91 88990 11223</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Garage Service<br><small class="user-role-label"
+                                            style="color:var(--text-muted);">Maruti Swift</small></td>
+                                    <td>MOTOHUB – Nayapalli</td>
+                                    <td>Apr 02, 2026<br><small class="user-role-label">02:30 PM</small></td>
+                                    <td><span class="status-badge in-progress">In Progress</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View Details"
+                                                onclick="viewAppointment('#SA-1098')"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn assign" title="Assign Garage"
+                                                onclick="openAssignGarageModal(this)"><i
+                                                    class="fa-solid fa-warehouse"></i></button>
+                                            <button class="action-btn approve" title="Update Status"
+                                                onclick="openAppointmentStatusModal(this)"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-type="inspection" data-status="completed">
+                                    <td><strong>#SA-1082</strong></td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div><span class="user-name">Arjun Patel</span><br><small
+                                                    class="user-role-label">+91 99887 76655</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Inspection<br><small class="user-role-label"
+                                            style="color:var(--text-muted);">Hyundai i20</small></td>
+                                    <td>MOTOHUB – Cuttack</td>
+                                    <td>Mar 28, 2026<br><small class="user-role-label">11:00 AM</small></td>
+                                    <td><span class="status-badge delivered">Completed</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View Details"
+                                                onclick="viewAppointment('#SA-1082')"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn assign" title="Assign Garage"
+                                                onclick="openAssignGarageModal(this)" disabled style="opacity:0.4"><i
+                                                    class="fa-solid fa-warehouse"></i></button>
+                                            <button class="action-btn approve" title="Update Status"
+                                                onclick="openAppointmentStatusModal(this)"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3. Orders -->
+                <div class="db-section" id="orders-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>All Orders</h2>
+                        <button class="btn btn-red btn-sm"
+                            style="background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);"><i
+                                class="fa-solid fa-file-export"></i> Export CSV</button>
+                    </div>
+
+                    <!-- Order Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-box-open"></i></div>
+                            <div class="stat-info">
+                                <h4>1,248</h4>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-truck-fast"></i></div>
+                            <div class="stat-info">
+                                <h4>892</h4>
+                                <p>Delivered</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <div class="stat-info">
+                                <h4>150</h4>
+                                <p>Pending</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-circle-xmark"></i></div>
+                            <div class="stat-info">
+                                <h4>56</h4>
+                                <p>Cancelled</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search & Filter Bar -->
+                    <div class="users-search-bar">
+                        <select id="orders-status-filter" class="users-filter-select" onchange="filterOrdersTable()">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                        <select id="orders-date-filter" class="users-filter-select" onchange="filterOrdersTable()">
+                            <option value="">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                    </div>
+
+                    <!-- Orders Table -->
+                    <div class="db-table-responsive">
+                        <table class="db-table" id="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>CustomerName</th>
+                                    <th>Phone</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>PaymentMethod</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-tbody">
+                                <tr data-status="pending" data-date="today">
+                                    <td><strong>#MH-98245</strong></td>
+                                    <td>Rahul Sharma</td>
+                                    <td>+91 98765 43210</td>
+                                    <td>Apr 01, 2026</td>
+                                    <td>₹4,500</td>
+                                    <td>UPI</td>
+                                    <td><span class="status-badge processing">Pending</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" title="Update Status"
+                                                onclick="openOrderStatusModal(this)"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" title="Cancel"
+                                                onclick="cancelOrder(this)"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-status="delivered" data-date="month">
+                                    <td><strong>#MH-97001</strong></td>
+                                    <td>Priya Nair</td>
+                                    <td>+91 88990 11223</td>
+                                    <td>Feb 20, 2026</td>
+                                    <td>₹1,200</td>
+                                    <td>Card</td>
+                                    <td><span class="status-badge delivered">Delivered</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" title="Update Status"
+                                                onclick="openOrderStatusModal(this)"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" title="Cancel"
+                                                onclick="cancelOrder(this)"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-status="cancelled" data-date="month">
+                                    <td><strong>#MH-96420</strong></td>
+                                    <td>Arjun Patel</td>
+                                    <td>+91 99887 76655</td>
+                                    <td>Jan 15, 2026</td>
+                                    <td>₹8,900</td>
+                                    <td>Cash on Delivery</td>
+                                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" title="Update Status"
+                                                onclick="openOrderStatusModal(this)"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" title="Cancel"
+                                                onclick="cancelOrder(this)"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-status="shipped" data-date="week">
+                                    <td><strong>#MH-96012</strong></td>
+                                    <td>Sneha Reddy</td>
+                                    <td>+91 77665 54433</td>
+                                    <td>Mar 25, 2026</td>
+                                    <td>₹3,400</td>
+                                    <td>UPI</td>
+                                    <td><span class="status-badge in-progress">Shipped</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" title="Update Status"
+                                                onclick="openOrderStatusModal(this)"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" title="Cancel"
+                                                onclick="cancelOrder(this)"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-status="confirmed" data-date="week">
+                                    <td><strong>#MH-98124</strong></td>
+                                    <td>Amit Kumar</td>
+                                    <td>+91 66554 33221</td>
+                                    <td>Mar 28, 2026</td>
+                                    <td>₹16,500</td>
+                                    <td>Card</td>
+                                    <td><span class="status-badge approved">Confirmed</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" title="Update Status"
+                                                onclick="openOrderStatusModal(this)"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" title="Cancel"
+                                                onclick="cancelOrder(this)"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 4. Products -->
+                <div class="db-section" id="products-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Products</h2>
+                        <button class="btn btn-red btn-sm" onclick="window.openAddProductModal()"><i
+                                class="fa-solid fa-plus"></i> Add Product</button>
+                    </div>
+
+                    <!-- Product Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-layer-group"></i></div>
+                            <div class="stat-info">
+                                <h4>342</h4>
+                                <p>Total Products</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-check-circle"></i></div>
+                            <div class="stat-info">
+                                <h4>285</h4>
+                                <p>In Stock</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                            <div class="stat-info">
+                                <h4>42</h4>
+                                <p>Low Stock</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-circle-xmark"></i></div>
+                            <div class="stat-info">
+                                <h4>15</h4>
+                                <p>Out of Stock</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search & Filter Bar -->
+                    <div class="users-search-bar">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="products-search-input" placeholder="Search by name, ID, brand..."
+                                oninput="filterProductsTable()">
+                        </div>
+                        <select id="products-category-filter" class="users-filter-select"
+                            onchange="filterProductsTable()">
+                            <option value="">All Categories</option>
+                            <option value="Headlights &amp; Lighting">💡 Headlights &amp; Lighting</option>
+                            <option value="Car Audio System">🔊 Car Audio System</option>
+                            <option value="Wheels &amp; Tires">🛞 Wheels &amp; Tires</option>
+                            <option value="Suspension">🏎️ Suspension</option>
+                            <option value="Tools &amp; Equipments">🛠️ Tools &amp; Equipments</option>
+                            <option value="Oil Car">🛢️ Oil Car</option>
+                            <option value="Brakes">🛑 Brakes</option>
+                            <option value="Auto Safety &amp; Security">🛡️ Auto Safety &amp; Security</option>
+                            <option value="Automotive Rims">⚙️ Automotive Rims</option>
+                            <option value="Automotive Display">📺 Automotive Display</option>
+                            <option value="Battery">🔋 Battery</option>
+                            <option value="Engine Components">🔩 Engine Components</option>
+                        </select>
+                        <select id="products-status-filter" class="users-filter-select"
+                            onchange="filterProductsTable()">
+                            <option value="">All Status</option>
+                            <option value="In Stock">In Stock</option>
+                            <option value="Low Stock">Low Stock</option>
+                            <option value="Out of Stock">Out of Stock</option>
+                        </select>
+                    </div>
+
+
+                    <div class="db-table-responsive">
+                        <table class="db-table" id="products-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-tbody">
+                                <tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:30px;"><i class="fa-solid fa-spinner fa-spin"></i> Loading products…</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5. Support -->
+                <div class="db-section" id="support-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Support</h2>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Ticket #</th>
+                                    <th>Customer</th>
+                                    <th>Subject</th>
+                                    <th>Date</th>
+                                    <th>Priority</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#TKT-401</td>
+                                    <td>Rahul Sharma</td>
+                                    <td>Order not delivered after 10 days</td>
+                                    <td>Mar 30, 2026</td>
+                                    <td><span class="status-badge cancelled">High</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn"><i
+                                                    class="fa-solid fa-reply"></i></button><button
+                                                class="action-btn approve"><i class="fa-solid fa-check"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#TKT-398</td>
+                                    <td>Priya Nair</td>
+                                    <td>Wrong product received</td>
+                                    <td>Mar 28, 2026</td>
+                                    <td><span class="status-badge processing">Medium</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn"><i
+                                                    class="fa-solid fa-reply"></i></button><button
+                                                class="action-btn approve"><i class="fa-solid fa-check"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#TKT-387</td>
+                                    <td>Sneha Reddy</td>
+                                    <td>Query about appointment rescheduling</td>
+                                    <td>Mar 25, 2026</td>
+                                    <td><span class="status-badge approved">Low</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn"><i
+                                                    class="fa-solid fa-reply"></i></button><button
+                                                class="action-btn approve"><i class="fa-solid fa-check"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 6. Reviews -->
+                <div class="db-section" id="reviews-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Reviews</h2>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Product / Service</th>
+                                    <th>Rating</th>
+                                    <th>Review</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Rahul Sharma</td>
+                                    <td>18" Alloy Wheel Rim</td>
+                                    <td><span style="color:#f5a623;">★★★★☆</span></td>
+                                    <td style="max-width:200px;color:var(--text-muted);font-size:12px;">"Great quality,
+                                        fast delivery. Fits perfectly."</td>
+                                    <td>Mar 29, 2026</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn approve" title="Approve"><i
+                                                    class="fa-solid fa-check"></i></button><button
+                                                class="action-btn delete" title="Reject"><i
+                                                    class="fa-solid fa-xmark"></i></button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Priya Nair</td>
+                                    <td>Home Service – Oil Change</td>
+                                    <td><span style="color:#f5a623;">★★★☆☆</span></td>
+                                    <td style="max-width:200px;color:var(--text-muted);font-size:12px;">"Service was
+                                        okay but technician arrived late."</td>
+                                    <td>Mar 27, 2026</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn approve" title="Approve"><i
+                                                    class="fa-solid fa-check"></i></button><button
+                                                class="action-btn delete" title="Reject"><i
+                                                    class="fa-solid fa-xmark"></i></button></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 7. Ads -->
+                <div class="db-section" id="ads-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Advertisements</h2>
+                    </div>
+
+                    <span
+                        style="display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px; margin-top: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Primary
+                        Service Ad</span>
+                    <div
+                        style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 18px; margin-bottom: 24px;">
+                        <div
+                            style="width: 100%; height: 180px; border-radius: 8px; overflow: hidden; margin-bottom: 16px; background: #1a1a1a;">
+                            <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=800&auto=format&fit=crop"
+                                alt="Service Banner"
+                                style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                            <div>
+                                <h4 style="color: #fff; margin-bottom: 5px; font-size: 16px;">Premium Car Detailing
+                                    Service</h4>
+                                <p style="font-size: 13px; color: var(--text-muted);">Link: /services/detailing</p>
+                            </div>
+                            <button class="btn btn-red btn-sm"
+                                style="background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red);"><i
+                                    class="fa-solid fa-pen"></i> Edit Ad</button>
+                        </div>
+                    </div>
+
+                    <span
+                        style="display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px; margin-top: 20px; text-transform: uppercase; letter-spacing: 0.5px;">Promotional
+                        Banners (Grid)</span>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        <div
+                            style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 18px;">
+                            <div
+                                style="width: 100%; height: 120px; border-radius: 8px; overflow: hidden; margin-bottom: 16px; background: #1a1a1a;">
+                                <img src="https://images.unsplash.com/photo-1549643276-fdf2fab574f5?q=80&w=400&auto=format&fit=crop"
+                                    alt="Promo 1" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <h5 style="color: #fff; margin-bottom: 4px; font-size: 14px;">Alloy Wheels – 15% Off
+                                    </h5>
+                                    <p style="font-size: 11px; color: var(--text-muted);">Link: /wheels</p>
+                                </div>
+                                <button class="action-btn"
+                                    style="background: rgba(255, 255, 255, 0.05); border: none; width: 32px; height: 32px; border-radius: 8px; color: #fff; cursor: pointer;"><i
+                                        class="fa-solid fa-pen"></i></button>
+                            </div>
+                        </div>
+                        <div
+                            style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 18px;">
+                            <div
+                                style="width: 100%; height: 120px; border-radius: 8px; overflow: hidden; margin-bottom: 16px; background: #1a1a1a;">
+                                <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=400&auto=format&fit=crop"
+                                    alt="Promo 2" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9;">
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <h5 style="color: #fff; margin-bottom: 4px; font-size: 14px;">Free Brake Inspection
+                                    </h5>
+                                    <p style="font-size: 11px; color: var(--text-muted);">Link: /offers/brakes</p>
+                                </div>
+                                <button class="action-btn"
+                                    style="background: rgba(255, 255, 255, 0.05); border: none; width: 32px; height: 32px; border-radius: 8px; color: #fff; cursor: pointer;"><i
+                                        class="fa-solid fa-pen"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <style>
+        /* ── Marketing group accordion ──────────────────────── */
+        .nav-group .nav-sub {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-group.open .nav-sub {
+            display: block;
+        }
+
+        .nav-sub .db-tab-btn {
+            padding-left: 2.4rem;
+            font-size: 13px;
+            opacity: .85;
+        }
+
+        .group-arrow {
+            margin-left: auto;
+            font-size: 11px;
+            transition: transform .25s;
+        }
+
+        .nav-group.open .group-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-group-toggle {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            width: 100%;
+        }
+
+        /* ── Marketing inline sub-tab bar ───────────────────── */
+        .db-sub-tabs {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, .08);
+            padding-bottom: .6rem;
+        }
+
+        .db-sub-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted, #888);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: .45rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            transition: background .2s, color .2s;
+        }
+
+        .db-sub-tab-btn:hover {
+            background: rgba(255, 255, 255, .06);
+            color: #fff;
+        }
+
+        /* ── Filter & Search Bar ────────────────────────── */
+        .users-search-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 18px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-input-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-input-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .search-input-wrap input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px 15px 10px 40px;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input-wrap input:focus {
+            border-color: var(--accent-red);
+        }
+
+        .users-filter-select {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+            padding: 10px 35px 10px 15px;
+            border-radius: 10px;
+            font-size: 13.5px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 14px;
+            min-width: 160px;
+        }
+
+        .users-filter-select:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .users-filter-select:focus {
+            border-color: var(--accent-red);
+            background-color: rgba(229, 57, 53, 0.05);
+            box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.1);
+        }
+
+        .users-filter-select option {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar-sm {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent-red), #ff5252);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .user-role-label {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* ── User Details Modal ─────────────────────────── */
+        .user-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .user-meta-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .meta-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meta-stat-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .meta-stat-row:last-child {
+            border-bottom: none;
+        }
+
+        /* ── Garage form extras ──────────────────────────────── */
+        .form-section-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--accent-red, #e02020);
+            margin: 0 0 .75rem;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }
+
+        .req {
+            color: var(--accent-red, #e02020);
+        }
+
+        .services-checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: .5rem .75rem;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+            font-size: 13.5px;
+            cursor: pointer;
+            padding: .35rem .5rem;
+            border-radius: 6px;
+            transition: background .15s;
+        }
+
+        .check-item:hover {
+            background: rgba(255, 255, 255, .05);
+        }
+
+        .check-item input[type="checkbox"] {
+            accent-color: var(--accent-red, #e02020);
+            width: 15px;
+            height: 15px;
+        }
+
+        /* ── Garage Modal Overlay ───────────────────────────── */
+        .garage-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .72);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .25s ease, visibility .25s ease;
+        }
+
+        .garage-modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ── Modal Box ──────────────────────────────────────── */
+        .garage-modal {
+            background: #141428;
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 18px;
+            width: 100%;
+            max-width: 740px;
+            max-height: 88vh;
+            overflow-y: auto;
+            padding: 2rem 2.2rem;
+            transform: translateY(30px) scale(.96);
+            transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, .15) transparent;
+        }
+
+        .garage-modal::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .garage-modal::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, .12);
+            border-radius: 8px;
+        }
+
+        .garage-modal-overlay.open .garage-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        /* ── Modal Header ───────────────────────────────────── */
+        .garage-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .garage-modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            margin: 0;
+        }
+
+        .garage-modal-header h3 i {
+            color: #e53935;
+            font-size: 1rem;
+        }
+
+        .garage-modal-header .modal-close-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, .05);
+            color: rgba(255, 255, 255, .6);
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s, color .2s;
+            flex-shrink: 0;
+        }
+
+        .garage-modal-header .modal-close-btn:hover {
+            background: rgba(229, 57, 53, .15);
+            color: #e57373;
+            border-color: rgba(229, 57, 53, .35);
+        }
+
+        /* ── Form Grid inside Modal ─────────────────────────── */
+        .garage-modal .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 1.25rem;
+        }
+
+        .garage-modal .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .garage-modal .form-group label {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .55);
+            letter-spacing: .02em;
+        }
+
+        .garage-modal .form-group input,
+        .garage-modal .form-group select,
+        .garage-modal .form-group textarea {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 9px;
+            color: #fff;
+            padding: .65rem .9rem;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color .2s, background .2s;
+            width: 100%;
+        }
+
+        .garage-modal .form-group input::placeholder,
+        .garage-modal .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, .25);
+        }
+
+        .garage-modal .form-group input:focus,
+        .garage-modal .form-group select:focus,
+        .garage-modal .form-group textarea:focus {
+            border-color: #e53935;
+            background: rgba(229, 57, 53, .04);
+        }
+
+        .garage-modal .form-group textarea {
+            resize: vertical;
+            min-height: 84px;
+        }
+
+        /* ── Product Form specific ────────────────────────── */
+        .product-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-section-header {
+            grid-column: 1 / -1;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-img-preview-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .preview-img-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .preview-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-img-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(229, 57, 53, 0.9);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-status-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-stock {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+        }
+
+        .status-low {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        .status-out {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        .product-thumbnail-cell {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            flex-shrink: 0;
+        }
+
+        .product-thumbnail-cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* ── Marketing Module Extras ────────────────────────── */
+        .marketing-ad-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .ad-preview-box {
+            width: 100%;
+            height: 180px;
+            background: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .ad-preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .marketing-thumbnail {
+            width: 80px;
+            height: 45px;
+            border-radius: 4px;
+            object-fit: cover;
+            background: #111;
+        }
+
+        .blog-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .marketing-section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--accent-red);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .user-details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .garage-modal {
+                padding: 1.4rem;
+            }
+
+            .garage-modal .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+
+
+
+
+    <!-- ── Appointment Details Modal ────────────────────────────── -->
+    <div class="garage-modal-overlay" id="appointment-details-overlay"
+        onclick="if(event.target===this) closeAppointmentDetails()">
+        <div class="garage-modal" style="max-width: 600px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-calendar-check"></i> Appointment <span id="appointment-id-display"></span>
+                </h3>
+                <button class="modal-close-btn" onclick="closeAppointmentDetails()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="user-details-grid" style="margin-top: 20px;">
+                <div class="detail-item">
+                    <span class="detail-label">Customer Info</span>
+                    <span class="detail-value" id="appt-det-customer">Rahul Sharma<br><small
+                            style="color:var(--text-muted); font-weight:400;">+91 98765 43210</small></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Vehicle Info</span>
+                    <span class="detail-value" id="appt-det-vehicle">Toyota Fortuner<br><small
+                            style="color:var(--text-muted); font-weight:400;">OD-02-AX-1234</small></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Appointment Type</span>
+                    <span class="detail-value" id="appt-det-type">Home Service</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Date & Time</span>
+                    <span class="detail-value" id="appt-det-datetime">Apr 05, 2026 at 10:00 AM</span>
+                </div>
+                <div class="detail-item" style="grid-column: 1/-1;">
+                    <span class="detail-label">Assigned Garage</span>
+                    <span class="detail-value" id="appt-det-garage" style="color:var(--accent-red);">Unassigned</span>
+                </div>
+                <div class="detail-item" style="grid-column: 1/-1;">
+                    <span class="detail-label">Customer Note</span>
+                    <span class="detail-value" id="appt-det-note" style="font-weight:400; color:rgba(255,255,255,0.85);">"Please call
+                        before reaching. Suspecting an issue with the brake pads."</span>
+                </div>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeAppointmentDetails()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Assign Garage Modal ──────────────────────────────────── -->
+    <div class="garage-modal-overlay" id="appt-assign-modal-overlay"
+        onclick="if(event.target===this) closeApptAssignModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-warehouse"></i> Assign Garage</h3>
+                <button class="modal-close-btn" onclick="closeApptAssignModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <input type="hidden" id="appt-assign-id">
+            <div class="form-group" style="margin-top:20px;">
+                <label>Select Garage <span class="req">*</span></label>
+                <select id="appt-garage-select" class="users-filter-select" style="width:100%; margin-top:8px;">
+                    <option value="">Loading garages...</option>
+                </select>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm" onclick="submitApptGarageAssign()">Assign</button>
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeApptAssignModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Update Appointment Status Modal ─────────────────────── -->
+    <div class="garage-modal-overlay" id="appt-status-modal-overlay"
+        onclick="if(event.target===this) closeApptStatusModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-arrows-rotate"></i> Update Status</h3>
+                <button class="modal-close-btn" onclick="closeApptStatusModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <input type="hidden" id="appt-status-id">
+            <div class="form-group" style="margin-top:20px;">
+                <label>New Status <span class="req">*</span></label>
+                <select id="appt-status-select" class="users-filter-select" style="width: 100%; margin-top:8px;">
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="assigned">Assigned</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm" onclick="submitApptStatusUpdate()">Save Status</button>
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeApptStatusModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Order Status Modal ─────────────────────── -->
+    <div class="garage-modal-overlay" id="order-status-overlay"
+        onclick="if(event.target===this) closeOrderStatusModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-truck-fast"></i> Update Order Status</h3>
+                <button class="modal-close-btn" onclick="closeOrderStatusModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <input type="hidden" id="update-order-status-id">
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label>Order ID: <strong id="status-order-id-label"
+                        style="color:var(--accent-red);">#MH----</strong></label>
+            </div>
+            <div class="form-group">
+                <label>Current Status</label>
+                <select class="users-filter-select" id="update-order-status-select" style="width:100%; margin-top:8px;">
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm" onclick="saveOrderStatus()">Update Status</button>
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeOrderStatusModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Product Management Modal ────────────────────────────────────── -->
+    <!-- Product popup is dynamically injected via js/add-product-modal.js -->
+
+
+
+    <!-- ── Update Stock Modal ────────────────────────────────────── -->
+    <div class="garage-modal-overlay" id="update-stock-overlay"
+        onclick="if(event.target===this) closeUpdateStockModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-boxes-stacked"></i> Update Stock</h3>
+                <button class="modal-close-btn" onclick="closeUpdateStockModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <input type="hidden" id="update-stock-p-id">
+            <div
+                style="margin-top:20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 20px;">
+                <p id="stock-p-name" style="font-weight: 600; color: #fff; margin-bottom: 4px;">Product
+                    Name</p>
+                <small id="stock-p-id" style="color: var(--text-muted);">#ID-XXXX</small>
+            </div>
+
+            <div class="form-group">
+                <label>Add/Remove Quantity</label>
+                <div style="display: flex; align-items: center; gap: 15px; margin-top: 8px;">
+                    <button type="button" class="btn btn-red btn-sm outline-btn"
+                        onclick="document.getElementById('stock-qty').stepDown()"
+                        style="min-width: 40px;">-</button>
+                    <input type="number" id="stock-qty" value="0"
+                        style="text-align: center; font-size: 1.2rem; font-weight: 700;">
+                    <button type="button" class="btn btn-red btn-sm outline-btn"
+                        onclick="document.getElementById('stock-qty').stepUp()"
+                        style="min-width: 40px;">+</button>
+                </div>
+                <small
+                    style="display: block; margin-top: 10px; color: var(--text-muted); font-size: 11px;">Enter
+                    positive to add, negative to remove.</small>
+            </div>
+
+            <div class="garage-modal-footer">
+                <button type="button" class="btn btn-red btn-sm" onclick="saveStockUpdate()">Save
+                    Adjustment</button>
+                <button type="button" class="btn btn-red btn-sm outline-btn"
+                    onclick="closeUpdateStockModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/moderator-dashboard.js"></script>
+</body>
+
+</html>

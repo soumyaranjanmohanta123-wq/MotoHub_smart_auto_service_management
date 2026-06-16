@@ -1,0 +1,421 @@
+/* Service Appointment Page Specific Styles */
+
+.sa-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/images/hero-bg.jpg') no-repeat center center/cover;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.appointment-wrapper {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 50px;
+}
+
+.sa-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.sa-header h2 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.sa-header p {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-section {
+    margin-bottom: 50px;
+}
+
+.form-section:last-of-type {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 20px;
+    color: #fff;
+    font-family: var(--font-heading);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-title i {
+    color: var(--accent-red);
+}
+
+/* Service Type Cards */
+.service-type-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.sa-radio-card {
+    cursor: pointer;
+    position: relative;
+    display: block;
+}
+
+.sa-radio-card input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.card-content {
+    background-color: var(--bg-dark);
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.card-content i {
+    font-size: 36px;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.card-content h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.sa-radio-card:hover .card-content {
+    border-color: #555;
+}
+
+/* Active State */
+.sa-radio-card input:checked+.card-content {
+    border-color: var(--accent-red);
+    background-color: rgba(229, 57, 53, 0.05);
+}
+
+.sa-radio-card input:checked+.card-content i {
+    color: var(--accent-red);
+}
+
+/* Form Fields */
+.form-grid.cols-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.form-group input:not([type="radio"]):not([type="file"]),
+.form-group select,
+.form-group textarea {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-light);
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    font-family: inherit;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #666;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-red);
+}
+
+/* Style the native date picker icon to be white */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* File Upload Box */
+.file-upload-box {
+    background-color: var(--bg-dark);
+    border: 2px dashed var(--border-light);
+    border-radius: 6px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.file-upload-box:hover {
+    border-color: #666;
+}
+
+.file-upload-box input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.file-upload-box i {
+    font-size: 40px;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.file-upload-box p {
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.file-upload-box p span {
+    color: var(--accent-red);
+}
+
+.file-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Dynamic Sections */
+.dynamic-section {
+    animation: fadeInHalf 0.4s ease-out;
+}
+
+@keyframes fadeInHalf {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Submit Section */
+.form-submit {
+    border-top: 1px solid var(--border-light);
+    padding-top: 40px;
+    text-align: center;
+}
+
+.sa-submit-btn {
+    width: 100%;
+    max-width: 400px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 6px;
+}
+
+.submit-disclaimer {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.submit-disclaimer a {
+    color: #cfd3dc;
+    text-decoration: underline;
+}
+
+.submit-disclaimer a:hover {
+    color: var(--accent-red);
+}
+
+/* ── Service Checkbox Cards ─────────────────────────────── */
+.field-hint {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.field-hint i {
+    color: var(--accent-red);
+}
+
+.checkbox-grid {
+    display: grid;
+    gap: 16px;
+}
+
+.checkbox-grid.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.sa-check-card {
+    cursor: pointer;
+    position: relative;
+    display: block;
+}
+
+/* Hide native checkbox */
+.sa-check-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.check-content {
+    background-color: var(--bg-dark);
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    padding: 20px 14px;
+    text-align: center;
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.check-content i {
+    font-size: 26px;
+    color: var(--text-muted);
+    transition: color 0.25s ease;
+}
+
+.check-content span {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+    line-height: 1.3;
+    transition: color 0.25s ease;
+}
+
+/* Hover */
+.sa-check-card:hover .check-content {
+    border-color: #555;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.sa-check-card:hover .check-content i,
+.sa-check-card:hover .check-content span {
+    color: #ccc;
+}
+
+/* Checked state */
+.sa-check-card input[type="checkbox"]:checked + .check-content {
+    border-color: var(--accent-red);
+    background-color: rgba(229, 57, 53, 0.08);
+}
+
+.sa-check-card input[type="checkbox"]:checked + .check-content i {
+    color: var(--accent-red);
+}
+
+.sa-check-card input[type="checkbox"]:checked + .check-content span {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Tick badge on checked cards */
+.sa-check-card input[type="checkbox"]:checked + .check-content::after {
+    content: "\f00c";                /* Font Awesome check icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 11px;
+    color: var(--accent-red);
+    background: rgba(229, 57, 53, 0.15);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .appointment-wrapper {
+        padding: 30px 20px;
+    }
+
+    .service-type-options {
+        grid-template-columns: 1fr;
+    }
+
+    .checkbox-grid.cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-grid.cols-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+}

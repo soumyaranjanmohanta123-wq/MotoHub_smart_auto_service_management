@@ -1,0 +1,390 @@
+/* Tracking Page Styles */
+
+.track-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/images/hero-bg.jpg') no-repeat center center/cover;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.track-container {
+    max-width: 900px;
+    margin: 0 auto 80px;
+}
+
+/* Tabs Styling */
+.track-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.track-tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-size: 22px;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.track-tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-red);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.track-tab-btn:hover,
+.track-tab-btn.active {
+    color: #fff;
+}
+
+.track-tab-btn.active::after {
+    transform: scaleX(1);
+}
+
+/* Form Box */
+.track-form-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.track-form-box h3 {
+    font-family: var(--font-heading);
+    color: #fff;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.track-form-box p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.track-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.track-form .form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 250px;
+}
+
+.track-form .form-group label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.track-form input {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-light);
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.track-form input:focus {
+    border-color: var(--accent-red);
+}
+
+.track-form button {
+    height: 44px;
+    padding: 0 30px;
+}
+
+/* Track Result Box */
+.track-result {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 40px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+.result-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.result-meta h4 {
+    color: #fff;
+    font-size: 20px;
+    font-family: var(--font-heading);
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-badge.in-transit {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196F3;
+    border: 1px solid #2196F3;
+}
+
+.status-badge.in-progress {
+    background-color: rgba(255, 152, 0, 0.1);
+    color: #FF9800;
+    border: 1px solid #FF9800;
+}
+
+.result-header p {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+.result-header p strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Progress Bar / Timeline UI */
+.progress-track {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.progressbar {
+    counter-reset: step;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.progressbar li {
+    flex: 1;
+    position: relative;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* The Line in the background */
+.progressbar li::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: var(--border-light);
+    top: 20px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressbar li:first-child::before {
+    content: none;
+}
+
+/* The Circle Icon */
+.progressbar li i {
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-dark);
+    border: 3px solid var(--border-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+/* Active State for Finished Steps */
+.progressbar li.active {
+    color: #fff;
+}
+
+.progressbar li.active i {
+    background-color: var(--accent-red);
+    border-color: var(--accent-red);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(229, 57, 53, 0.3);
+}
+
+.progressbar li.active::before {
+    background-color: var(--accent-red);
+}
+
+/* Pulse animation for the current active step in vehicle repair */
+.progressbar li.pulse-step i {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(229, 57, 53, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(229, 57, 53, 0);
+    }
+}
+
+/* Vehicle Track needs 5 steps, Order needs 4. Flexbox handles this natively perfectly. */
+
+/* Tracking Notes/Details List */
+.tracking-details h5 {
+    font-family: var(--font-heading);
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.update-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid var(--border-light);
+}
+
+.update-list li {
+    position: relative;
+    padding-bottom: 25px;
+    padding-left: 20px;
+}
+
+.update-list li:last-child {
+    padding-bottom: 0;
+}
+
+/* Small dot on the timeline */
+.update-list li::before {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--text-muted);
+    border: 2px solid var(--bg-card);
+}
+
+/* The first item is the most recent update, color it red */
+.update-list li:first-child::before {
+    background-color: var(--accent-red);
+    box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.2);
+}
+
+.update-time {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.update-list li:first-child .update-time {
+    color: var(--accent-red);
+}
+
+.update-desc {
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .track-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .track-form .form-group {
+        width: 100%;
+    }
+
+    .result-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .progressbar li span {
+        font-size: 11px;
+    }
+
+    .progressbar li i {
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+    }
+
+    .progressbar li::before {
+        top: 15px;
+    }
+}

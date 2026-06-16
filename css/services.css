@@ -1,0 +1,263 @@
+/* Services Page Specific Styles */
+
+.services-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/images/hero_brakes.png') no-repeat center center/cover;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.services-intro {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.intro-desc {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.services-category-wrapper {
+    background-color: #0b0f17;
+    padding-bottom: 80px;
+}
+
+.category-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.mt-80 {
+    margin-top: 80px;
+}
+
+.category-header h3 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.category-header h3 i {
+    font-size: 24px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.services-grid.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.service-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-light);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.service-image {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.overlay-icon {
+    position: absolute;
+    bottom: -25px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent-red);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 5px 15px rgba(230,0,0,0.3);
+    z-index: 2;
+}
+
+.service-content {
+    padding: 35px 30px 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-content h4 {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.service-content p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* For Parts Cards */
+.parts-card {
+    padding: 40px 30px;
+}
+
+.parts-icon {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(230,0,0,0.1);
+    color: var(--accent-red);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.parts-card:hover .parts-icon {
+    background-color: var(--accent-red);
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-top: auto;
+}
+
+.link-arrow i {
+    color: var(--accent-red);
+    transition: transform 0.3s ease;
+}
+
+.link-arrow:hover {
+    color: var(--accent-red);
+}
+
+.link-arrow:hover i {
+    transform: translateX(5px);
+}
+
+.outline-btn {
+    background: transparent;
+    border: 1px solid var(--accent-red);
+    color: var(--text-main);
+    text-align: center;
+    margin-top: auto;
+}
+
+.outline-btn:hover {
+    background: var(--accent-red);
+    color: #fff;
+}
+
+/* Inspection Promo */
+.inspection-promo {
+    background: linear-gradient(135deg, var(--bg-card) 0%, #151a26 100%);
+    border: 1px solid var(--accent-red);
+    border-radius: 8px;
+    padding: 60px 50px;
+    margin: 60px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.inspection-promo::before {
+    content: '\f0ad'; /* Wrench icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 200px;
+    color: rgba(230,0,0,0.03);
+    z-index: 0;
+    transform: rotate(-15deg);
+}
+
+.promo-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.promo-content h2 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.promo-content p {
+    color: #cfd3dc;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-grid.cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid.cols-3 {
+        grid-template-columns: 1fr;
+    }
+    
+    .inspection-promo {
+        padding: 40px 20px;
+    }
+    
+    .promo-content h2 {
+        font-size: 28px;
+    }
+}

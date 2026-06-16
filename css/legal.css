@@ -1,0 +1,219 @@
+/* 
+   MOTOHUB Legal & Policies CSS
+*/
+
+/* Page Header */
+.legal-header {
+    background: linear-gradient(to bottom, rgba(7, 9, 15, 0.95), var(--bg-dark)), url('../assets/images/hero-bg.jpg') center/cover no-repeat;
+    padding: 50px 0 30px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.legal-title {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.legal-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Layout */
+.legal-container {
+    display: flex;
+    gap: 40px;
+    padding: 60px 0 100px;
+    position: relative;
+    /* Enable smooth scrolling for anchor links */
+    scroll-behavior: smooth;
+}
+
+/* Sidebar Navigation */
+.legal-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 100px; /* Adjust based on header height */
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    color: var(--text-muted);
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a.active {
+    background-color: rgba(230, 0, 0, 0.1);
+    color: var(--accent-red);
+}
+
+.sidebar-nav li a i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Main Content Area */
+.legal-main {
+    flex-grow: 1;
+    min-width: 0; /* Prevent horizontal overflow */
+}
+
+/* Legal Sections */
+.legal-section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 40px;
+    /* Add scroll margin for anchor links so they aren't hidden under sticky navs */
+    scroll-margin-top: 100px;
+}
+
+.legal-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-title i {
+    color: var(--accent-red);
+}
+
+.legal-content {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #a0a5b5;
+}
+
+.legal-content h3 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    color: #e0e0e0;
+    margin: 30px 0 15px;
+    font-weight: 600;
+}
+
+/* Start first h3 without top margin */
+.legal-content h3:first-child {
+    margin-top: 0;
+}
+
+.legal-content p {
+    margin-bottom: 20px;
+}
+
+.legal-content ul, 
+.legal-content ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.legal-content li {
+    margin-bottom: 10px;
+}
+
+.legal-content strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Highlight boxes for important info */
+.legal-alert {
+    background-color: rgba(230, 0, 0, 0.05);
+    border-left: 4px solid var(--accent-red);
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+    margin: 25px 0;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .legal-container {
+        flex-direction: column;
+    }
+    
+    .legal-sidebar {
+        width: 100%;
+    }
+    
+    .sidebar-sticky {
+        position: static;
+        padding: 15px;
+    }
+    
+    .sidebar-nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .sidebar-nav li a {
+        background-color: var(--bg-lighter);
+    }
+    
+    .legal-section {
+        padding: 30px 25px;
+        scroll-margin-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .legal-header {
+        padding: 80px 0 50px;
+    }
+    
+    .legal-title {
+        font-size: 32px;
+    }
+    
+    .sidebar-nav ul {
+        flex-direction: column;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+}

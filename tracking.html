@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order & Service - MOTOHUB</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tracking.css">
+    <script src="js/components.js" defer></script>
+</head>
+
+<body>
+
+    
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+
+    <!-- Page Header Breadcrumb -->
+    <section class="page-header track-hero">
+        <div class="container">
+            <h1>TRACK YOUR STATUS</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> Tracking
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracking Container -->
+    <div class="track-container container">
+        
+        <!-- Tabs -->
+        <div class="track-tabs">
+            <button class="track-tab-btn active" data-target="order-track-section"><i class="fa-solid fa-box-open"></i> Parts Order</button>
+            <button class="track-tab-btn" data-target="vehicle-track-section"><i class="fa-solid fa-car-wrench"></i> Vehicle Service</button>
+        </div>
+
+        <!-- 1. Order Tracking Tab -->
+        <div class="track-section active" id="order-track-section">
+            <div class="track-form-box">
+                <h3>Track Your Parts Order</h3>
+                <p>To track your order, please enter your Order ID in the box below and press the "Track" button. You can find this ID in your confirmation email.</p>
+                <form class="track-form" onsubmit="event.preventDefault(); showTrackingResult('order-result');">
+                    <div class="form-group">
+                        <label>Order ID *</label>
+                        <input type="text" placeholder="e.g. MH-98245" required>
+                    </div>
+                    <button type="submit" class="btn btn-red">TRACK ORDER</button>
+                </form>
+            </div>
+
+            <!-- Tracking Result Visual (Simulated) -->
+            <div class="track-result" id="order-result" style="display: none;">
+                <div class="result-header">
+                    <div class="result-meta">
+                        <h4>Order #MH-98245</h4>
+                        <span class="status-badge in-transit">In Transit</span>
+                    </div>
+                    <p>Expected Delivery: <strong>March 15, 2026</strong></p>
+                </div>
+
+                <div class="progress-track">
+                    <ul class="progressbar">
+                        <li class="active"><i class="fa-solid fa-clipboard-check"></i> Ordered</li>
+                        <li class="active"><i class="fa-solid fa-box"></i> Packed</li>
+                        <li class="active"><i class="fa-solid fa-truck-fast"></i> Shipped</li>
+                        <li><i class="fa-solid fa-house-circle-check"></i> Delivered</li>
+                    </ul>
+                </div>
+
+                <div class="tracking-details">
+                    <h5>Latest Updates:</h5>
+                    <ul class="update-list">
+                        <li>
+                            <div class="update-time">March 11, 2026 - 08:30 AM</div>
+                            <div class="update-desc">Package departed sorting facility in New York.</div>
+                        </li>
+                        <li>
+                            <div class="update-time">March 10, 2026 - 03:45 PM</div>
+                            <div class="update-desc">Package arrived at local carrier facility.</div>
+                        </li>
+                        <li>
+                            <div class="update-time">March 09, 2026 - 10:00 AM</div>
+                            <div class="update-desc">Order shipped via FedEx. Tracking #: 1Z999999999.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Vehicle Tracking Tab -->
+        <div class="track-section" id="vehicle-track-section" style="display: none;">
+            <div class="track-form-box">
+                <h3>Track Your Vehicle Service</h3>
+                <p>Enter your Service ID or Vehicle License Plate along with your phone number to check the live status of your vehicle in our garage.</p>
+                <form class="track-form" onsubmit="event.preventDefault(); showTrackingResult('vehicle-result');">
+                    <div class="form-group">
+                        <label>Service ID / License Plate *</label>
+                        <input type="text" placeholder="e.g. SRV-5092 or AB12CDE" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" placeholder="Phone registered with service" required>
+                    </div>
+                    <button type="submit" class="btn btn-red">TRACK VEHICLE</button>
+                </form>
+            </div>
+
+            <!-- Tracking Result Visual (Simulated) -->
+            <div class="track-result" id="vehicle-result" style="display: none;">
+                <div class="result-header">
+                    <div class="result-meta">
+                        <h4>Service #SRV-5092 (2019 Toyota Camry)</h4>
+                        <span class="status-badge in-progress">In Garage</span>
+                    </div>
+                    <p>Estimated Completion: <strong>Today, 04:00 PM</strong></p>
+                </div>
+
+                <div class="progress-track vehicle-track">
+                    <ul class="progressbar">
+                        <li class="active"><i class="fa-solid fa-car-side"></i> Received</li>
+                        <li class="active"><i class="fa-solid fa-magnifying-glass"></i> Inspected</li>
+                        <li class="active pulse-step"><i class="fa-solid fa-wrench"></i> Repairing</li>
+                        <li><i class="fa-solid fa-gauge-high"></i> Testing</li>
+                        <li><i class="fa-solid fa-key"></i> Ready</li>
+                    </ul>
+                </div>
+
+                <div class="tracking-details">
+                    <h5>Service Notes:</h5>
+                    <ul class="update-list">
+                        <li>
+                            <div class="update-time">Today, 11:30 AM</div>
+                            <div class="update-desc">Mechanic started brake system bleed and replacement.</div>
+                        </li>
+                        <li>
+                            <div class="update-time">Today, 09:15 AM</div>
+                            <div class="update-desc">Initial inspection completed. Quote approved by customer.</div>
+                        </li>
+                        <li>
+                            <div class="update-time">Today, 08:00 AM</div>
+                            <div class="update-desc">Vehicle checked into Garage Bay #4.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-bar" style="margin-top: 80px;">
+        <div class="container newsletter-inner">
+            <div class="newsletter-left">
+                <div class="newsletter-icon">
+                    <i class="fa-regular fa-envelope-open"></i>
+                </div>
+                <div class="newsletter-text">
+                    <h3>SUBSCRIBE NEWSLETTER</h3>
+                    <p>Get all the latest information on Events, Sales and Offers. Sign up for newsletter today.</p>
+                </div>
+            </div>
+            <div class="newsletter-right form-group">
+                <input type="email" placeholder="Email Address Here...">
+                <button type="submit" class="btn btn-red">SUBSCRIBE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/tracking-api.js"></script>
+    <script>
+        // Tab Switching Logic
+        const tabBtns = document.querySelectorAll('.track-tab-btn');
+        const sections = document.querySelectorAll('.track-section');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active from all tabs and sections
+                tabBtns.forEach(b => b.classList.remove('active'));
+                sections.forEach(s => {
+                    s.classList.remove('active');
+                    s.style.display = 'none';
+                });
+
+                // Add active to clicked tab and display the target section
+                this.classList.add('active');
+                const targetId = this.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                targetSection.style.display = 'block';
+                
+                // Slight delay to trigger CSS animation
+                setTimeout(() => {
+                    targetSection.classList.add('active');
+                }, 10);
+            });
+        });
+
+        // Simulate form submission -> revealing tracking result
+        function showTrackingResult(resultId) {
+            const resultDiv = document.getElementById(resultId);
+            resultDiv.style.display = 'block';
+            
+            // smooth scroll to it
+            setTimeout(() => {
+                resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>

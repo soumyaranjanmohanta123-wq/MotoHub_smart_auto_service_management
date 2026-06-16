@@ -1,0 +1,241 @@
+/* 
+   MOTOHUB FAQ CSS
+*/
+
+/* Header Banner */
+.faq-header {
+    background: linear-gradient(to right, rgba(7, 9, 15, 0.95), rgba(230, 0, 0, 0.15)), url('../assets/images/hero-bg.jpg') center/cover;
+    padding: 50px 0 30px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faq-title {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.faq-subtitle {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Layout */
+.faq-layout {
+    display: flex;
+    gap: 50px;
+    padding: 80px 0 100px;
+}
+
+/* Sidebar Categories (Optional Sticky Nav for later, static for now) */
+.faq-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.faq-cat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: sticky;
+    top: 100px;
+}
+
+.faq-cat-list li {
+    margin-bottom: 5px;
+}
+
+.faq-cat-link {
+    display: block;
+    padding: 12px 20px;
+    color: var(--text-muted);
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    border-radius: 0 8px 8px 0;
+}
+
+.faq-cat-link:hover,
+.faq-cat-link.active {
+    background-color: rgba(230, 0, 0, 0.05);
+    color: var(--accent-red);
+    border-left-color: var(--accent-red);
+}
+
+/* Main Accordion Area */
+.faq-main {
+    flex-grow: 1;
+}
+
+.faq-category-block {
+    margin-bottom: 50px;
+}
+
+.faq-category-title {
+    font-family: var(--font-heading);
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.faq-category-title i {
+    color: var(--accent-red);
+}
+
+/* Accordion Item */
+.accordion-item {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.accordion-item:hover {
+    border-color: rgba(230, 0, 0, 0.3);
+}
+
+.accordion-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 25px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-btn:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.accordion-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.accordion-icon::before,
+.accordion-icon::after {
+    content: '';
+    position: absolute;
+    background-color: var(--accent-red);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Horizontal line of plus */
+.accordion-icon::before {
+    top: 9px;
+    left: 0;
+    width: 20px;
+    height: 2px;
+}
+
+/* Vertical line of plus */
+.accordion-icon::after {
+    top: 0;
+    left: 9px;
+    width: 2px;
+    height: 20px;
+}
+
+/* Active State Transformations */
+.accordion-btn.active {
+    background-color: rgba(230, 0, 0, 0.05);
+}
+
+/* Turn minus on active */
+.accordion-btn.active .accordion-icon::after {
+    transform: scaleY(0);
+}
+
+/* Smooth Slide Down Content */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--bg-card);
+}
+
+.accordion-body {
+    padding: 0 25px 25px;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.7;
+    border-top: 1px solid transparent; 
+}
+
+.accordion-btn.active + .accordion-content .accordion-body {
+    border-top-color: var(--border-light);
+    padding-top: 20px; /* Animate padding to prevent jump jump */
+}
+
+/* CTA Block */
+.faq-cta {
+    background-color: rgba(13, 17, 26, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.faq-cta h3 {
+    font-family: var(--font-heading);
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.faq-cta p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+
+/* Responsive */
+@media (max-width: 991px) {
+    .faq-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .faq-sidebar {
+        width: 100%;
+    }
+    .faq-cat-list {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .faq-cat-link {
+        border-bottom: 3px solid transparent;
+        border-left: none;
+        border-radius: 8px 8px 0 0;
+    }
+    .faq-cat-link:hover,
+    .faq-cat-link.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--accent-red);
+    }
+}

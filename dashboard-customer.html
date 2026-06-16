@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - MOTOHUB</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Component Loader Script -->
+    <script src="js/components.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Page Header Breadcrumb -->
+    <section class="page-header db-hero">
+        <div class="container">
+            <h1>CUSTOMER DASHBOARD</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> Dashboard
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Container -->
+    <section class="dashboard-section container">
+        <div class="dashboard-layout">
+
+            <!-- Left Sidebar Navigation -->
+            <aside class="dashboard-sidebar">
+                <div class="user-profile-summary">
+                    <div class="avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3>John Doe</h3>
+                    <p>john.doe@example.com</p>
+                    <span class="role-badge customer">Customer</span>
+                </div>
+
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li><button class="db-tab-btn active" data-target="profile-sec"><i
+                                    class="fa-regular fa-id-card"></i> Profile</button></li>
+                        <li><button class="db-tab-btn" data-target="garage-sec"><i class="fa-solid fa-car-side"></i>
+                                Garage</button></li>
+                        <li><button class="db-tab-btn" data-target="orders-sec"><i class="fa-solid fa-box-open"></i>
+                                Orders</button></li>
+                        <li><button class="db-tab-btn" data-target="appointments-sec"><i
+                                    class="fa-regular fa-calendar-check"></i> Appointments</button></li>
+                        <li><button class="db-tab-btn" data-target="history-sec"><i
+                                    class="fa-solid fa-clock-rotate-left"></i> Maintenance History</button></li>
+                        <li><button class="db-tab-btn" data-target="tickets-sec"><i class="fa-solid fa-headset"></i>
+                                Tickets</button></li>
+                        <li><button class="db-tab-btn" data-target="reviews-sec"><i class="fa-solid fa-star"></i>
+                                Reviews</button></li>
+                        <li><button class="db-tab-btn" data-target="wishlist-sec"><i class="fa-solid fa-heart"></i>
+                                Wishlist</button></li>
+                        <li><button class="db-tab-btn" data-target="address-sec"><i
+                                    class="fa-solid fa-map-location-dot"></i> Saved Addresses</button></li>
+                        <li><a href="login.html" class="logout-link"><i
+                                    class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Right Content Area -->
+            <main class="dashboard-content">
+
+                <!-- 1. Profile Section -->
+                <div class="db-section active" id="profile-sec">
+                    <div class="db-header">
+                        <h2>My Profile</h2>
+                        <button class="btn btn-primary outline-btn btn-sm"><i class="fa-solid fa-pen"></i> Edit
+                            Profile</button>
+                    </div>
+                    <div class="db-card form-container">
+                        <form class="db-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" value="John" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" value="Doe" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" value="john.doe@example.com" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" value="+1 234 567 8900" readonly>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="db-header" style="margin-top: 40px;">
+                        <h2>Change Password</h2>
+                    </div>
+                    <div class="db-card form-container">
+                        <form class="db-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Current Password</label>
+                                    <input type="password" placeholder="••••••••">
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" placeholder="••••••••">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm New Password</label>
+                                    <input type="password" placeholder="••••••••">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-red mt-20">Update Password</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 2. My Garage Section -->
+                <div class="db-section" id="garage-sec" style="display: none;">
+                    <div class="db-header">
+                        <h2>My Garage</h2>
+                        <button class="btn btn-red btn-sm"><i class="fa-solid fa-plus"></i> Add Vehicle</button>
+                    </div>
+
+                    <div class="vehicle-cards">
+                        <!-- Vehicle 1 -->
+                        <div class="vehicle-card">
+                            <div class="vc-image">
+                                <i class="fa-solid fa-car"></i>
+                            </div>
+                            <div class="vc-info">
+                                <h4>2019 Toyota Camry</h4>
+                                <p>License Plate: <strong>ABC-1234</strong></p>
+                                <p>VIN: <strong>1HGCM82633A00435</strong></p>
+                            </div>
+                            <div class="vc-actions">
+                                <button class="action-btn" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                <button class="action-btn delete" title="Remove"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Vehicle 2 -->
+                        <div class="vehicle-card">
+                            <div class="vc-image">
+                                <i class="fa-solid fa-truck-pickup"></i>
+                            </div>
+                            <div class="vc-info">
+                                <h4>2022 Ford F-150 Raptor</h4>
+                                <p>License Plate: <strong>XTR-9900</strong></p>
+                                <p>VIN: <strong>1FTEW1E51NFC4235</strong></p>
+                            </div>
+                            <div class="vc-actions">
+                                <button class="action-btn" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                <button class="action-btn delete" title="Remove"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Orders Section -->
+                <div class="db-section" id="orders-sec" style="display: none;">
+                    <div class="db-header">
+                        <h2>Order History</h2>
+                    </div>
+
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#MH-98245</strong></td>
+                                    <td>Mar 11, 2026</td>
+                                    <td><span class="status-badge processing">Processing</span></td>
+                                    <td>$450.00</td>
+                                    <td><button class="text-link">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#MH-97001</strong></td>
+                                    <td>Feb 20, 2026</td>
+                                    <td><span class="status-badge delivered">Delivered</span></td>
+                                    <td>$120.00</td>
+                                    <td><button class="text-link">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#MH-96420</strong></td>
+                                    <td>Jan 15, 2026</td>
+                                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                                    <td>$890.00</td>
+                                    <td><button class="text-link">View Details</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 4. Appointments Section -->
+                <div class="db-section" id="appointments-sec" style="display: none;">
+                    <div class="db-header">
+                        <h2>My Appointments</h2>
+                        <a href="service-appointment.html" class="btn btn-red btn-sm"><i
+                                class="fa-solid fa-calendar-plus"></i> Book New</a>
+                    </div>
+
+                    <div class="appointment-cards">
+                        <!-- Upcoming Appointment -->
+                        <div class="appt-card upcoming">
+                            <div class="appt-date">
+                                <span class="month">MAR</span>
+                                <span class="day">15</span>
+                            </div>
+                            <div class="appt-details">
+                                <h4>Major Garage Service</h4>
+                                <p><i class="fa-solid fa-car"></i> 2019 Toyota Camry</p>
+                                <p><i class="fa-regular fa-clock"></i> 08:00 AM - 12:00 PM</p>
+                                <p><i class="fa-solid fa-location-dot"></i> MotoHub Main Garage</p>
+                            </div>
+                            <div class="appt-status" style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;">
+                                <span class="status-badge upcoming-badge">Upcoming</span>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn appt-view-btn-styled" onclick="openApptModal('appt1')"><i class="fa-solid fa-eye"></i> View Details</button>
+                                    <button class="btn appt-reschedule-btn-styled" onclick="openRescheduleModal('appt1')"><i class="fa-solid fa-calendar-days"></i> Reschedule</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Past Appointment -->
+                        <div class="appt-card past">
+                            <div class="appt-date">
+                                <span class="month">FEB</span>
+                                <span class="day">02</span>
+                            </div>
+                            <div class="appt-details">
+                                <h4>Home Service - Oil Change</h4>
+                                <p><i class="fa-solid fa-car"></i> 2022 Ford F-150 Raptor</p>
+                                <p><i class="fa-regular fa-clock"></i> 02:00 PM - 04:00 PM</p>
+                                <p><i class="fa-solid fa-location-dot"></i> 123 Main St, NY</p>
+                            </div>
+                            <div class="appt-status" style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;">
+                                <span class="status-badge completed-badge">Completed</span>
+                                <div style="display: flex; gap: 8px;">
+                                    <button class="btn appt-view-btn-styled" onclick="openApptModal('appt2')"><i class="fa-solid fa-eye"></i> View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════
+                     VIEW DETAILS MODAL
+                ═══════════════════════════════════════════ -->
+                <div class="appt-modal-overlay" id="apptModalOverlay" onclick="closeApptModal()">
+                    <div class="appt-modal" id="apptModal" onclick="event.stopPropagation()">
+                        <div class="appt-modal-header">
+                            <div class="appt-modal-title">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                <h3 id="modalTitle">Appointment Details</h3>
+                            </div>
+                            <button class="appt-modal-close" onclick="closeApptModal()"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                        <div class="appt-modal-body">
+                            <!-- Status Banner -->
+                            <div class="appt-modal-status-bar" id="modalStatusBar">
+                                <span id="modalStatusBadge"></span>
+                                <span id="modalApptId" style="font-size:0.85rem;color:#999;"></span>
+                            </div>
+
+                            <!-- Details Grid -->
+                            <div class="appt-modal-grid">
+                                <div class="appt-modal-info-card">
+                                    <div class="amc-icon"><i class="fa-solid fa-wrench"></i></div>
+                                    <div class="amc-text"><label>Service Type</label><strong id="modalService"></strong></div>
+                                </div>
+                                <div class="appt-modal-info-card">
+                                    <div class="amc-icon"><i class="fa-solid fa-car"></i></div>
+                                    <div class="amc-text"><label>Vehicle</label><strong id="modalVehicle"></strong></div>
+                                </div>
+                                <div class="appt-modal-info-card">
+                                    <div class="amc-icon"><i class="fa-regular fa-calendar"></i></div>
+                                    <div class="amc-text"><label>Date</label><strong id="modalDate"></strong></div>
+                                </div>
+                                <div class="appt-modal-info-card">
+                                    <div class="amc-icon"><i class="fa-regular fa-clock"></i></div>
+                                    <div class="amc-text"><label>Time Slot</label><strong id="modalTime"></strong></div>
+                                </div>
+                                <div class="appt-modal-info-card">
+                                    <div class="amc-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                    <div class="amc-text"><label>Location / Garage</label><strong id="modalLocation"></strong></div>
+                                </div>
+                                <div class="appt-modal-info-card">
+                                    <div class="amc-icon"><i class="fa-solid fa-user-tie"></i></div>
+                                    <div class="amc-text"><label>Assigned Technician</label><strong id="modalTech"></strong></div>
+                                </div>
+                                <div class="appt-modal-info-card">
+                                    <div class="amc-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                                    <div class="amc-text"><label>Estimated Cost</label><strong id="modalCost"></strong></div>
+                                </div>
+                                <div class="appt-modal-info-card">
+                                    <div class="amc-icon"><i class="fa-solid fa-box-open"></i></div>
+                                    <div class="amc-text"><label>Service Package</label><strong id="modalPackage"></strong></div>
+                                </div>
+                            </div>
+
+                            <!-- Notes -->
+                            <div class="appt-modal-notes">
+                                <h4><i class="fa-solid fa-note-sticky"></i> Customer Notes</h4>
+                                <p id="modalNotes">—</p>
+                            </div>
+                        </div>
+
+                        <div class="appt-modal-footer" id="modalFooter"></div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════
+                     RESCHEDULE MODAL (with calendar)
+                ═══════════════════════════════════════════ -->
+                <div class="appt-modal-overlay" id="rescheduleModalOverlay" onclick="closeRescheduleModal()">
+                    <div class="appt-modal rs-modal" onclick="event.stopPropagation()">
+                        <div class="appt-modal-header">
+                            <div class="appt-modal-title">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <h3>Reschedule Appointment</h3>
+                            </div>
+                            <button class="appt-modal-close" onclick="closeRescheduleModal()"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                        <div class="appt-modal-body rs-body">
+                            <input type="hidden" id="rescheduleApptId">
+
+                            <!-- Current appt summary -->
+                            <div class="rs-current-bar">
+                                <i class="fa-regular fa-calendar-xmark"></i>
+                                <span>Current: <strong id="rsCurrent">—</strong></span>
+                            </div>
+
+                            <!-- Calendar -->
+                            <div class="rs-cal-wrap">
+                                <div class="rs-cal-nav">
+                                    <button type="button" id="rsCalPrev" onclick="rsNavMonth(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <span id="rsCalLabel"></span>
+                                    <button type="button" id="rsCalNext" onclick="rsNavMonth(1)"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                                <div class="rs-cal-grid">
+                                    <span class="rs-dow">Su</span><span class="rs-dow">Mo</span><span class="rs-dow">Tu</span>
+                                    <span class="rs-dow">We</span><span class="rs-dow">Th</span><span class="rs-dow">Fr</span><span class="rs-dow">Sa</span>
+                                </div>
+                                <div id="rsCalDays" class="rs-cal-days"></div>
+                                <p class="rs-date-chosen">Selected: <strong id="rsDateDisplay">None</strong></p>
+                            </div>
+
+                            <!-- Time slots -->
+                            <div class="rs-slots-wrap">
+                                <p class="rs-slots-label"><i class="fa-regular fa-clock"></i> Choose a Time Slot</p>
+                                <div class="rs-slots">
+                                    <button type="button" class="rs-slot" onclick="rsPickSlot(this,'08:00 AM – 10:00 AM')">08:00 AM – 10:00 AM</button>
+                                    <button type="button" class="rs-slot" onclick="rsPickSlot(this,'10:00 AM – 12:00 PM')">10:00 AM – 12:00 PM</button>
+                                    <button type="button" class="rs-slot" onclick="rsPickSlot(this,'12:00 PM – 02:00 PM')">12:00 PM – 02:00 PM</button>
+                                    <button type="button" class="rs-slot" onclick="rsPickSlot(this,'02:00 PM – 04:00 PM')">02:00 PM – 04:00 PM</button>
+                                    <button type="button" class="rs-slot" onclick="rsPickSlot(this,'04:00 PM – 06:00 PM')">04:00 PM – 06:00 PM</button>
+                                    <button type="button" class="rs-slot" onclick="rsPickSlot(this,'06:00 PM – 08:00 PM')">06:00 PM – 08:00 PM</button>
+                                </div>
+                                <input type="hidden" id="rsSlotValue">
+                            </div>
+
+                            <!-- Reason -->
+                            <div class="rs-reason-wrap">
+                                <label><i class="fa-solid fa-comment-dots"></i> Reason <span style="color:#999;font-weight:400">(optional)</span></label>
+                                <textarea id="rescheduleReason" rows="2" placeholder="Tell us why you're rescheduling…"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="appt-modal-footer">
+                            <button type="button" class="rs-cancel-btn" onclick="closeRescheduleModal()">Cancel</button>
+                            <button type="button" class="rs-confirm-btn" onclick="submitReschedule()"><i class="fa-solid fa-check"></i> Confirm Reschedule</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Maintenance History Section -->
+                <div class="db-section" id="history-sec" style="display: none;">
+                    <div class="db-header">
+                        <h2>Maintenance History</h2>
+                        <div class="filter-group">
+                            <select class="db-select">
+                                <option>All Vehicles</option>
+                                <option>2019 Toyota Camry</option>
+                                <option>2022 Ford F-150</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="tl-icon"><i class="fa-solid fa-oil-can"></i></div>
+                            <div class="tl-content">
+                                <div class="tl-header">
+                                    <h4>Full Synthetic Oil Change & Filter</h4>
+                                    <span class="tl-date">Feb 02, 2026</span>
+                                </div>
+                                <p class="tl-vehicle">2022 Ford F-150 Raptor • 24,000 miles</p>
+                                <p class="tl-desc">Completed standard home service oil change. Replaced oil filter and
+                                    performed multi-point inspection. All fluids topped off.</p>
+                                <a href="#" class="btn btn-primary outline-btn btn-sm mt-10"><i
+                                        class="fa-solid fa-file-pdf"></i> Download Invoice</a>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="tl-icon"><i class="fa-solid fa-compact-disc"></i></div>
+                            <div class="tl-content">
+                                <div class="tl-header">
+                                    <h4>Brake Pad Replacement (Front & Rear)</h4>
+                                    <span class="tl-date">Dec 15, 2025</span>
+                                </div>
+                                <p class="tl-vehicle">2019 Toyota Camry • 42,500 miles</p>
+                                <p class="tl-desc">Rotors resurfaced. Ceramic brake pads installed on all 4 wheels.
+                                    Brake fluid flushed and bled.</p>
+                                <a href="#" class="btn btn-primary outline-btn btn-sm mt-10"><i
+                                        class="fa-solid fa-file-pdf"></i> Download Invoice</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Tickets Section -->
+                <div class="db-section" id="tickets-sec" style="display: none;">
+                    <div class="db-header">
+                        <h2>Support Tickets</h2>
+                        <button class="btn btn-red btn-sm" onclick="openTicketModal()"><i class="fa-solid fa-plus"></i> Open Ticket</button>
+                    </div>
+
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Ticket ID</th>
+                                    <th>Subject</th>
+                                    <th>Date Opened</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#TK-10024</strong></td>
+                                    <td>Issue with delivery tracking</td>
+                                    <td>Mar 15, 2026</td>
+                                    <td><span class="status-badge processing">Open</span></td>
+                                    <td><button class="text-link">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#TK-09855</strong></td>
+                                    <td>Return authorization request</td>
+                                    <td>Feb 28, 2026</td>
+                                    <td><span class="status-badge delivered">Resolved</span></td>
+                                    <td><button class="text-link">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 7. Reviews Section -->
+                <div class="db-section" id="reviews-sec" style="display: none;">
+                    <div class="db-header">
+                        <h2>My Reviews</h2>
+                    </div>
+
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Product / Service</th>
+                                    <th>Rating</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>High Performance Brake Kit</strong></td>
+                                    <td>
+                                        <div class="stars" style="color: #f1c40f;">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>Mar 10, 2026</td>
+                                    <td><span class="status-badge delivered">Approved</span></td>
+                                    <td><button class="text-link">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Home Service - Oil Change</strong></td>
+                                    <td>
+                                        <div class="stars" style="color: #f1c40f;">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>Feb 05, 2026</td>
+                                    <td><span class="status-badge delivered">Approved</span></td>
+                                    <td><button class="text-link">View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 8. Wishlist Section -->
+                <div class="db-section" id="wishlist-sec" style="display: none;">
+                    <div class="db-header">
+                        <h2>My Wishlist</h2>
+                    </div>
+
+                    <div class="wishlist-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+                        <!-- Wishlist items will be rendered here dynamically -->
+                    </div>
+                </div>
+
+                <!-- 9. Saved Addresses Section -->
+                <div class="db-section" id="address-sec" style="display: none;">
+                    <div class="db-header">
+                        <h2>Saved Addresses</h2>
+                        <button class="btn btn-red btn-sm"><i class="fa-solid fa-plus"></i> Add Address</button>
+                    </div>
+
+                    <div class="address-grid">
+                        <!-- Address 1 -->
+                        <div class="address-card default">
+                            <div class="address-header">
+                                <h4>Home</h4>
+                                <span class="default-badge">Default</span>
+                            </div>
+                            <p class="name">John Doe</p>
+                            <p class="address-lines">
+                                123 Main Street<br>
+                                Apartment 4B<br>
+                                New York, NY 10001<br>
+                                United States
+                            </p>
+                            <p class="phone">+1 234 567 8900</p>
+                            <div class="address-actions">
+                                <button class="text-link">Edit</button>
+                                <span>|</span>
+                                <button class="text-link text-red">Delete</button>
+                            </div>
+                        </div>
+
+                        <!-- Address 2 -->
+                        <div class="address-card">
+                            <div class="address-header">
+                                <h4>Work</h4>
+                            </div>
+                            <p class="name">John Doe</p>
+                            <p class="address-lines">
+                                456 Corporate Blvd<br>
+                                Suite 200<br>
+                                Boston, MA 02108<br>
+                                United States
+                            </p>
+                            <p class="phone">+1 987 654 3210</p>
+                            <div class="address-actions">
+                                <button class="text-link">Edit</button>
+                                <span>|</span>
+                                <button class="text-link">Set Default</button>
+                                <span>|</span>
+                                <button class="text-link text-red">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════
+                     OPEN TICKET MODAL
+                ═══════════════════════════════════════════ -->
+                <div class="appt-modal-overlay" id="ticketModalOverlay" onclick="closeTicketModal()">
+                    <div class="ticket-modal" onclick="event.stopPropagation()">
+                        <div class="ticket-modal-header">
+                            <div class="ticket-modal-title">
+                                <i class="fa-solid fa-ticket"></i>
+                                <h3>Open Support Ticket</h3>
+                            </div>
+                            <button class="appt-modal-close" onclick="closeTicketModal()"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                        <div class="ticket-modal-body">
+                            <form id="openTicketForm" onsubmit="submitTicketModal(event)">
+                                <div class="ticket-form-group">
+                                    <label class="ticket-label"><i class="fa-solid fa-list"></i> Category</label>
+                                    <select class="ticket-input" id="ticketCategory" required>
+                                        <option value="" disabled selected>Select an option</option>
+                                        <option value="order">Order Issues</option>
+                                        <option value="service">Appointment / Service</option>
+                                        <option value="product">Product Inquiry</option>
+                                        <option value="payment">Payment Issue</option>
+                                        <option value="account">Account Issue</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="ticket-form-group">
+                                    <label class="ticket-label"><i class="fa-solid fa-heading"></i> Subject</label>
+                                    <input type="text" class="ticket-input" id="ticketSubject" placeholder="Brief summary of your issue..." required />
+                                </div>
+                                <div class="ticket-form-group">
+                                    <label class="ticket-label"><i class="fa-solid fa-comment-dots"></i> Description <span style="color:#e60000;">*</span></label>
+                                    <textarea class="ticket-input" id="ticketDescription" rows="4" placeholder="Please describe your issue in detail. Include any relevant Order ID or Appointment ID..." required></textarea>
+                                </div>
+
+                                <div class="ticket-modal-footer">
+                                    <button type="button" class="rs-cancel-btn" onclick="closeTicketModal()">Cancel</button>
+                                    <button type="submit" class="rs-confirm-btn"><i class="fa-solid fa-paper-plane"></i> Submit Ticket</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Appointment Modal Styles -->
+    <style>
+        /* ---- Appointment Modal ---- */
+        .appt-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .appt-modal-overlay.open {
+            display: flex;
+        }
+        .appt-modal {
+            background: #fff;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 680px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            overflow: hidden;
+            animation: apptModalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes apptModalIn {
+            from { opacity: 0; transform: scale(0.85) translateY(20px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .appt-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 28px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+        }
+        .appt-modal-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .appt-modal-title i {
+            font-size: 1.4rem;
+            color: #e63946;
+        }
+        .appt-modal-title h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
+        }
+        .appt-modal-close {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .appt-modal-close:hover { background: #e63946; }
+        .appt-modal-status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 28px;
+            background: #f8f9fc;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .appt-modal-body { padding: 24px 28px; }
+        .appt-modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .appt-modal-info-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: #f8f9fc;
+            border-radius: 10px;
+            border: 1px solid #eef0f5;
+        }
+        .amc-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #e63946, #c1121f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .amc-text { display: flex; flex-direction: column; gap: 2px; }
+        .amc-text label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+        }
+        .amc-text strong { font-size: 0.9rem; color: #1a1a2e; }
+        .appt-modal-notes {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-radius: 10px;
+            padding: 16px 18px;
+        }
+        .appt-modal-notes h4 {
+            margin: 0 0 8px 0;
+            font-size: 0.85rem;
+            color: #b8860b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .appt-modal-notes p { margin: 0; font-size: 0.88rem; color: #555; line-height: 1.6; }
+        .appt-modal-footer {
+            padding: 18px 28px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        /* status badge colours reused */
+        .badge-upcoming { background: #fff3cd; color: #856404; }
+        .badge-completed { background: #d1e7dd; color: #0f5132; }
+        .badge-cancelled { background: #f8d7da; color: #842029; }
+        .appt-modal-status-bar .status-badge { font-size: 0.8rem; }
+        @media (max-width: 560px) {
+            .appt-modal-grid { grid-template-columns: 1fr; }
+            .appt-modal-header, .appt-modal-body, .appt-modal-footer { padding: 18px; }
+        }
+        .btn-sm.mt-10 { margin-top: 10px; }
+
+        /* ════ Reschedule Modal ════ */
+        .rs-modal { max-width: 520px; }
+        .rs-modal .appt-modal-header {
+            background: linear-gradient(135deg, #07090f, #1a1a2e);
+            border-bottom: 2px solid #e60000;
+        }
+        .rs-modal .appt-modal-header .appt-modal-title i { color: #e60000; font-size:1.2rem; }
+        .rs-body { padding: 20px 24px; }
+        .rs-current-bar {
+            display: flex; align-items: center; gap: 10px;
+            background: #f8f9fc; border: 1px solid #e9ecef;
+            border-radius: 8px; padding: 10px 14px;
+            font-size: 0.85rem; color: #555; margin-bottom: 18px;
+        }
+        .rs-current-bar i { color: #e60000; }
+        .rs-current-bar strong { color: #0f172a; }
+        /* Calendar */
+        .rs-cal-wrap {
+            background: #fff; border: 1px solid #e2e8f0;
+            border-radius: 12px; overflow: hidden; margin-bottom: 18px;
+        }
+        .rs-cal-nav {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 16px;
+            background: #07090f; color: #fff;
+        }
+        .rs-cal-nav button {
+            background: rgba(255,255,255,0.1); border: none; color: #fff;
+            width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
+            font-size: 0.75rem; display:flex; align-items:center; justify-content:center;
+            transition: background 0.2s;
+        }
+        .rs-cal-nav button:hover { background: #e60000; }
+        .rs-cal-nav span { font-weight: 700; font-size: 0.95rem; font-family: 'Oswald', sans-serif; letter-spacing: 0.5px; }
+        .rs-cal-grid {
+            display: grid; grid-template-columns: repeat(7, 1fr);
+            background: #f8f9fc; border-bottom: 1px solid #e2e8f0;
+        }
+        .rs-dow {
+            text-align: center; padding: 8px 0; font-size: 0.7rem;
+            font-weight: 700; text-transform: uppercase; color: #888;
+        }
+        .rs-cal-days {
+            display: grid; grid-template-columns: repeat(7, 1fr);
+            gap: 2px; padding: 8px;
+        }
+        .rs-day {
+            aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-size: 0.8rem; cursor: pointer;
+            transition: all 0.15s ease; color: #333; border: none; background: none;
+        }
+        .rs-day:hover:not(.rs-day-past):not(.rs-day-empty) { background: #ffeaec; color: #e60000; }
+        .rs-day.rs-day-selected { background: #e60000 !important; color: #fff !important; font-weight: 700; }
+        .rs-day.rs-day-today { border: 1.5px solid #e60000; color: #e60000; font-weight: 600; }
+        .rs-day.rs-day-past { color: #ccc; cursor: not-allowed; }
+        .rs-day.rs-day-empty { cursor: default; }
+        .rs-date-chosen { text-align:center; font-size:0.8rem; color:#888; padding: 6px 0 10px; margin:0; }
+        .rs-date-chosen strong { color: #e60000; }
+        /* Slots */
+        .rs-slots-wrap { margin-bottom: 16px; }
+        .rs-slots-label { font-size:0.82rem; font-weight:600; color:#555; margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+        .rs-slots-label i { color: #e60000; }
+        .rs-slots { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+        .rs-slot {
+            padding: 8px 6px; border-radius: 8px; font-size: 0.72rem; font-weight: 600;
+            border: 1.5px solid #e2e8f0; background: #fff; color: #555;
+            cursor: pointer; transition: all 0.2s ease; text-align: center;
+        }
+        .rs-slot:hover { border-color: #e60000; color: #e60000; background: #ffeaec; }
+        .rs-slot.rs-slot-selected { background: #e60000; color: #fff; border-color: #e60000; }
+        /* Reason */
+        .rs-reason-wrap label { display:flex; align-items:center; gap:6px; font-size:0.82rem; font-weight:600; color:#555; margin-bottom:8px; }
+        .rs-reason-wrap label i { color: #e60000; }
+        .rs-reason-wrap textarea {
+            width:100%; padding:10px 12px; border:1.5px solid #e2e8f0; border-radius:8px;
+            font-family:inherit; font-size:0.85rem; resize:none; color:#333; outline:none;
+        }
+        .rs-reason-wrap textarea:focus { border-color: #e60000; }
+        /* Footer Buttons */
+        .rs-cancel-btn {
+            background: transparent; color: #888; border: 1.5px solid #ddd;
+            padding: 8px 18px; border-radius: 24px; font-size: 0.8rem; font-weight: 600;
+            cursor: pointer; font-family: inherit; text-transform: uppercase; letter-spacing: 0.3px;
+            transition: all 0.2s;
+        }
+        .rs-cancel-btn:hover { border-color: #aaa; color: #555; }
+        .rs-confirm-btn {
+            background: #e60000; color: #fff; border: none;
+            padding: 8px 20px; border-radius: 24px; font-size: 0.8rem; font-weight: 700;
+            cursor: pointer; font-family: inherit; text-transform: uppercase; letter-spacing: 0.4px;
+            display: inline-flex; align-items: center; gap: 6px;
+            transition: all 0.2s;
+        }
+        .rs-confirm-btn:hover { background: #cc0000; }
+        @media (max-width: 480px) {
+            .rs-slots { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* ════ Theme-Matched Appointment Action Buttons ════ */
+        .appt-view-btn-styled {
+            background: transparent;
+            color: #e60000;
+            border: 1.5px solid #e60000;
+            padding: 5px 13px;
+            border-radius: 24px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .appt-view-btn-styled:hover {
+            background: #e60000;
+            color: #fff;
+        }
+        .appt-reschedule-btn-styled {
+            background: #e60000;
+            color: #fff;
+            border: 1.5px solid #e60000;
+            padding: 5px 13px;
+            border-radius: 24px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .appt-reschedule-btn-styled:hover {
+            background: #ff1a1a;
+            border-color: #ff1a1a;
+        }
+
+        /* ════ Dark-Themed Ticket Modal ════ */
+        .ticket-modal {
+            background: #0d1117;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(230,0,0,0.15);
+            overflow: hidden;
+            animation: apptModalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .ticket-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 28px;
+            background: linear-gradient(135deg, #07090f 0%, #1a1a2e 100%);
+            border-bottom: 2px solid #e60000;
+        }
+        .ticket-modal-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .ticket-modal-title i {
+            font-size: 1.3rem;
+            color: #e60000;
+        }
+        .ticket-modal-title h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+        .ticket-modal-body {
+            padding: 24px 28px;
+        }
+        .ticket-form-group {
+            margin-bottom: 18px;
+        }
+        .ticket-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+        .ticket-label i {
+            color: #e60000;
+            font-size: 0.85rem;
+        }
+        .ticket-input,
+        .ticket-modal-body textarea.ticket-input {
+            width: 100%;
+            padding: 11px 14px;
+            background: rgba(255,255,255,0.04);
+            border: 1.5px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s ease, background 0.2s ease;
+            box-sizing: border-box;
+        }
+        .ticket-input:focus {
+            border-color: #e60000;
+            background: rgba(230,0,0,0.04);
+        }
+        .ticket-input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        select.ticket-input {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23999' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+        select.ticket-input option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+        textarea.ticket-input {
+            resize: none;
+            min-height: 100px;
+        }
+        .ticket-modal-footer {
+            padding: 16px 0 0 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            margin-top: 6px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/customer-dashboard.js"></script>
+    <script>
+        // Dashboard Tab Switching Logic
+        const tabBtns = document.querySelectorAll('.db-tab-btn');
+        const sections = document.querySelectorAll('.db-section');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Remove active class from all buttons and hide all sections
+                tabBtns.forEach(b => b.classList.remove('active'));
+                sections.forEach(s => {
+                    s.classList.remove('active');
+                    s.style.display = 'none';
+                });
+
+                // Add active to clicked button
+                this.classList.add('active');
+
+                // Show corresponding section
+                const targetId = this.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                targetSection.style.display = 'block';
+
+                // Small timeout to allow display: block to apply before adding opacity class
+                setTimeout(() => {
+                    targetSection.classList.add('active');
+                }, 10);
+            });
+        });
+    </script>
+
+    <!-- Appointment Modal Script -->
+    <script>
+    /* ─────────────────────────────────────────────────────
+       APPOINTMENT DATA STORE  (static demo data)
+       For API-loaded cards, openApptModal receives an object
+    ───────────────────────────────────────────────────── */
+    const apptData = {
+        appt1: {
+            id: '#APPT-2026-0315', title: 'Major Garage Service',
+            status: 'Upcoming', statusClass: 'badge-upcoming',
+            service: 'Full Vehicle Service & Inspection',
+            vehicle: '2019 Toyota Camry (ABC-1234)',
+            date: 'March 15, 2026', time: '08:00 AM – 12:00 PM',
+            location: 'MotoHub Main Garage, 77 Workshop Rd, NY',
+            tech: 'Alex Martinez', cost: '₹4,800 (estimated)',
+            package: 'Premium Garage Service',
+            notes: 'Please check the unusual noise from the front-left wheel. Also inspect the AC system.',
+            isPast: false
+        },
+        appt2: {
+            id: '#APPT-2026-0202', title: 'Home Service – Oil Change',
+            status: 'Completed', statusClass: 'badge-completed',
+            service: 'Oil Change & Multi-Point Inspection',
+            vehicle: '2022 Ford F-150 Raptor (XTR-9900)',
+            date: 'February 02, 2026', time: '02:00 PM – 04:00 PM',
+            location: '123 Main St, New York, NY',
+            tech: 'James Walker', cost: '₹1,500 (paid)',
+            package: 'Home Service – Standard',
+            notes: 'Service completed without issues. Invoice sent via email.',
+            isPast: true
+        }
+    };
+
+    // Live API appointment cache
+    window._liveAppts = {};
+
+    function openApptModal(idOrObj) {
+        const d = (typeof idOrObj === 'object') ? idOrObj : (apptData[idOrObj] || window._liveAppts[idOrObj]);
+        if (!d) return;
+
+        document.getElementById('modalTitle').textContent    = d.title || d.service || 'Appointment';
+        document.getElementById('modalApptId').textContent   = d.id || ('#APPT-' + idOrObj);
+        document.getElementById('modalService').textContent  = d.service || '—';
+        document.getElementById('modalVehicle').textContent  = d.vehicle || [d.vehicle_year, d.vehicle_make, d.vehicle_model].filter(Boolean).join(' ') || '—';
+        document.getElementById('modalDate').textContent     = d.date || d.appointment_date || '—';
+        document.getElementById('modalTime').textContent     = d.time || d.appointment_time || '—';
+        document.getElementById('modalLocation').textContent = d.location || d.garage_name || 'MOTOHUB Garage';
+        document.getElementById('modalTech').textContent     = d.tech || d.technician || 'To be assigned';
+        document.getElementById('modalCost').textContent     = d.cost || (d.estimated_cost ? '₹' + d.estimated_cost : '—');
+        document.getElementById('modalPackage').textContent  = d.package || d.service_package || '—';
+        document.getElementById('modalNotes').textContent    = d.notes || d.customer_notes || 'No additional notes.';
+
+        const badge = document.getElementById('modalStatusBadge');
+        const status = d.status || 'Upcoming';
+        badge.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+        const sc = d.statusClass || (status.toLowerCase() === 'completed' ? 'badge-completed' : status.toLowerCase() === 'cancelled' ? 'badge-cancelled' : 'badge-upcoming');
+        badge.className = 'status-badge ' + sc;
+
+        const isPast = d.isPast || (status === 'completed' || status === 'cancelled');
+        const apptKey = typeof idOrObj === 'string' ? idOrObj : (d.id || '');
+        document.getElementById('modalFooter').innerHTML = `
+            <button class="rs-cancel-btn" onclick="closeApptModal()">Close</button>
+            ${!isPast ? `<button class="rs-confirm-btn" onclick="closeApptModal();openRescheduleModal('${apptKey}', '${d.date || d.appointment_date || ''}', '${d.time || d.appointment_time || ''}')"><i class="fa-solid fa-calendar-days"></i> Reschedule</button>` : ''}
+        `;
+
+        document.getElementById('apptModalOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeApptModal() {
+        document.getElementById('apptModalOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    /* ─────────────────────────────────────────────────────
+       RESCHEDULE MODAL + INTERACTIVE CALENDAR
+    ───────────────────────────────────────────────────── */
+    let rsYear, rsMonth, rsSelectedDate = null, rsSelectedSlot = null;
+
+    function openRescheduleModal(id, curDate, curTime) {
+        document.getElementById('rescheduleApptId').value = id;
+        document.getElementById('rsCurrent').textContent = (curDate && curTime) ? curDate + ' · ' + curTime : (curDate || '—');
+        rsSelectedDate = null; rsSelectedSlot = null;
+        document.getElementById('rsDateDisplay').textContent = 'None';
+        document.querySelectorAll('.rs-slot').forEach(s => s.classList.remove('rs-slot-selected'));
+        document.getElementById('rsSlotValue').value = '';
+        document.getElementById('rescheduleReason').value = '';
+
+        const now = new Date();
+        rsYear = now.getFullYear(); rsMonth = now.getMonth();
+        rsRenderCalendar();
+
+        document.getElementById('rescheduleModalOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeRescheduleModal() {
+        document.getElementById('rescheduleModalOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    function rsNavMonth(dir) {
+        rsMonth += dir;
+        if (rsMonth > 11) { rsMonth = 0; rsYear++; }
+        if (rsMonth < 0)  { rsMonth = 11; rsYear--; }
+        rsRenderCalendar();
+    }
+
+    function rsRenderCalendar() {
+        const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        document.getElementById('rsCalLabel').textContent = months[rsMonth] + ' ' + rsYear;
+
+        const today = new Date(); today.setHours(0,0,0,0);
+        const firstDay = new Date(rsYear, rsMonth, 1).getDay();
+        const daysInMonth = new Date(rsYear, rsMonth + 1, 0).getDate();
+
+        let html = '';
+        // empty cells
+        for (let i = 0; i < firstDay; i++) html += '<button class="rs-day rs-day-empty" disabled></button>';
+        for (let d = 1; d <= daysInMonth; d++) {
+            const dt = new Date(rsYear, rsMonth, d);
+            const isPast = dt < today;
+            const isToday = dt.getTime() === today.getTime();
+            const dateStr = rsYear + '-' + String(rsMonth+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+            const isSelected = rsSelectedDate === dateStr;
+            let cls = 'rs-day';
+            if (isPast)     cls += ' rs-day-past';
+            if (isToday && !isPast) cls += ' rs-day-today';
+            if (isSelected) cls += ' rs-day-selected';
+            const onclick = isPast ? '' : `onclick="rsPickDay('${dateStr}', ${d}, this)"`;
+            html += `<button class="${cls}" ${isPast ? 'disabled' : ''} ${onclick}>${d}</button>`;
+        }
+        document.getElementById('rsCalDays').innerHTML = html;
+    }
+
+    function rsPickDay(dateStr, day, el) {
+        rsSelectedDate = dateStr;
+        document.querySelectorAll('.rs-day').forEach(b => b.classList.remove('rs-day-selected'));
+        el.classList.add('rs-day-selected');
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        document.getElementById('rsDateDisplay').textContent = day + ' ' + months[rsMonth] + ' ' + rsYear;
+    }
+
+    function rsPickSlot(el, slot) {
+        rsSelectedSlot = slot;
+        document.getElementById('rsSlotValue').value = slot;
+        document.querySelectorAll('.rs-slot').forEach(s => s.classList.remove('rs-slot-selected'));
+        el.classList.add('rs-slot-selected');
+    }
+
+    async function submitReschedule() {
+        if (!rsSelectedDate) { alert('Please select a new date from the calendar.'); return; }
+        if (!rsSelectedSlot) { alert('Please select a time slot.'); return; }
+        
+        const rawId = document.getElementById('rescheduleApptId').value;
+        const apptObj = (typeof rawId === 'object') ? rawId : (apptData[rawId] || window._liveAppts[rawId]);
+        
+        if (!apptObj) { API.toast('Appointment data not found', 'error'); return; }
+        
+        // Extract numeric ID
+        let numericId;
+        if (apptObj.id.startsWith('#SA-')) numericId = apptObj.id.replace('#SA-', '');
+        else if (apptObj.id.startsWith('#APPT-')) numericId = apptObj.id.replace('#APPT-', '');
+        else numericId = apptObj.id;
+
+        // Extract time prefix from slot like '08:00 AM - 10:00 AM' -> '08:00:00'
+        let timeFormatted = rsSelectedSlot.split(' ')[0] + ':00'; // basic parsing '08:00' -> '08:00:00'
+        if (rsSelectedSlot.includes('PM') && !rsSelectedSlot.startsWith('12')) {
+            let hr = parseInt(timeFormatted.split(':')[0]) + 12;
+            timeFormatted = hr + ':00:00';
+        } else if (rsSelectedSlot.includes('AM') && rsSelectedSlot.startsWith('12')) {
+            timeFormatted = '00:00:00';
+        }
+
+        try {
+            await API.req(`/services/appointments/${numericId}/reschedule/`, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    appointment_date: rsSelectedDate, // YYYY-MM-DD
+                    appointment_time: timeFormatted
+                })
+            });
+            closeRescheduleModal();
+            API.toast('Appointment rescheduled successfully!', 'success');
+            // Refresh dashboard page to update lists
+            setTimeout(() => window.location.reload(), 1500);
+        } catch (err) {
+            API.toast(err.detail || err.non_field_errors?.[0] || 'Failed to reschedule (Make sure it is Pending or Approved)', 'error');
+        }
+    }
+
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') { closeApptModal(); closeRescheduleModal(); closeTicketModal(); if (typeof closeAddressModal !== 'undefined') closeAddressModal(); }
+    });
+
+    function openAddressModal() {
+        document.getElementById('openAddressForm').reset();
+        document.getElementById('addressModalOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeAddressModal() {
+        document.getElementById('addressModalOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    async function submitAddressModal(e) {
+        e.preventDefault();
+        const title = document.getElementById('addrTitle').value || 'Home';
+        const name = document.getElementById('addrName').value;
+        const address_lines = document.getElementById('addrLines').value;
+        const city = document.getElementById('addrCity').value;
+        const state = document.getElementById('addrState').value;
+        const pincode = document.getElementById('addrPincode').value;
+        const phone = document.getElementById('addrPhone').value;
+
+        const btn = document.getElementById('addrSubmitBtn');
+        const oldHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+        btn.disabled = true;
+
+        try {
+            await API.req('/auth/addresses/', {
+                method: 'POST',
+                body: JSON.stringify({ title, name, address_lines, city, state, pincode, phone })
+            });
+            API.toast('Address saved successfully!', 'success');
+            closeAddressModal();
+            setTimeout(() => window.location.reload(), 1500); 
+        } catch(err) {
+            API.toast('Failed to add address.', 'error');
+            console.error(err);
+        } finally {
+            btn.innerHTML = oldHtml;
+            btn.disabled = false;
+        }
+    }
+    </script>
+
+    <!-- Address Modal Overlay -->
+    <div class="appt-modal-overlay" id="addressModalOverlay">
+        <div class="ticket-modal">
+            <div class="ticket-modal-header">
+                <div class="ticket-modal-title">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <h3>Add New Address</h3>
+                </div>
+                <button class="appt-modal-close" onclick="closeAddressModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <form id="openAddressForm" action="#" method="POST" onsubmit="submitAddressModal(event)">
+                <div class="ticket-modal-body">
+                    <!-- Basic details -->
+                    <div class="ticket-form-group">
+                        <label class="ticket-label"><i class="fa-regular fa-bookmark"></i> Address Title</label>
+                        <input type="text" id="addrTitle" class="ticket-input" placeholder="e.g. Home, Office, Garage..." required>
+                    </div>
+                    
+                    <div class="ticket-form-group">
+                        <label class="ticket-label"><i class="fa-regular fa-user"></i> Recipient Name</label>
+                        <input type="text" id="addrName" class="ticket-input" placeholder="Enter recipient's full name" required>
+                    </div>
+
+                    <div class="ticket-form-group">
+                        <label class="ticket-label"><i class="fa-solid fa-location-arrow"></i> Street / Area</label>
+                        <textarea id="addrLines" class="ticket-input" placeholder="Apartment / Road / Area..." style="min-height:70px;" required></textarea>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="ticket-form-group" style="margin-bottom:0;">
+                            <label class="ticket-label"><i class="fa-solid fa-city"></i> City</label>
+                            <input type="text" id="addrCity" class="ticket-input" placeholder="City" required>
+                        </div>
+                        <div class="ticket-form-group" style="margin-bottom:0;">
+                            <label class="ticket-label"><i class="fa-solid fa-map"></i> State</label>
+                            <input type="text" id="addrState" class="ticket-input" placeholder="State" required>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top:18px;">
+                        <div class="ticket-form-group" style="margin-bottom:0;">
+                            <label class="ticket-label"><i class="fa-solid fa-map-pin"></i> Pincode</label>
+                            <input type="text" id="addrPincode" class="ticket-input" placeholder="ZIP / Pincode" required>
+                        </div>
+                        <div class="ticket-form-group" style="margin-bottom:0;">
+                            <label class="ticket-label"><i class="fa-solid fa-phone"></i> Phone (Optional)</label>
+                            <input type="text" id="addrPhone" class="ticket-input" placeholder="Mobile Number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ticket-modal-body ticket-modal-footer" style="padding-bottom:24px;">
+                    <button type="button" class="rs-cancel-btn" onclick="closeAddressModal()">Cancel</button>
+                    <button type="submit" class="rs-confirm-btn" id="addrSubmitBtn"><i class="fa-solid fa-plus"></i> Save Address</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Vehicle Modal Overlay -->
+    <script>
+    function openVehicleModal() {
+        document.getElementById('vehicleModalOverlay').classList.add('show');
+    }
+    function closeVehicleModal() {
+        document.getElementById('vehicleModalOverlay').classList.remove('show');
+    }
+    async function submitVehicleModal(e) {
+        e.preventDefault();
+        const make = document.getElementById('vehMake').value.trim();
+        const model = document.getElementById('vehModel').value.trim();
+        const year = document.getElementById('vehYear').value.trim();
+        const license_plate = document.getElementById('vehLicense').value.trim();
+        const vin = document.getElementById('vehVin').value.trim() || '';
+
+        const btn = document.getElementById('vehSubmitBtn');
+        const oldHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saving...';
+        btn.disabled = true;
+
+        try {
+            await API.req('/auth/vehicles/', {
+                method: 'POST',
+                body: JSON.stringify({ make, model, year: parseInt(year), license_plate, vin })
+            });
+            API.toast('Vehicle saved successfully!', 'success');
+            closeVehicleModal();
+            document.getElementById('openVehicleForm').reset();
+            if (window.renderVehicles) {
+                window.renderVehicles();
+            } else {
+                setTimeout(() => window.location.reload(), 1500); 
+            }
+        } catch(err) {
+            API.toast('Failed to add vehicle.', 'error');
+            console.error(err);
+        } finally {
+            btn.innerHTML = oldHtml;
+            btn.disabled = false;
+        }
+    }
+    </script>
+    <div class="appt-modal-overlay" id="vehicleModalOverlay">
+        <div class="ticket-modal">
+            <div class="ticket-modal-header">
+                <div class="ticket-modal-title">
+                    <i class="fa-solid fa-car"></i>
+                    <h3>Add New Vehicle</h3>
+                </div>
+                <button class="appt-modal-close" onclick="closeVehicleModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <form id="openVehicleForm" action="#" method="POST" onsubmit="submitVehicleModal(event)">
+                <div class="ticket-modal-body">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="ticket-form-group" style="margin-bottom:0;">
+                            <label class="ticket-label"><i class="fa-solid fa-industry"></i> Make</label>
+                            <input type="text" id="vehMake" class="ticket-input" placeholder="e.g. Toyota" required>
+                        </div>
+                        <div class="ticket-form-group" style="margin-bottom:0;">
+                            <label class="ticket-label"><i class="fa-solid fa-car-side"></i> Model</label>
+                            <input type="text" id="vehModel" class="ticket-input" placeholder="e.g. Camry" required>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top:18px;">
+                        <div class="ticket-form-group" style="margin-bottom:0;">
+                            <label class="ticket-label"><i class="fa-regular fa-calendar-days"></i> Year</label>
+                            <input type="number" id="vehYear" class="ticket-input" placeholder="e.g. 2021" min="1900" max="2100" required>
+                        </div>
+                        <div class="ticket-form-group" style="margin-bottom:0;">
+                            <label class="ticket-label"><i class="fa-solid fa-id-card"></i> License Plate</label>
+                            <input type="text" id="vehLicense" class="ticket-input" placeholder="e.g. ABC-1234" required>
+                        </div>
+                    </div>
+                    
+                    <div class="ticket-form-group" style="margin-top:18px;">
+                        <label class="ticket-label"><i class="fa-solid fa-barcode"></i> VIN (Optional)</label>
+                        <input type="text" id="vehVin" class="ticket-input" placeholder="Vehicle Identification Number">
+                    </div>
+                </div>
+
+                <div class="ticket-modal-body ticket-modal-footer" style="padding-bottom:24px;">
+                    <button type="button" class="rs-cancel-btn" onclick="closeVehicleModal()">Cancel</button>
+                    <button type="submit" class="rs-confirm-btn" id="vehSubmitBtn"><i class="fa-solid fa-plus"></i> Save Vehicle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

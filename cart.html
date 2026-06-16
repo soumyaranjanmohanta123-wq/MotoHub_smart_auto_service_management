@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart & Wishlist - MOTOHUB</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart-wishlist.css">
+    <!-- Component Loader Script -->
+    <script src="js/components.js" defer></script>
+</head>
+
+<body>
+
+        <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header Breadcrumb -->
+    <section class="page-header cw-hero">
+        <div class="container">
+            <h1>SHOPPING CART</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> Cart
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart & Wishlist Content Container Idea -->
+    <div class="cw-container container">
+
+        <!-- Toggle Tabs for Cart and Wishlist -->
+        <div class="cw-tabs">
+            <button class="cw-tab-btn active" data-target="cart-section-id"><i class="fa-solid fa-cart-shopping"></i>
+                Shopping Cart (<span id="cart-count-tab">0</span>)</button>
+            <button class="cw-tab-btn" data-target="wishlist-section-id"><i class="fa-regular fa-heart"></i> My Wishlist
+                (<span id="wishlist-count-tab">0</span>)</button>
+        </div>
+
+        <!-- 1. Shopping Cart Section -->
+        <div class="cw-section active" id="cart-section-id">
+            <div class="cart-layout">
+                <!-- Shopping Cart Items List -->
+                <div class="cart-items-wrapper">
+                    <table class="cw-table">
+                        <thead>
+                            <tr>
+                                <th class="col-product">Product</th>
+                                <th class="col-price">Price</th>
+                                <th class="col-qty">Quantity</th>
+                                <th class="col-subtotal">Subtotal</th>
+                                <th class="col-remove"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-tbody">
+                            <tr id="cart-empty-row" style="display:none;">
+                                <td colspan="5" style="text-align:center;padding:40px;color:#aaa;">
+                                    <i class="fa-solid fa-cart-shopping" style="font-size:2rem;margin-bottom:10px;display:block;"></i>
+                                    Your cart is empty. <a href="products.html" style="color:var(--accent-red);">Shop Now</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="cart-actions">
+                        <button class="btn btn-primary btn-update disabled">Update Cart</button>
+                    </div>
+                </div>
+
+                <!-- Cart Totals Sidebar -->
+                <div class="cart-totals-sidebar">
+                    <h3>Cart Totals</h3>
+                    <div class="totals-table">
+                        <div class="totals-row">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">₹0.00</span>
+                        </div>
+                        <div class="totals-row">
+                            <span>Shipping</span>
+                            <div class="shipping-info">
+                                <p>Free Shipping</p>
+                            </div>
+                        </div>
+                        <div class="totals-row grand-total">
+                            <span>Total</span>
+                            <span class="text-red" id="cart-total">₹0.00</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-red checkout-btn" id="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Wishlist Section -->
+        <div class="cw-section" id="wishlist-section-id" style="display: none;">
+            <div class="wishlist-wrapper">
+                <table class="cw-table">
+                    <thead>
+                        <tr>
+                            <th class="col-remove"></th>
+                            <th class="col-product">Product Name</th>
+                            <th class="col-price">Unit Price</th>
+                            <th class="col-status">Stock Status</th>
+                            <th class="col-action"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="wishlist-tbody">
+                        <tr id="wishlist-empty-row" style="display:none;">
+                            <td colspan="5" style="text-align:center;padding:40px;color:#aaa;">
+                                <i class="fa-regular fa-heart" style="font-size:2rem;margin-bottom:10px;display:block;"></i>
+                                Your wishlist is empty. <a href="products.html" style="color:var(--accent-red);">Browse Products</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-bar" style="margin-top: 80px;">
+        <div class="container newsletter-inner">
+            <div class="newsletter-left">
+                <div class="newsletter-icon">
+                    <i class="fa-regular fa-envelope-open"></i>
+                </div>
+                <div class="newsletter-text">
+                    <h3>SUBSCRIBE NEWSLETTER</h3>
+                    <p>Get all the latest information on Events, Sales and Offers. Sign up for newsletter today.</p>
+                </div>
+            </div>
+            <div class="newsletter-right form-group">
+                <input type="email" placeholder="Email Address Here...">
+                <button type="submit" class="btn btn-red">SUBSCRIBE</button>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+    // ── Tab Switching ────────────────────────────────────────────────
+    document.querySelectorAll('.cw-tab-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.cw-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.cw-section').forEach(s => s.style.display = 'none');
+            this.classList.add('active');
+            const targetId = this.getAttribute('data-target');
+            document.getElementById(targetId).style.display = 'block';
+            const pageTitle = document.querySelector('.cw-hero h1');
+            const breadcrumb = document.querySelector('.breadcrumb');
+            if (targetId === 'wishlist-section-id') {
+                pageTitle.innerText = 'MY WISHLIST';
+                breadcrumb.innerHTML = '<a href="index.html">Home</a> <span>/</span> Wishlist';
+            } else {
+                pageTitle.innerText = 'SHOPPING CART';
+                breadcrumb.innerHTML = '<a href="index.html">Home</a> <span>/</span> Cart';
+            }
+        });
+    });
+
+    // ── Cart: Read from localStorage ─────────────────────────────────
+    function fmt(n) {
+        return '\u20b9' + parseFloat(n || 0).toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    }
+
+    function saveAndRender() {
+        // Persist updated cart back then re-render
+        API.saveCart(API.getCart());
+        renderCart();
+    }
+
+    function renderCart() {
+        const cart = API.getCart();
+        const tbody = document.getElementById('cart-tbody');
+        const emptyRow = document.getElementById('cart-empty-row');
+        const countTab = document.getElementById('cart-count-tab');
+
+        // Remove all dynamic rows
+        tbody.querySelectorAll('tr.cart-item-row').forEach(r => r.remove());
+
+        if (!cart.length) {
+            emptyRow.style.display = '';
+            countTab.textContent = '0';
+            document.getElementById('cart-subtotal').textContent = fmt(0);
+            document.getElementById('cart-total').textContent = fmt(0);
+            return;
+        }
+        emptyRow.style.display = 'none';
+        countTab.textContent = cart.reduce((s, i) => s + i.quantity, 0);
+
+        let total = 0;
+        cart.forEach((item, idx) => {
+            const subtotal = parseFloat(item.price) * item.quantity;
+            total += subtotal;
+            const imgSrc = item.image && item.image !== 'assets/images/placeholder.jpg'
+                ? (item.image.startsWith('http') ? item.image : 'http://127.0.0.1:8000' + item.image)
+                : 'assets/images/placeholder.jpg';
+            const tr = document.createElement('tr');
+            tr.className = 'cart-item-row';
+            tr.innerHTML =
+                '<td class="col-product">' +
+                    '<div class="product-info-cell">' +
+                        '<div class="img-box"><img src="' + imgSrc + '" alt="' + item.name + '" onerror="if(!this.dataset.err){this.dataset.err=1;this.src=\'assets/images/placeholder.jpg\'}"></div>' +
+                        '<div class="details"><a href="product-detail.html">' + item.name + '</a></div>' +
+                    '</div></td>' +
+                '<td class="col-price">' + fmt(item.price) + '</td>' +
+                '<td class="col-qty">' +
+                    '<div class="qty-selector">' +
+                        '<button class="qty-btn minus" data-idx="' + idx + '">-</button>' +
+                        '<input type="text" value="' + item.quantity + '" class="qty-input" data-idx="' + idx + '" readonly>' +
+                        '<button class="qty-btn plus" data-idx="' + idx + '">+</button>' +
+                    '</div></td>' +
+                '<td class="col-subtotal font-heading" id="subtotal-' + idx + '">' + fmt(subtotal) + '</td>' +
+                '<td class="col-remove"><button class="remove-btn" data-idx="' + idx + '" title="Remove"><i class="fa-solid fa-xmark"></i></button></td>';
+            tbody.appendChild(tr);
+        });
+
+        document.getElementById('cart-subtotal').textContent = fmt(total);
+        document.getElementById('cart-total').textContent = fmt(total);
+
+        // Bind qty buttons
+        tbody.querySelectorAll('.qty-btn.minus').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const i = parseInt(this.dataset.idx);
+                const c = API.getCart();
+                if (c[i].quantity > 1) { c[i].quantity--; API.saveCart(c); renderCart(); }
+            });
+        });
+        tbody.querySelectorAll('.qty-btn.plus').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const i = parseInt(this.dataset.idx);
+                const c = API.getCart();
+                c[i].quantity++; API.saveCart(c); renderCart();
+            });
+        });
+        tbody.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const i = parseInt(this.dataset.idx);
+                const c = API.getCart();
+                c.splice(i, 1);
+                API.saveCart(c);
+                API.toast('Item removed from cart', 'info');
+                renderCart();
+            });
+        });
+    }
+
+    // ── Wishlist: Fetch from API ──────────────────────────────────────
+    async function renderWishlist() {
+        const tbody = document.getElementById('wishlist-tbody');
+        const emptyRow = document.getElementById('wishlist-empty-row');
+        const countTab = document.getElementById('wishlist-count-tab');
+        tbody.querySelectorAll('tr.wishlist-item-row').forEach(r => r.remove());
+
+        if (!API.token()) {
+            emptyRow.style.display = '';
+            emptyRow.querySelector('td').innerHTML =
+                '<i class="fa-regular fa-heart" style="font-size:2rem;margin-bottom:10px;display:block;"></i>' +
+                'Please <a href="login.html" style="color:var(--accent-red);">log in</a> to see your wishlist.';
+            countTab.textContent = '0';
+            return;
+        }
+
+        try {
+            const res = await API.req('/products/wishlist/');
+            const items = res.results || res;
+            countTab.textContent = items.length;
+
+            if (!items.length) {
+                emptyRow.style.display = '';
+                return;
+            }
+            emptyRow.style.display = 'none';
+
+            items.forEach(entry => {
+                const p = entry.product;
+                const inStock = p.stock > 0;
+                const price = p.discount_price || p.price;
+                const priceHtml = p.discount_price
+                    ? '<span class="old-price">\u20b9' + parseFloat(p.price).toFixed(2) + '</span> <span class="current-price">\u20b9' + parseFloat(p.discount_price).toFixed(2) + '</span>'
+                    : '\u20b9' + parseFloat(p.price).toFixed(2);
+                const img = p.image ? (p.image.startsWith('http') ? p.image : 'http://127.0.0.1:8000' + p.image) : 'assets/images/placeholder.jpg';
+
+                const tr = document.createElement('tr');
+                tr.className = 'wishlist-item-row';
+                tr.dataset.wishlistId = entry.id;
+                tr.dataset.productId = p.id;
+                tr.innerHTML =
+                    '<td class="col-remove"><button class="remove-btn wl-remove" data-wid="' + entry.id + '" title="Remove"><i class="fa-solid fa-xmark"></i></button></td>' +
+                    '<td class="col-product"><div class="product-info-cell">' +
+                        '<div class="img-box"><img src="' + img + '" alt="' + p.name + '" onerror="if(!this.dataset.err){this.dataset.err=1;this.src=\'assets/images/placeholder.jpg\'}"></div>' +
+                        '<div class="details"><a href="product-detail.html?id=' + p.id + '">' + p.name + '</a></div>' +
+                    '</div></td>' +
+                    '<td class="col-price">' + priceHtml + '</td>' +
+                    '<td class="col-status"><span class="status-badge ' + (inStock ? 'in-stock' : 'out-stock') + '">' + (inStock ? 'In Stock' : 'Out of Stock') + '</span></td>' +
+                    '<td class="col-action">' +
+                        (inStock
+                            ? '<button class="btn btn-red outline-btn action-add wl-add" data-product-id="' + p.id + '" data-name="' + p.name + '" data-price="' + price + '" data-img="' + img + '"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>'
+                            : '<button class="btn btn-primary outline-btn" disabled>Out of Stock</button>') +
+                    '</td>';
+                tbody.appendChild(tr);
+            });
+
+            // Bind add-to-cart from wishlist
+            tbody.querySelectorAll('.wl-add').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    API.addToCart({ id: +this.dataset.productId, name: this.dataset.name, price: this.dataset.price, image: this.dataset.img });
+                    renderCart();
+                });
+            });
+
+            // Bind remove from wishlist
+            tbody.querySelectorAll('.wl-remove').forEach(btn => {
+                btn.addEventListener('click', async function () {
+                    const wid = this.dataset.wid;
+                    try {
+                        await API.req('/products/wishlist/' + wid + '/', { method: 'DELETE' });
+                        API.toast('Removed from wishlist', 'info');
+                        renderWishlist();
+                    } catch(e) {
+                        API.toast('Could not remove item', 'error');
+                    }
+                });
+            });
+
+        } catch(err) {
+            console.error('Wishlist load failed:', err);
+            emptyRow.style.display = '';
+            emptyRow.querySelector('td').innerHTML =
+                '<i class="fa-regular fa-heart" style="font-size:2rem;margin-bottom:10px;display:block;"></i>' +
+                'Could not load wishlist. <a href="#" onclick="renderWishlist()" style="color:var(--accent-red);">Retry</a>';
+        }
+    }
+
+    // ── Init ─────────────────────────────────────────────────────────
+    renderCart();
+    renderWishlist();
+    </script>
+</body>
+
+</html>

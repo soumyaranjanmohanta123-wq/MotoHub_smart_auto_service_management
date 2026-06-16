@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paytm Payment Gateway</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: rgba(0, 0, 0, 0.4);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* Background UI fakeout */
+        .fake-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #f4f5f8;
+            z-index: -1;
+            padding: 50px;
+        }
+        .fake-bg-header {
+            background: #fff; height: 60px; width: 100%; position: absolute; top:0; left:0;
+            border-bottom: 2px solid #002e6e;
+        }
+        .fake-bg-content {
+            margin-top: 100px;
+            width: 80%;
+            margin-left: 10%;
+            height: 400px;
+            background: #fff;
+            filter: blur(2px);
+        }
+
+        /* Modal styling */
+        .modal {
+            background: #fff;
+            width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        /* Paytm Header */
+        .modal-header {
+            background: #d8f1fa;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .modal-header .close-btn {
+            position: absolute;
+            left: 20px;
+            cursor: pointer;
+            color: #333;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        .modal-header img {
+            height: 20px;
+        }
+        /* Sub Headers */
+        .merchant-row {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        .merchant-row .m-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: #333;
+        }
+        .merchant-row .m-logo {
+            width: 30px; height: 30px;
+            background: #eee;
+            border-radius: 4px;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 10px; font-weight: bold;
+        }
+        
+        .amount-row {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .amount-row .title {
+            font-weight: 700;
+            font-size: 14px;
+            color: #111;
+        }
+        .amount-row .amt {
+            font-weight: 700;
+            font-size: 18px;
+            color: #000;
+        }
+
+        /* QR Section */
+        .qr-section {
+            margin: 0 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .qr-text {
+            width: 60%;
+        }
+        .qr-text h4 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #111;
+            line-height: 1.4;
+        }
+        .qr-text p {
+            margin: 0 0 10px 0;
+            font-size: 12px;
+            color: #888;
+        }
+        .qr-text a {
+            color: #00baf2;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .qr-code {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 5px;
+            border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .qr-code i {
+            font-size: 80px;
+        }
+        .qr-brands {
+            display: flex;
+            margin-top: 15px;
+            gap: 15px;
+            font-size: 10px;
+            color: #555;
+            align-items: center;
+        }
+        .qr-brands span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .qr-brands i { color: #002e6e; }
+
+        /* Other options */
+        .other-options {
+            margin: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .other-options-title {
+            padding: 15px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #111;
+        }
+        .option-item {
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.3s;
+        }
+        .option-item:hover {
+            background-color: #f9f9f9;
+        }
+        .option-item i {
+            color: #00baf2;
+            font-size: 18px;
+        }
+        .option-item span {
+            font-size: 14px;
+            font-weight: 500;
+            flex-grow: 1;
+        }
+
+        /* Mockup CTA for finishing */
+        .finish-payment {
+            background: #002e6e;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            text-align: center;
+            display: block;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .finish-payment:hover {
+            background: #0045a5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Fake Background -->
+    <div class="fake-bg">
+        <div class="fake-bg-header"></div>
+        <div class="fake-bg-content"></div>
+    </div>
+
+    <div class="modal">
+        <!-- Header -->
+        <div class="modal-header">
+            <a href="checkout.html" class="close-btn"><i class="fa-solid fa-xmark"></i></a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm">
+        </div>
+
+        <!-- Merchant info -->
+        <div class="merchant-row">
+            <div class="m-name">MOTOHUB</div>
+            <div class="m-logo">MH</div>
+        </div>
+
+        <!-- Amount -->
+        <div class="amount-row">
+            <div class="title">Select an option to pay</div>
+            <div class="amt" id="paytm-amount">Loading...</div>
+        </div>
+
+        <!-- QR Box -->
+        <div class="qr-section">
+            <div class="qr-text">
+                <h4>Scan QR using Paytm or any UPI App</h4>
+                <p>Pay using Paytm Postpaid, Paytm Wallet, Saved Cards or UPI</p>
+                <a href="#">Know More</a>
+                
+                <div class="qr-brands">
+                    <span><i class="fa-solid fa-mobile-screen"></i> Postpaid</span>
+                    <span><i class="fa-solid fa-wallet"></i> Wallet</span>
+                </div>
+            </div>
+            <div class="qr-code">
+                <i class="fa-solid fa-qrcode"></i>
+            </div>
+        </div>
+
+        <!-- Other Options -->
+        <div class="other-options">
+            <div class="other-options-title">Other Payment Options</div>
+
+            <a href="#" class="option-item" onclick="completePayment(event)">
+                <span>Prepaid, Debit &amp; Credit Cards</span>
+                <i class="fa-regular fa-credit-card"></i>
+            </a>
+
+            <a href="#" class="option-item" onclick="completePayment(event)">
+                <span>UPI</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" style="height:15px;" alt="UPI">
+            </a>
+
+            <a href="#" class="option-item" onclick="completePayment(event)">
+                <span>Net Banking</span>
+                <i class="fa-solid fa-building-columns"></i>
+            </a>
+        </div>
+
+    <!-- Easy completion button since we can't scan the QR -->
+    <a href="#" class="finish-payment" id="paytm-pay-btn">Mock Quick Pay &rarr; Complete Order</a>
+
+</div>
+
+<!-- Payment Success Popup -->
+<div id="payment-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:var(--bg-card, #1c1c1e); padding:40px 30px; border-radius:12px; text-align:center; max-width:400px; width:90%; border: 1px solid var(--border-color, #333); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <div style="width:70px; height:70px; background:rgba(76, 175, 80, 0.1); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <i class="fa-solid fa-check" style="color:#4CAF50; font-size:35px;"></i>
+        </div>
+        <h2 style="color:#fff; margin:0 0 10px; font-family:'Oswald', sans-serif; text-transform:uppercase; font-size: 24px;">Order Placed!</h2>
+        <p style="color:#aaa; margin:0 0 20px; font-size: 14px;">Payment successful. Your order has been saved.</p>
+        <div style="width: 30px; height: 30px; border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--accent-red, #e63946); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+        <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+    </div>
+</div>
+
+<script>
+// Load dynamic order amount from sessionStorage
+(function() {
+    const amtEl = document.getElementById('paytm-amount');
+    const rawTotal = sessionStorage.getItem('mh_order_total');
+    if (rawTotal) {
+        const num = parseFloat(rawTotal);
+        amtEl.textContent = '\u20b9' + num.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    } else {
+        amtEl.textContent = 'N/A';
+    }
+
+    const orderId = sessionStorage.getItem('mh_order_id') ||
+        new URLSearchParams(window.location.search).get('order');
+
+    // Shared redirect with order ID
+    window.completePayment = function(e) {
+        if (e) e.preventDefault();
+        
+        // Show popup
+        const popup = document.getElementById('payment-popup');
+        popup.style.display = 'flex';
+        
+        // Redirect after 2 seconds to customer dashboard orders section
+        setTimeout(() => {
+            window.location.href = 'dashboard-customer.html#orders';
+        }, 2000);
+    };
+
+    document.getElementById('paytm-pay-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.completePayment();
+    });
+})();
+</script>
+
+</body>
+</html>

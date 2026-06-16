@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOTOHUB - Login & Register</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <!-- Component Loader Script -->
+    <script src="js/components.js" defer></script>
+    <script src="js/api.js"></script>
+</head>
+
+<body>
+
+        <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Auth Wrapper -->
+    <section class="auth-section">
+        <!-- Background decorative elements -->
+        <div class="auth-bg-glow glow-1"></div>
+        <div class="auth-bg-glow glow-2"></div>
+        
+        <div class="container auth-container">
+            <div class="auth-card">
+                <!-- Left Side: Interactive Graphic/Branding -->
+                <div class="auth-branding">
+                    <div class="branding-content">
+                        <h2>WELCOME TO MOTO<span>HUB</span></h2>
+                        <p>Join the ultimate community for high-performance automotive parts and aesthetic services. Manage your orders, wishlist, and exclusive member discounts.</p>
+                        <ul class="auth-features">
+                            <li><i class="fa-regular fa-circle-check"></i> Faster Checkout</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Track Active Orders</li>
+                            <li><i class="fa-regular fa-circle-check"></i> Exclusive Promotions</li>
+                        </ul>
+                    </div>
+                    <div class="branding-overlay"></div>
+                </div>
+
+                <!-- Right Side: Forms Container -->
+                <div class="auth-form-area">
+                    
+                    <!-- Tabs to switch between Login and Signup -->
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-target="login">Sign In</button>
+                        <button class="auth-tab" data-target="signup">Create Account</button>
+                        <div class="auth-tab-slider"></div>
+                    </div>
+
+                    <div class="auth-form-wrapper">
+                        <!-- Login Form -->
+                        <form id="login-form" class="auth-form active">
+                            <h3 class="form-title">Welcome Back</h3>
+                            <p class="form-subtitle">Enter your credentials to access your account.</p>
+                            
+                            <div class="input-group">
+                                <label for="login-email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-envelope"></i>
+                                    <input type="email" id="login-email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="login-password">Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input type="password" id="login-password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
+                                    <button type="button" class="toggle-password"><i class="fa-regular fa-eye"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="remember-me">
+                                    <span class="checkmark"></span>
+                                    Remember me
+                                </label>
+                                <a href="coming-soon.html" class="forgot-password">Forgot Password?</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-red btn-block btn-auth">
+                                <span>Sign In</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                            <div class="social-login">
+                                <p>Or continue with</p>
+                                <div class="social-buttons">
+                                    <button type="button" class="social-btn"><i class="fa-brands fa-google"></i></button>
+                                    <button type="button" class="social-btn"><i class="fa-brands fa-facebook-f"></i></button>
+                                    <button type="button" class="social-btn"><i class="fa-brands fa-apple"></i></button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Signup Form -->
+                        <form id="signup-form" class="auth-form">
+                            <h3 class="form-title">Join Us</h3>
+                            <p class="form-subtitle">Register to unlock exclusive benefits.</p>
+                            
+                            <div class="input-row">
+                                <div class="input-group half-width">
+                                    <label for="signup-fname">First Name</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-user"></i>
+                                        <input type="text" id="signup-fname" placeholder="John" required>
+                                    </div>
+                                </div>
+                                <div class="input-group half-width">
+                                    <label for="signup-lname">Last Name</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-regular fa-user"></i>
+                                        <input type="text" id="signup-lname" placeholder="Doe" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="signup-email">Email Address</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-envelope"></i>
+                                    <input type="email" id="signup-email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="signup-password">Password</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <input type="password" id="signup-password" placeholder="Create a password" required>
+                                    <button type="button" class="toggle-password"><i class="fa-regular fa-eye"></i></button>
+                                </div>
+                                <div class="password-strength">
+                                    <div class="strength-bar"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="terms-agree" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="coming-soon.html">Terms of Service</a> & <a href="coming-soon.html">Privacy Policy</a>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-red btn-block btn-auth">
+                                <span>Create Account</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

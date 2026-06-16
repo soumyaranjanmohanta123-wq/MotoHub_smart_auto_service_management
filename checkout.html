@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - MOTOHUB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+    <script src="js/components.js" defer></script>
+
+    <style>
+        /* ── Saved Address Cards ──────────────────────────────── */
+        .saved-addresses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .saved-addr-card {
+            flex: 0 0 calc(50% - 7px);
+            background: var(--bg-card, #1c1c1e);
+            border: 2px solid var(--border-color, #333);
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            position: relative;
+        }
+        .saved-addr-card:hover   { border-color: #666; }
+        .saved-addr-card.selected { border-color: var(--accent-red, #e63946); background: rgba(230,57,70,.07); }
+        .saved-addr-card .addr-badge {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            background: var(--accent-red, #e63946);
+            color: #fff;
+            border-radius: 4px;
+            padding: 2px 7px;
+            position: absolute;
+            top: 10px; right: 10px;
+        }
+        .saved-addr-card h5 {
+            margin: 0 0 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            font-family: var(--font-heading, 'Oswald', sans-serif);
+            letter-spacing: .5px;
+        }
+        .saved-addr-card p {
+            margin: 0;
+            font-size: 12px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+        .addr-add-card {
+            flex: 0 0 calc(50% - 7px);
+            background: transparent;
+            border: 2px dashed var(--border-color, #444);
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #777;
+            transition: border-color .2s, color .2s;
+            min-height: 90px;
+        }
+        .addr-add-card:hover { border-color: var(--accent-red, #e63946); color: var(--accent-red, #e63946); }
+        .addr-add-card i { font-size: 20px; }
+        .addr-add-card span { font-size: 12px; font-weight: 600; }
+
+        /* ── New Address Form Panel ───────────────────────────── */
+        #new-address-form {
+            display: none;
+            background: rgba(255,255,255,.03);
+            border: 1px solid var(--border-color, #333);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        #new-address-form.active { display: block; }
+        #new-address-form h4 {
+            color: #fff;
+            font-family: var(--font-heading, 'Oswald', sans-serif);
+            margin-bottom: 18px;
+            font-size: 16px;
+            letter-spacing: .5px;
+        }
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .fg {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+        .fg label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+        .fg label span { color: var(--accent-red, #e63946); }
+        .fg input, .fg select, .fg textarea {
+            background: var(--bg-dark, #111);
+            border: 1px solid var(--border-color, #333);
+            border-radius: 6px;
+            color: #fff;
+            padding: 10px 14px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color .2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .fg input:focus, .fg select:focus, .fg textarea:focus {
+            border-color: var(--accent-red, #e63946);
+        }
+        .fg textarea { resize: vertical; min-height: 70px; }
+        .save-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+        .save-toggle input[type="checkbox"] {
+            width: 16px; height: 16px; cursor: pointer; accent-color: var(--accent-red, #e63946);
+        }
+        .save-toggle label { font-size: 13px; color: #ccc; cursor: pointer; margin: 0; }
+
+        /* ── Address loading state ──────────────────────────── */
+        .addr-loading {
+            color: #888;
+            font-size: 13px;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* ── Notes section ───────────────────────────────────── */
+        .notes-section {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Page Header Breadcrumb -->
+    <section class="page-header checkout-hero">
+        <div class="container">
+            <h1>CHECKOUT</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> <a href="cart.html">Cart</a> <span>/</span> Checkout
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Content Container -->
+    <div class="checkout-container container">
+        <form action="#" method="POST" id="checkout-form">
+            <div class="checkout-layout">
+
+                <!-- 1. Billing / Delivery Details -->
+                <div class="billing-details">
+                    <h3>Delivery Address</h3>
+
+                    <!-- Saved Addresses (loaded from API) -->
+                    <div class="saved-addresses" id="saved-addresses-grid">
+                        <div class="addr-loading"><i class="fa-solid fa-circle-notch fa-spin"></i> Loading addresses...</div>
+                    </div>
+
+                    <!-- New Address Form Panel -->
+                    <div id="new-address-form">
+                        <h4><i class="fa-solid fa-location-dot" style="color:var(--accent-red,#e63946);margin-right:8px;"></i>New Delivery Address</h4>
+
+                        <div class="form-row-2">
+                            <div class="fg">
+                                <label for="addr-title">Label <span>*</span></label>
+                                <input type="text" id="addr-title" name="addr_title" placeholder="e.g. Home, Work" value="Home">
+                            </div>
+                            <div class="fg">
+                                <label for="addr-name">Recipient Name <span>*</span></label>
+                                <input type="text" id="addr-name" name="addr_name" placeholder="Full name">
+                            </div>
+                        </div>
+
+                        <div class="fg">
+                            <label for="addr-lines">Street Address <span>*</span></label>
+                            <textarea id="addr-lines" name="addr_lines" placeholder="House no., Street, Area, Landmark"></textarea>
+                        </div>
+
+                        <div class="form-row-2">
+                            <div class="fg">
+                                <label for="addr-city">City <span>*</span></label>
+                                <input type="text" id="addr-city" name="addr_city" placeholder="City">
+                            </div>
+                            <div class="fg">
+                                <label for="addr-state">State <span>*</span></label>
+                                <input type="text" id="addr-state" name="addr_state" placeholder="State">
+                            </div>
+                        </div>
+
+                        <div class="form-row-2">
+                            <div class="fg">
+                                <label for="addr-pincode">Pincode <span>*</span></label>
+                                <input type="text" id="addr-pincode" name="addr_pincode" placeholder="6-digit pincode" maxlength="10">
+                            </div>
+                            <div class="fg">
+                                <label for="addr-phone">Phone <span>*</span></label>
+                                <input type="tel" id="addr-phone" name="addr_phone" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                        </div>
+
+                        <div class="save-toggle">
+                            <input type="checkbox" id="save-address-cb" name="save_address" checked>
+                            <label for="save-address-cb">Save this address to my account</label>
+                        </div>
+                    </div>
+
+                    <!-- Order Notes -->
+                    <div class="notes-section">
+                        <div class="fg">
+                            <label for="notes">Order Notes <span style="color:#888;font-weight:400;text-transform:none;">(Optional)</span></label>
+                            <textarea id="notes" name="notes" placeholder="Special instructions for delivery, e.g. leave at door."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Order Summary & Payment -->
+                <div class="order-summary-sidebar">
+                    <h3>Your Order</h3>
+
+                    <!-- Order Items - dynamically populated from cart -->
+                    <div class="order-items" id="checkout-order-items">
+                        <!-- Populated by checkout-api.js -->
+                    </div>
+
+                    <!-- Totals - dynamically populated -->
+                    <div class="checkout-totals">
+                        <div class="totals-row">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal">Calculating...</span>
+                        </div>
+                        <div class="totals-row">
+                            <span>Shipping</span>
+                            <span>Free Shipping</span>
+                        </div>
+                        <div class="totals-row grand-total">
+                            <span>Total</span>
+                            <span class="price" id="checkout-grand-total">Calculating...</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Gateway Options -->
+                    <div class="payment-methods">
+                        <h4>Payment Method</h4>
+
+                        <div class="payment-option selected" id="opt-paytm">
+                            <span class="radio-custom"></span>
+                            <label for="pay-paytm">Paytm</label>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" alt="Paytm" class="payment-logo">
+                            <input type="radio" name="payment_gateway" id="pay-paytm" value="paytm" checked>
+                        </div>
+
+                        <div class="payment-option" id="opt-billdesk">
+                            <span class="radio-custom"></span>
+                            <label for="pay-billdesk">BillDesk</label>
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/BillDesk_logo.svg/1200px-BillDesk_logo.svg.png" alt="Billdesk" class="payment-logo">
+                            <input type="radio" name="payment_gateway" id="pay-billdesk" value="billdesk">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-red place-order-btn">
+                        Place Order <i class="fa-solid fa-lock" style="margin-left:8px;"></i>
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-bar" style="margin-top: 50px;">
+        <div class="container newsletter-inner">
+            <div class="newsletter-left">
+                <div class="newsletter-icon"><i class="fa-regular fa-envelope-open"></i></div>
+                <div class="newsletter-text">
+                    <h3>SUBSCRIBE NEWSLETTER</h3>
+                    <p>Get all the latest information on Events, Sales and Offers. Sign up for newsletter today.</p>
+                </div>
+            </div>
+            <div class="newsletter-right form-group">
+                <input type="email" placeholder="Email Address Here...">
+                <button type="submit" class="btn btn-red">SUBSCRIBE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/checkout-api.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - MOTOHUB Help Center</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/faq.css">
+    <!-- Component Loader Script -->
+    <script src="js/components.js" defer></script>
+</head>
+
+<body>
+
+        <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header Hero -->
+    <div class="faq-header">
+        <div class="container">
+            <h1 class="faq-title">Help Center</h1>
+            <p class="faq-subtitle">Find fast answers to common questions about orders, shipping, and product compatibility.</p>
+        </div>
+    </div>
+
+    <!-- FAQ Layout Area -->
+    <div class="container faq-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="faq-sidebar">
+            <ul class="faq-cat-list">
+                <li><a href="#cat-shipping" class="faq-cat-link active">Shipping & Delivery</a></li>
+                <li><a href="#cat-returns" class="faq-cat-link">Returns & Refunds</a></li>
+                <li><a href="#cat-products" class="faq-cat-link">Products & Compatibility</a></li>
+                <li><a href="#cat-account" class="faq-cat-link">Orders & Account</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Accordion Area -->
+        <main class="faq-main">
+            
+            <!-- Category 1: Shipping -->
+            <div class="faq-category-block" id="cat-shipping">
+                <h2 class="faq-category-title"><i class="fa-solid fa-truck-fast"></i> Shipping & Delivery</h2>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">How long will it take to receive my order? <span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Standard shipping typically takes 3-5 business days depending on your location. Expedited shipping options (2-day and Overnight) are available at checkout. Please note that custom or built-to-order parts may require additional lead time as stated on the product page.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-btn">Do you ship internationally? <span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Yes, we ship to most major countries across North America, Europe, and Asia. International shipping rates are calculated at checkout based on weight and destination. Please be aware that you may be responsible for customs/duty fees upon arrival.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-btn">How can I track my shipment? <span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Once your order ships, you will receive an email containing the tracking number and a link to the carrier's website. You can also view your tracking information by logging into your MOTOHUB account and viewing your order history.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Returns -->
+            <div class="faq-category-block" id="cat-returns">
+                <h2 class="faq-category-title"><i class="fa-solid fa-rotate-left"></i> Returns & Refunds</h2>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">What is your return policy? <span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            We accept returns on most unused, uninstalled items in their original packaging within 30 days of receipt. Please see our full <a href="legal.html#returns" style="color:var(--accent-red);">Returns Policy</a> for details and exclusions (such as electronics and custom orders).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-btn">How do I initiate a return? <span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            To start a return, please log in to your account, navigate to your Orders, and select "Request Return." We will review your request and provide you with an RMA (Return Merchandise Authorization) number and shipping instructions.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: Products -->
+            <div class="faq-category-block" id="cat-products">
+                <h2 class="faq-category-title"><i class="fa-solid fa-gears"></i> Products & Compatibility</h2>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">How do I know if a part fits my car? <span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            Our website features a comprehensive "Garage" tool. By entering your vehicle's Year, Make, Model, and Trim/Engine, our system will automatically filter the catalog to only show guaranteed compatible parts. If you are unsure, you can always contact our tech support team.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-btn">Do performance parts void my factory warranty? <span class="accordion-icon"></span></button>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            It depends. Under the Magnuson-Moss Warranty Act in the US, a dealer cannot void your entire vehicle's warranty simply because you installed an aftermarket part. They must prove that the aftermarket part caused the failure. However, aggressive modifications (like ECU tunes or heavily modified forced induction) carry a higher risk.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Still Need Help -->
+            <div class="faq-cta">
+                <h3>Still have questions?</h3>
+                <p>If you couldn't find the answer you need in our FAQ, our support team is standing by to help.</p>
+                <a href="contact.html" class="btn btn-red">CONTACT SUPPORT</a>
+            </div>
+
+        </main>
+    </div>
+
+        <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

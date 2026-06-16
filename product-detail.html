@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - MOTOHUB</title>
+    <meta name="description" content="View detailed specifications, pricing and gallery for this product on MOTOHUB.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product-detail.css">
+    <style>
+        /* Loading skeleton */
+        .pd-skeleton { background: rgba(255,255,255,0.06); border-radius: 6px; animation: pd-pulse 1.4s ease infinite; }
+        @keyframes pd-pulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+        .pd-stock-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 14px; border-radius: 20px;
+            font-size: 12px; font-weight: 700; letter-spacing: .04em;
+            color: #fff; margin-bottom: 18px;
+        }
+        .pd-compat-row {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 0; border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px; font-size: 14px; color: #cfd3dc;
+        }
+        .pd-compat-row i { color: var(--accent-red); }
+        .pd-compat-row strong { color: #fff; }
+        /* Specs table already in product-detail.css */
+        .specs-table td { color: #cfd3dc; }
+        .pd-loading-overlay {
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; gap: 16px; padding: 100px 20px;
+            color: #888; grid-column: 1/-1;
+        }
+        .pd-loading-overlay i { font-size: 40px; color: var(--accent-red); }
+    </style>
+    <script src="js/components.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Breadcrumb -->
+    <div class="pd-breadcrumb container">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a id="pd-breadcrumb-cat" href="products.html">Products</a>
+        <span>/</span>
+        <span id="pd-breadcrumb-product">Loading…</span>
+    </div>
+
+    <!-- Main Product Detail -->
+    <section class="product-detail-section container">
+        <div class="pd-top-row">
+
+            <!-- ── Gallery ── -->
+            <div class="pd-gallery">
+                <div class="main-image">
+                    <img id="pdMainImg" src="assets/images/placeholder.jpg" alt="Product Image"
+                         onerror="this.src='assets/images/placeholder.jpg'">
+                    <div class="zoom-icon" onclick="pdZoom()">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </div>
+                <div class="thumbnail-list" id="pd-thumb-list">
+                    <!-- Injected by JS -->
+                    <div class="thumb-item active pd-skeleton" style="opacity:.4;"></div>
+                    <div class="thumb-item pd-skeleton" style="opacity:.3;"></div>
+                    <div class="thumb-item pd-skeleton" style="opacity:.2;"></div>
+                </div>
+            </div>
+
+            <!-- ── Info ── -->
+            <div class="pd-info">
+                <!-- Category badge -->
+                <div class="pd-category" id="pd-category">
+                    <span class="pd-skeleton" style="width:80px;height:14px;display:inline-block;">&nbsp;</span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="pd-title" id="pd-title">
+                    <span class="pd-skeleton" style="width:80%;height:36px;display:block;">&nbsp;</span>
+                </h1>
+
+                <!-- Rating (static decorative) -->
+                <div class="pd-rating-wrap">
+                    <div class="pd-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#reviews" class="review-link" id="pd-review-link">Customer Reviews</a>
+                </div>
+
+                <!-- Price -->
+                <div class="pd-price">
+                    <span class="current-price" id="pd-current-price">—</span>
+                    <span class="old-price" id="pd-old-price" style="display:none;"></span>
+                    <span class="save-badge" id="pd-save-badge" style="display:none;"></span>
+                </div>
+
+                <!-- Stock badge -->
+                <div id="pd-stock-badge" class="pd-stock-badge" style="background:#27ae60;">
+                    <i class="fa-solid fa-circle-check"></i> In Stock
+                </div>
+
+                <!-- Short description -->
+                <div class="pd-short-desc">
+                    <p id="pd-short-desc">Loading product description…</p>
+                </div>
+
+                <!-- Compatibility row -->
+                <div class="pd-compat-row" id="pd-compat-section">
+                    <i class="fa-solid fa-car"></i>
+                    <strong>Compatible With:</strong>
+                    <span id="pd-compat-value">—</span>
+                </div>
+
+                <!-- Qty + Add to Cart -->
+                <div class="pd-actions">
+                    <div class="qty-selector">
+                        <button class="qty-btn minus">-</button>
+                        <input type="text" value="1" class="qty-input" min="1">
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                    <button class="btn btn-red pd-add-btn" id="pd-add-cart-btn">
+                        <i class="fa-solid fa-cart-arrow-down"></i> ADD TO CART
+                    </button>
+                    <button class="pd-wishlist-btn" title="Add to Wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+
+                <!-- Meta info -->
+                <div class="pd-meta">
+                    <p><strong>SKU:</strong> <span id="pd-sku">—</span></p>
+                    <p><strong>Category:</strong> <a id="pd-cat-link" href="products.html">—</a></p>
+                    <p><strong>Brand:</strong> <span id="pd-brand">—</span></p>
+                    <p><strong>Warranty:</strong> <span id="pd-warranty">—</span></p>
+                    <p><strong>Return Policy:</strong> <span id="pd-return">—</span></p>
+                </div>
+
+                <!-- Safe checkout -->
+                <div class="pd-secure-checkout">
+                    <p>GUARANTEED SAFE CHECKOUT</p>
+                    <div class="payment-icons-small">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <i class="fa-brands fa-cc-paypal"></i>
+                        <i class="fa-brands fa-cc-amex"></i>
+                        <i class="fa-brands fa-cc-discover"></i>
+                    </div>
+                </div>
+            </div><!-- /pd-info -->
+        </div><!-- /pd-top-row -->
+
+        <!-- ── Tabs ── -->
+        <div class="pd-tabs-wrapper">
+            <div class="pd-tab-headers">
+                <button class="tab-btn active" data-tab="desc">Description</button>
+                <button class="tab-btn" data-tab="specs">Specifications</button>
+                <button class="tab-btn" id="tab-reviews-btn" data-tab="reviews">Reviews</button>
+            </div>
+
+            <div class="pd-tab-content">
+                <!-- Description -->
+                <div class="tab-pane active" id="desc">
+                    <div id="pd-desc-content">
+                        <p style="color:#888;">Loading description…</p>
+                    </div>
+                </div>
+
+                <!-- Specifications -->
+                <div class="tab-pane" id="specs" style="display:none;">
+                    <table class="specs-table">
+                        <tbody id="pd-specs-tbody">
+                            <tr><td colspan="2" style="text-align:center;color:#888;padding:30px;">
+                                <i class="fa-solid fa-spinner fa-spin"></i> Loading specifications…
+                            </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Reviews -->
+                <div class="tab-pane" id="reviews" style="display:none;">
+                    <h3>Customer Reviews</h3>
+                    <p style="color:#888;font-size:14px;">
+                        <i class="fa-solid fa-comment-dots" style="color:var(--accent-red);margin-right:6px;"></i>
+                        Reviews for this product will appear here once customers share their experience.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Related Products ── -->
+        <div class="related-products">
+            <h2 class="sub-heading">RELATED PRODUCTS</h2>
+            <div class="products-grid" id="related-products-grid">
+                <!-- Injected by JS -->
+                <div class="pd-loading-overlay">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <p>Loading related products…</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Lightbox overlay for zoom -->
+    <div id="pd-lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;
+         align-items:center;justify-content:center;cursor:zoom-out;" onclick="this.style.display='none'">
+        <img id="pd-lightbox-img" src="" alt="Product Zoom"
+             style="max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.6);">
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/product-detail-api.js"></script>
+    <script>
+        // ── Gallery zoom ─────────────────────────────────────────
+        function pdZoom() {
+            const src = document.getElementById('pdMainImg').src;
+            document.getElementById('pd-lightbox-img').src = src;
+            document.getElementById('pd-lightbox').style.display = 'flex';
+        }
+
+        // ── Tab switcher ─────────────────────────────────────────
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+                btn.classList.add('active');
+                const pane = document.getElementById(btn.dataset.tab);
+                if (pane) pane.style.display = 'block';
+            });
+        });
+
+        // ── Quantity selector ────────────────────────────────────
+        const minusBtn = document.querySelector('.minus');
+        const plusBtn  = document.querySelector('.plus');
+        const qtyInput = document.querySelector('.qty-input');
+        if (minusBtn && plusBtn && qtyInput) {
+            minusBtn.addEventListener('click', () => {
+                const v = parseInt(qtyInput.value);
+                if (v > 1) qtyInput.value = v - 1;
+            });
+            plusBtn.addEventListener('click', () => {
+                qtyInput.value = parseInt(qtyInput.value) + 1;
+            });
+        }
+    </script>
+</body>
+</html>

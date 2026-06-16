@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BillDesk Payment Gateway</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .gateway-container {
+            width: 800px;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            position: relative;
+        }
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: #f4f4f4;
+            border-right: 1px solid #ddd;
+        }
+        .menu-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #e9e9e9;
+            color: #333;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .menu-item i.fa-credit-card, .menu-item i.fa-building-columns, .menu-item i.fa-wallet {
+            margin-right: 15px;
+            color: #666;
+            font-size: 16px;
+            width: 20px;
+        }
+        .menu-item:hover, .menu-item.active {
+            background: #fff;
+            border-left: 4px solid #fff;
+        }
+        .menu-item.active {
+            font-weight: 600;
+        }
+        .menu-item.active::after {
+            content: '\f105';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px 40px 40px 40px;
+        }
+        .header-tabs {
+            border-bottom: 2px solid #0056b3;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            color: #0056b3;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .input-with-icon {
+            position: relative;
+        }
+        .input-with-icon .card-logo {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 20px;
+        }
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+        .col {
+            flex: 1;
+        }
+        .info-box {
+            background-color: #fffdf2;
+            border: 1px solid #f2e29e;
+            padding: 15px;
+            font-size: 12px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .info-box a {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        /* Right sidebar (Merchant Info) */
+        .merchant-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 200px;
+            border: 1px solid #8ec8e0;
+            background: #fff;
+        }
+        .merchant-info .m-name {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #333;
+        }
+        .merchant-info .m-name span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .merchant-info .m-amount {
+            padding: 10px 15px;
+            background: #d8f1fa;
+            font-size: 13px;
+            color: #333;
+        }
+        /* Make Payment Button */
+        .btn-pay {
+            width: 100%;
+            background: linear-gradient(to bottom, #fceb99, #f7ce44);
+            border: 1px solid #d4a923;
+            color: #333;
+            font-size: 16px;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .btn-pay:hover {
+            background: linear-gradient(to bottom, #f7ce44, #f5c01b);
+        }
+        .footer-logo {
+            text-align: right;
+        }
+        .footer-logo img {
+            height: 35px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gateway-container">
+        <!-- Sidebar Options -->
+        <div class="sidebar">
+            <div class="menu-item active">
+                <div><i class="fa-regular fa-credit-card"></i> Credit Card</div>
+            </div>
+            <div class="menu-item">
+                <div><i class="fa-solid fa-credit-card"></i> Debit Card</div>
+            </div>
+            <div class="menu-item">
+                <div><i class="fa-solid fa-keyboard"></i> Debit Card + ATM PIN</div>
+            </div>
+            <div class="menu-item">
+                <div><i class="fa-solid fa-building-columns"></i> Internet Banking</div>
+            </div>
+            <div class="menu-item">
+                <div><i class="fa-solid fa-wallet"></i> Wallet/ Cash Cards</div>
+            </div>
+        </div>
+
+        <!-- Main Form -->
+        <div class="main-content">
+            <div class="header-tabs">Pay by Credit Card</div>
+            
+            <form action="order-success.html" method="GET">
+                <div class="form-group input-with-icon">
+                    <label>Card Number</label>
+                    <input type="text" class="form-control" placeholder="4111-1111-1111-1111" required>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" class="card-logo">
+                </div>
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Expiration Date</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" class="form-control" placeholder="MM" style="width: 50%;" required>
+                            <input type="text" class="form-control" placeholder="YYYY" style="width: 50%;" required>
+                        </div>
+                    </div>
+                    <div class="col form-group" style="padding-right: 220px;">
+                        <label>CVV/CVC</label>
+                        <input type="password" class="form-control" placeholder="..." required>
+                    </div>
+                </div>
+
+                <div class="form-group" style="padding-right: 220px;">
+                    <label>Card Holder Name</label>
+                    <input type="text" class="form-control" placeholder="John Doe" required>
+                </div>
+
+                <div class="info-box" style="margin-right: 220px;">
+                    <strong style="color:#0056b3;">Please note:</strong> If your credit or debit card has not been used for ecommerce transactions, it will be <a href="#">blocked</a> by your bank for all online transactions as per RBI notification effective March 16, 2020.<br><br>
+                    In case your transaction is failing, please contact your card issuing bank to <a href="#">enable</a> your card for online transactions.
+                </div>
+
+                <button type="submit" class="btn-pay" style="width: calc(100% - 220px);">Make Payment</button>
+
+                <div class="footer-logo" style="width: calc(100% - 220px);">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/BillDesk_logo.svg/1200px-BillDesk_logo.svg.png" alt="Billdesk">
+                </div>
+            </form>
+        </div>
+
+        <!-- Right Side Merchant Info -->
+        <div class="merchant-info">
+            <div class="m-name">
+                <span>Merchant Name</span>
+                <strong>MOTOHUB</strong>
+            </div>
+            <div class="m-amount">
+                Payment Amount: <strong id="billdesk-amount">Loading...</strong>
+            </div>
+        </div>
+
+    </div>
+
+<!-- Payment Success Popup -->
+<div id="payment-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:var(--bg-card, #1c1c1e); padding:40px 30px; border-radius:12px; text-align:center; max-width:400px; width:90%; border: 1px solid var(--border-color, #333); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <div style="width:70px; height:70px; background:rgba(76, 175, 80, 0.1); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <i class="fa-solid fa-check" style="color:#4CAF50; font-size:35px;"></i>
+        </div>
+        <h2 style="color:#fff; margin:0 0 10px; font-family:'Oswald', sans-serif; text-transform:uppercase; font-size: 24px;">Order Placed!</h2>
+        <p style="color:#aaa; margin:0 0 20px; font-size: 14px;">Payment successful. Your order has been saved.</p>
+        <div style="width: 30px; height: 30px; border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--accent-red, #e63946); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+        <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+    </div>
+</div>
+
+<script>
+// Load dynamic order amount from sessionStorage
+(function() {
+    const amtEl = document.getElementById('billdesk-amount');
+    const rawTotal = sessionStorage.getItem('mh_order_total');
+    if (rawTotal) {
+        const num = parseFloat(rawTotal);
+        amtEl.textContent = '\u20b9' + num.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    } else {
+        amtEl.textContent = 'N/A';
+    }
+
+    const orderId = sessionStorage.getItem('mh_order_id') ||
+        new URLSearchParams(window.location.search).get('order');
+
+    // Intercept the card form submission and redirect to success
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show popup
+            const popup = document.getElementById('payment-popup');
+            popup.style.display = 'flex';
+            
+            // Redirect after 2 seconds to customer dashboard orders section
+            setTimeout(() => {
+                window.location.href = 'dashboard-customer.html#orders';
+            }, 2000);
+        });
+    }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOTOHUB - Blog</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <!-- Component Loader Script -->
+    <script src="js/components.js" defer></script>
+</head>
+
+<body>
+
+        <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header Hero -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Automotive News & Guides</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Blog</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Layout Area -->
+    <div class="blog-layout container">
+        
+        <!-- Main Blog Posts Grid -->
+        <main class="blog-main">
+            
+            <!-- Hidden Create Post Button (Admin/Seller Only) -->
+            <div id="create-post-container" style="display: none; margin-bottom: 30px; text-align: right;">
+                <a href="coming-soon.html" class="btn btn-red"><i class="fa-solid fa-plus"></i> CREATE NEW POST</a>
+            </div>
+
+            <div class="blog-grid">
+                
+                <!-- Blog Card 1 -->
+                <article class="premium-blog-card">
+                    <div class="blog-image-wrapper">
+                        <span class="blog-badge">Guides</span>
+                        <a href="blog-single.html">
+                            <img src="assets/images/news-1.jpg" alt="Modern Factory Manufacturing">
+                        </a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-user"></i> Admin</span>
+                            <span><i class="fa-regular fa-calendar-days"></i> Oct 15, 2023</span>
+                            <span><i class="fa-regular fa-comment"></i> 12</span>
+                        </div>
+                        <h3><a href="blog-single.html">Quality Control in Modern Factory Manufacturing</a></h3>
+                        <p class="blog-excerpt">Discover the rigorous testing and inspection processes that ensure every new vehicle meets peak safety standards. From crash tests to sensor alignments...</p>
+                        <a href="blog-single.html" class="read-more-btn">Read full article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Card 2 -->
+                <article class="premium-blog-card">
+                    <div class="blog-image-wrapper">
+                        <span class="blog-badge">Technology</span>
+                        <a href="blog-single.html">
+                            <img src="assets/images/news-2.jpg" alt="Automotive Electronics">
+                        </a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-user"></i> Tech Team</span>
+                            <span><i class="fa-regular fa-calendar-days"></i> Oct 10, 2023</span>
+                            <span><i class="fa-regular fa-comment"></i> 8</span>
+                        </div>
+                        <h3><a href="blog-single.html">Trending Automotive Electronics of 2024</a></h3>
+                        <p class="blog-excerpt">From advanced engine management to intricate networks, explore the parts driving the future of automotive technology and electric vehicles...</p>
+                        <a href="blog-single.html" class="read-more-btn">Read full article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Card 3 -->
+                <article class="premium-blog-card">
+                    <div class="blog-image-wrapper">
+                        <span class="blog-badge">Autonomous</span>
+                        <a href="blog-single.html">
+                            <img src="assets/images/news-3.png" alt="Level 3 Autonomous Systems">
+                        </a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-user"></i> Editor</span>
+                            <span><i class="fa-regular fa-calendar-days"></i> Oct 05, 2023</span>
+                            <span><i class="fa-regular fa-comment"></i> 24</span>
+                        </div>
+                        <h3><a href="blog-single.html">Understanding Level 3 Autonomous Systems</a></h3>
+                        <p class="blog-excerpt">A deep dive into the technology powering semi-autonomous driving, including regenerative braking and advanced sensor nodes embedded in new models...</p>
+                        <a href="blog-single.html" class="read-more-btn">Read full article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Card 4 -->
+                <article class="premium-blog-card">
+                    <div class="blog-image-wrapper">
+                        <span class="blog-badge">Eco Friendly</span>
+                        <a href="blog-single.html">
+                            <img src="assets/images/news-4.png" alt="S-CNG Technology">
+                        </a>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-user"></i> Admin</span>
+                            <span><i class="fa-regular fa-calendar-days"></i> Oct 01, 2023</span>
+                            <span><i class="fa-regular fa-comment"></i> 5</span>
+                        </div>
+                        <h3><a href="blog-single.html">S-CNG Technology: Redefining Green Mobility</a></h3>
+                        <p class="blog-excerpt">Explore how Maruti Suzukiâ€™s advanced S-CNG technology is setting new standards for eco-friendly driving and enhanced fuel efficiency without sacrificing power...</p>
+                        <a href="blog-single.html" class="read-more-btn">Read full article <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="coming-soon.html" class="page-link active">1</a>
+                <a href="coming-soon.html" class="page-link">2</a>
+                <a href="coming-soon.html" class="page-link">3</a>
+                <a href="coming-soon.html" class="page-link"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </main>
+
+        <!-- Sidebar Section -->
+        <aside class="blog-sidebar">
+            
+            <!-- Search Widget -->
+            <div class="sidebar-widget">
+                <h4 class="widget-title">Search</h4>
+                <form class="search-form">
+                    <input type="text" placeholder="Search keywords...">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="sidebar-widget">
+                <h4 class="widget-title">Categories</h4>
+                <ul class="category-list-widget">
+                    <li><a href="coming-soon.html">Automotive Tech <span>15</span></a></li>
+                    <li><a href="coming-soon.html">Car Reviews <span>12</span></a></li>
+                    <li><a href="coming-soon.html">Maintenance Guides <span>24</span></a></li>
+                    <li><a href="coming-soon.html">Eco-Friendly Vehicles <span>8</span></a></li>
+                    <li><a href="coming-soon.html">Motorsports <span>19</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="sidebar-widget">
+                <h4 class="widget-title">Popular Tags</h4>
+                <div class="tags-list">
+                    <a href="coming-soon.html">#Engines</a>
+                    <a href="coming-soon.html">#Brakes</a>
+                    <a href="coming-soon.html">#EV</a>
+                    <a href="coming-soon.html">#Performance</a>
+                    <a href="coming-soon.html">#Tuning</a>
+                    <a href="coming-soon.html">#Suspension</a>
+                    <a href="coming-soon.html">#Wheels</a>
+                    <a href="coming-soon.html">#Safety</a>
+                </div>
+            </div>
+
+            <!-- Banner Widget -->
+            <div class="widget vertical-banner" style="margin-bottom: 0;">
+                <p class="subtitle">SALE UP TO 30% OFF</p>
+                <h3>RELIABLE ENGINES</h3>
+                <a href="coming-soon.html" class="btn btn-primary">SHOP NOW</a>
+            </div>
+
+        </aside>
+    </div>
+
+        <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

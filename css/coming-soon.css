@@ -1,0 +1,142 @@
+/* Coming Soon Page Specific Styles */
+
+.coming-soon-wrapper {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    width: 100%;
+    background: url('../assets/images/hero-bg.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cs-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(7, 9, 15, 0.95) 0%, rgba(13, 17, 26, 0.8) 100%);
+    z-index: 1;
+}
+
+.cs-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 600px;
+}
+
+.cs-logo {
+    margin-bottom: 50px;
+}
+
+.cs-logo h2 {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.cs-logo span {
+    color: var(--accent-red);
+}
+
+.cs-main-box {
+    background-color: rgba(13, 17, 26, 0.7);
+    padding: 60px 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.cs-title {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.text-red {
+    color: var(--accent-red);
+}
+
+.cs-desc {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.cs-action {
+    margin-bottom: 40px;
+}
+
+.cs-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 40px;
+    font-size: 16px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.cs-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(230, 0, 0, 0.3);
+}
+
+.cs-social p {
+    color: #cfd3dc;
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--accent-red);
+    border-color: var(--accent-red);
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cs-title {
+        font-size: 32px;
+    }
+    
+    .cs-main-box {
+        padding: 40px 20px;
+    }
+}

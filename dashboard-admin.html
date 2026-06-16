@@ -1,0 +1,3552 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Admin Dashboard - MOTOHUB</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Oswald:wght@500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <script defer="" src="js/components.js"></script>
+    <script defer="" src="js/api.js"></script>
+    <script defer="" src="js/user-modal.js"></script>
+    <script defer="" src="js/admin-dashboard.js"></script>
+    <script defer="" src="js/add-product-modal.js"></script>
+</head>
+
+<body>
+    <!-- Page Header -->
+    <section class="page-header db-hero">
+        <div class="container">
+            <h1>ADMIN DASHBOARD</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> Admin
+            </div>
+        </div>
+    </section>
+    <!-- Dashboard -->
+    <section class="dashboard-section container">
+        <div class="dashboard-layout">
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+                <div class="user-profile-summary">
+                    <div class="avatar">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Super Admin</h3>
+                    <p>admin@motohub.com</p>
+                    <span class="role-badge admin">Administrator</span>
+                </div>
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li><button class="db-tab-btn active" data-target="overview-sec"><i
+                                    class="fa-solid fa-chart-line"></i> Overview</button></li>
+                        <li><button class="db-tab-btn" data-target="appointments-sec"><i
+                                    class="fa-regular fa-calendar-check"></i> Appointments</button></li>
+                        <li><button class="db-tab-btn" data-target="orders-sec"><i class="fa-solid fa-box-open"></i>
+                                Orders</button></li>
+                        <li><button class="db-tab-btn" data-target="products-sec"><i class="fa-solid fa-tags"></i>
+                                Products</button></li>
+                        <li><button class="db-tab-btn" data-target="users-sec"><i class="fa-solid fa-users"></i>
+                                Users</button></li>
+                        <li><button class="db-tab-btn" data-target="moderators-sec"><i
+                                    class="fa-solid fa-user-shield"></i>
+                                Moderators</button></li>
+                        <li><button class="db-tab-btn" data-target="garages-sec"><i class="fa-solid fa-warehouse"></i>
+                                Garages</button></li>
+                        <li><button class="db-tab-btn" data-target="support-sec"><i class="fa-regular fa-message"></i>
+                                Support</button></li>
+                        <li><button class="db-tab-btn" data-target="reviews-sec"><i class="fa-regular fa-star"></i>
+                                Reviews</button></li>
+                        <li class="nav-group">
+                            <button class="db-tab-btn nav-group-toggle" data-target="marketing-sec"><i
+                                    class="fa-solid fa-bullhorn"></i> Marketing <i
+                                    class="fa-solid fa-chevron-down group-arrow"></i></button>
+                            <ul class="nav-sub">
+                                <li><button class="db-tab-btn db-subtab-btn" data-subtarget="banners-sub"
+                                        data-target="marketing-sec"><i class="fa-solid fa-image"></i> Banners</button>
+                                </li>
+                                <li><button class="db-tab-btn db-subtab-btn" data-subtarget="ads-sub"
+                                        data-target="marketing-sec"><i class="fa-solid fa-rectangle-ad"></i>
+                                        Ads</button>
+                                </li>
+                                <li><button class="db-tab-btn db-subtab-btn" data-subtarget="blogs-sub"
+                                        data-target="marketing-sec"><i class="fa-solid fa-newspaper"></i> Blogs</button>
+                                </li>
+                                <li><button class="db-tab-btn db-subtab-btn" data-subtarget="subscribers-sub"
+                                        data-target="marketing-sec"><i class="fa-solid fa-envelope-open-text"></i>
+                                        Subscribers</button></li>
+                            </ul>
+                        </li>
+                        <li><button class="db-tab-btn" data-target="services-sec"><i
+                                    class="fa-solid fa-screwdriver-wrench"></i> Services</button></li>
+                        <li><a class="logout-link" href="login.html"><i
+                                    class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <!-- Content -->
+            <main class="dashboard-content">
+                <!-- 1. Overview -->
+                <div class="db-section active" id="overview-sec">
+                    <div class="db-header">
+                        <h2>Platform Overview</h2>
+                        <span style="font-size:13px;color:var(--text-muted);">April 1, 2026</span>
+                    </div>
+                    <!-- Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                            <div class="stat-info">
+                                <h4>â‚¹4.2L</h4>
+                                <p>Revenue This Month</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-box-open"></i></div>
+                            <div class="stat-info">
+                                <h4>24</h4>
+                                <p>Pending Orders</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-regular fa-calendar-check"></i></div>
+                            <div class="stat-info">
+                                <h4>37</h4>
+                                <p>Pending Appointments</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-warehouse"></i></div>
+                            <div class="stat-info">
+                                <h4>12</h4>
+                                <p>Active Garages</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="btn btn-red btn-sm" onclick="window.openAddProductModal()"><i
+                                class="fa-solid fa-plus"></i> Add Product</button>
+                        <button class="btn btn-red btn-sm"
+                            style="background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);"><i
+                                class="fa-solid fa-file-export"></i> Export Report</button>
+                    </div>
+                    <!-- Recent Orders -->
+                    <div class="db-header">
+                        <h2>Recent Orders</h2>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#MH-98245</strong></td>
+                                    <td>Rahul Sharma</td>
+                                    <td>Mar 30, 2026</td>
+                                    <td><span class="status-badge processing">Processing</span></td>
+                                    <td>â‚¹4,500</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button><button
+                                                class="action-btn approve" title="Approve"><i
+                                                    class="fa-solid fa-check"></i></button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#MH-98201</strong></td>
+                                    <td>Priya Nair</td>
+                                    <td>Mar 29, 2026</td>
+                                    <td><span class="status-badge delivered">Delivered</span></td>
+                                    <td>â‚¹1,200</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#MH-98177</strong></td>
+                                    <td>Arjun Patel</td>
+                                    <td>Mar 28, 2026</td>
+                                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                                    <td>â‚¹8,900</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#MH-98155</strong></td>
+                                    <td>Sneha Reddy</td>
+                                    <td>Mar 27, 2026</td>
+                                    <td><span class="status-badge in-progress">In Transit</span></td>
+                                    <td>â‚¹2,750</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button><button
+                                                class="action-btn approve" title="Confirm"><i
+                                                    class="fa-solid fa-check"></i></button></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- 2. Appointments -->
+                <div class="db-section" id="appointments-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>All Appointments</h2>
+                        <button class="btn btn-red btn-sm"
+                            style="background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);"><i
+                                class="fa-solid fa-file-export"></i> Export CSV</button>
+                    </div>
+                    <!-- Appointments Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
+                            <div class="stat-info">
+                                <h4>215</h4>
+                                <p>Appointments</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-check-double"></i></div>
+                            <div class="stat-info">
+                                <h4>150</h4>
+                                <p>Confirmed</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <div class="stat-info">
+                                <h4>50</h4>
+                                <p>Pending</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-ban"></i></div>
+                            <div class="stat-info">
+                                <h4>15</h4>
+                                <p>Cancelled</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search & Filter Bar -->
+                    <div class="users-search-bar">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input id="appointments-search-input" oninput="filterAppointmentsTable()"
+                                placeholder="Search ID, Customerâ€¦" type="text" />
+                        </div>
+                        <select class="users-filter-select" id="appointments-type-filter"
+                            onchange="filterAppointmentsTable()">
+                            <option value="">All Services</option>
+                            <option value="inspection">Simple Inspection</option>
+                            <option value="home">Home Service</option>
+                            <option value="garage">Major Garage Service</option>
+                        </select>
+                        <select class="users-filter-select" id="appointments-status-filter"
+                            onchange="filterAppointmentsTable()">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table" id="appointments-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Customer</th>
+                                    <th>Type &amp; Vehicle</th>
+                                    <th>Garage</th>
+                                    <th>Date &amp; Time</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointments-tbody">
+                                <tr data-status="pending" data-type="home">
+                                    <td><strong>#SA-1101</strong></td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div><span class="user-name">Rahul Sharma</span><br /><small
+                                                    class="user-role-label">+91 98765 43210</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Home Service<br /><small class="user-role-label"
+                                            style="color:var(--text-muted);">Toyota Fortuner</small></td>
+                                    <td><span style="color:var(--text-muted);">Unassigned</span></td>
+                                    <td>Apr 05, 2026<br /><small class="user-role-label">10:00 AM</small></td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" onclick="viewAppointment('#SA-1101')"
+                                                title="View Details"><i class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn assign" onclick="openAssignGarageModal(this)"
+                                                title="Assign Garage"><i class="fa-solid fa-warehouse"></i></button>
+                                            <button class="action-btn approve"
+                                                onclick="openAppointmentStatusModal(this)" title="Update Status"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-status="in-progress" data-type="garage">
+                                    <td><strong>#SA-1098</strong></td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div><span class="user-name">Priya Nair</span><br /><small
+                                                    class="user-role-label">+91 88990 11223</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Garage Service<br /><small class="user-role-label"
+                                            style="color:var(--text-muted);">Maruti Swift</small></td>
+                                    <td>MOTOHUB â€“ Nayapalli</td>
+                                    <td>Apr 02, 2026<br /><small class="user-role-label">02:30 PM</small></td>
+                                    <td><span class="status-badge in-progress">In Progress</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" onclick="viewAppointment('#SA-1098')"
+                                                title="View Details"><i class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn assign" onclick="openAssignGarageModal(this)"
+                                                title="Assign Garage"><i class="fa-solid fa-warehouse"></i></button>
+                                            <button class="action-btn approve"
+                                                onclick="openAppointmentStatusModal(this)" title="Update Status"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-status="completed" data-type="inspection">
+                                    <td><strong>#SA-1082</strong></td>
+                                    <td>
+                                        <div class="user-cell">
+                                            <div><span class="user-name">Arjun Patel</span><br /><small
+                                                    class="user-role-label">+91 99887 76655</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Inspection<br /><small class="user-role-label"
+                                            style="color:var(--text-muted);">Hyundai i20</small></td>
+                                    <td>MOTOHUB â€“ Cuttack</td>
+                                    <td>Mar 28, 2026<br /><small class="user-role-label">11:00 AM</small></td>
+                                    <td><span class="status-badge delivered">Completed</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" onclick="viewAppointment('#SA-1082')"
+                                                title="View Details"><i class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn assign" disabled=""
+                                                onclick="openAssignGarageModal(this)" style="opacity:0.4"
+                                                title="Assign Garage"><i class="fa-solid fa-warehouse"></i></button>
+                                            <button class="action-btn approve"
+                                                onclick="openAppointmentStatusModal(this)" title="Update Status"><i
+                                                    class="fa-solid fa-arrows-rotate"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- 3. Orders -->
+                <div class="db-section" id="orders-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>All Orders</h2>
+                        <button class="btn btn-red btn-sm"
+                            style="background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);"><i
+                                class="fa-solid fa-file-export"></i> Export CSV</button>
+                    </div>
+                    <!-- Order Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-box-open"></i></div>
+                            <div class="stat-info">
+                                <h4>1,248</h4>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-truck-fast"></i></div>
+                            <div class="stat-info">
+                                <h4>892</h4>
+                                <p>Delivered</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <div class="stat-info">
+                                <h4>150</h4>
+                                <p>Pending</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-circle-xmark"></i></div>
+                            <div class="stat-info">
+                                <h4>56</h4>
+                                <p>Cancelled</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search & Filter Bar -->
+                    <div class="users-search-bar">
+                        <select class="users-filter-select" id="orders-status-filter" onchange="filterOrdersTable()">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                        <select class="users-filter-select" id="orders-date-filter" onchange="filterOrdersTable()">
+                            <option value="">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                    </div>
+                    <!-- Orders Table -->
+                    <div class="db-table-responsive">
+                        <table class="db-table" id="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>CustomerName</th>
+                                    <th>Phone</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>PaymentMethod</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-tbody">
+                                <tr data-date="today" data-status="pending">
+                                    <td><strong>#MH-98245</strong></td>
+                                    <td>Rahul Sharma</td>
+                                    <td>+91 98765 43210</td>
+                                    <td>Apr 01, 2026</td>
+                                    <td>â‚¹4,500</td>
+                                    <td>UPI</td>
+                                    <td><span class="status-badge processing">Pending</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" onclick="openOrderStatusModal(this)"
+                                                title="Update Status"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" onclick="cancelOrder(this)"
+                                                title="Cancel"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-date="month" data-status="delivered">
+                                    <td><strong>#MH-97001</strong></td>
+                                    <td>Priya Nair</td>
+                                    <td>+91 88990 11223</td>
+                                    <td>Feb 20, 2026</td>
+                                    <td>â‚¹1,200</td>
+                                    <td>Card</td>
+                                    <td><span class="status-badge delivered">Delivered</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" onclick="openOrderStatusModal(this)"
+                                                title="Update Status"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" onclick="cancelOrder(this)"
+                                                title="Cancel"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-date="month" data-status="cancelled">
+                                    <td><strong>#MH-96420</strong></td>
+                                    <td>Arjun Patel</td>
+                                    <td>+91 99887 76655</td>
+                                    <td>Jan 15, 2026</td>
+                                    <td>â‚¹8,900</td>
+                                    <td>Cash on Delivery</td>
+                                    <td><span class="status-badge cancelled">Cancelled</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" onclick="openOrderStatusModal(this)"
+                                                title="Update Status"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" onclick="cancelOrder(this)"
+                                                title="Cancel"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-date="week" data-status="shipped">
+                                    <td><strong>#MH-96012</strong></td>
+                                    <td>Sneha Reddy</td>
+                                    <td>+91 77665 54433</td>
+                                    <td>Mar 25, 2026</td>
+                                    <td>â‚¹3,400</td>
+                                    <td>UPI</td>
+                                    <td><span class="status-badge in-progress">Shipped</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" onclick="openOrderStatusModal(this)"
+                                                title="Update Status"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" onclick="cancelOrder(this)"
+                                                title="Cancel"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-date="week" data-status="confirmed">
+                                    <td><strong>#MH-98124</strong></td>
+                                    <td>Amit Kumar</td>
+                                    <td>+91 66554 33221</td>
+                                    <td>Mar 28, 2026</td>
+                                    <td>â‚¹16,500</td>
+                                    <td>Card</td>
+                                    <td><span class="status-badge approved">Confirmed</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" title="View"><i
+                                                    class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn approve" onclick="openOrderStatusModal(this)"
+                                                title="Update Status"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                            <button class="action-btn delete" onclick="cancelOrder(this)"
+                                                title="Cancel"><i class="fa-solid fa-ban"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- 4. Products -->
+                <div class="db-section" id="products-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Products</h2>
+                        <button class="btn btn-red btn-sm" onclick="window.openAddProductModal()"><i
+                                class="fa-solid fa-plus"></i> Add Product</button>
+                    </div>
+                    <!-- Product Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-layer-group"></i></div>
+                            <div class="stat-info">
+                                <h4>342</h4>
+                                <p>Total Products</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-check-circle"></i></div>
+                            <div class="stat-info">
+                                <h4>285</h4>
+                                <p>In Stock</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                            <div class="stat-info">
+                                <h4>42</h4>
+                                <p>Low Stock</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-circle-xmark"></i></div>
+                            <div class="stat-info">
+                                <h4>15</h4>
+                                <p>Out of Stock</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search & Filter Bar -->
+                    <div class="users-search-bar">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input id="products-search-input" oninput="filterProductsTable()"
+                                placeholder="Search by name, ID, brand..." type="text" />
+                        </div>
+                        <select class="users-filter-select" id="products-category-filter"
+                            onchange="filterProductsTable()">
+                            <option value="">All Categories</option>
+                            <option value="Wheels">Wheels</option>
+                            <option value="Tires">Tires</option>
+                            <option value="Steering">Steering</option>
+                            <option value="Brakes">Brakes</option>
+                            <option value="Accessories">Accessories</option>
+                        </select>
+                        <select class="users-filter-select" id="products-status-filter"
+                            onchange="filterProductsTable()">
+                            <option value="">All Status</option>
+                            <option value="In Stock">In Stock</option>
+                            <option value="Low Stock">Low Stock</option>
+                            <option value="Out of Stock">Out of Stock</option>
+                        </select>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table" id="products-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-tbody">
+                                <tr data-category="Wheels" data-status="In Stock">
+                                    <td><strong>#PRD-WHE-001</strong></td>
+                                    <td>
+                                        <div class="product-info-cell">
+                                            <div class="product-thumbnail-cell"><img alt="BMW Alloy Wheel"
+                                                    src="https://images.unsplash.com/photo-1549643276-fdf2fab574f5?q=80&amp;w=200&amp;auto=format&amp;fit=crop" />
+                                            </div>
+                                            <div><span class="user-name">18" Black Alloy Wheel Rim
+                                                    (BMW)</span><br /><small class="user-role-label">BMW â€¢
+                                                    M-Sport</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Wheels</td>
+                                    <td>â‚¹37,500</td>
+                                    <td>42</td>
+                                    <td><span class="product-status-badge status-stock">In Stock</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" onclick="openProductModal('view', 'PRD-WHE-001')"
+                                                title="View"><i class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn" onclick="openProductModal('edit', 'PRD-WHE-001')"
+                                                title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="action-btn" onclick="openUpdateStockModal('PRD-WHE-001')"
+                                                style="color: #6366f1;" title="Update Stock"><i
+                                                    class="fa-solid fa-boxes-stacked"></i></button>
+                                            <button class="action-btn delete"
+                                                onclick="confirmDeleteProduct('PRD-WHE-001')" title="Delete"><i
+                                                    class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-category="Tires" data-status="Low Stock">
+                                    <td><strong>#PRD-TYR-082</strong></td>
+                                    <td>
+                                        <div class="product-info-cell">
+                                            <div class="product-thumbnail-cell"><img alt="Summer Tire"
+                                                    src="https://images.unsplash.com/photo-1578844541313-fa6c8889ecd9?q=80&amp;w=200&amp;auto=format&amp;fit=crop" />
+                                            </div>
+                                            <div><span class="user-name">High Perf. Summer Tire
+                                                    225/45R17</span><br /><small class="user-role-label">Michelin â€¢
+                                                    Pilot
+                                                    Sport</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Tires</td>
+                                    <td>â‚¹9,999</td>
+                                    <td>7</td>
+                                    <td><span class="product-status-badge status-low">Low Stock</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" onclick="openProductModal('view', 'PRD-TYR-082')"
+                                                title="View"><i class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn" onclick="openProductModal('edit', 'PRD-TYR-082')"
+                                                title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="action-btn" onclick="openUpdateStockModal('PRD-TYR-082')"
+                                                style="color: #6366f1;" title="Update Stock"><i
+                                                    class="fa-solid fa-boxes-stacked"></i></button>
+                                            <button class="action-btn delete"
+                                                onclick="confirmDeleteProduct('PRD-TYR-082')" title="Delete"><i
+                                                    class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-category="Steering" data-status="In Stock">
+                                    <td><strong>#PRD-STR-112</strong></td>
+                                    <td>
+                                        <div class="product-info-cell">
+                                            <div class="product-thumbnail-cell"><img alt="Steering Wheel"
+                                                    src="https://images.unsplash.com/photo-1549410195-2cc351989f66?q=80&amp;w=200&amp;auto=format&amp;fit=crop" />
+                                            </div>
+                                            <div><span class="user-name">Carbon Fiber Racing Steering
+                                                    Wheel</span><br /><small class="user-role-label">Sparco â€¢ Pro
+                                                    Series</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Steering</td>
+                                    <td>â‚¹24,999</td>
+                                    <td>28</td>
+                                    <td><span class="product-status-badge status-stock">In Stock</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" onclick="openProductModal('view', 'PRD-STR-112')"
+                                                title="View"><i class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn" onclick="openProductModal('edit', 'PRD-STR-112')"
+                                                title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="action-btn" onclick="openUpdateStockModal('PRD-STR-112')"
+                                                style="color: #6366f1;" title="Update Stock"><i
+                                                    class="fa-solid fa-boxes-stacked"></i></button>
+                                            <button class="action-btn delete"
+                                                onclick="confirmDeleteProduct('PRD-STR-112')" title="Delete"><i
+                                                    class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr data-category="Brakes" data-status="Out of Stock">
+                                    <td><strong>#PRD-BRK-443</strong></td>
+                                    <td>
+                                        <div class="product-info-cell">
+                                            <div class="product-thumbnail-cell"><img alt="Brake Kit"
+                                                    src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&amp;w=200&amp;auto=format&amp;fit=crop" />
+                                            </div>
+                                            <div><span class="user-name">Sport Performance Brake Kit</span><br /><small
+                                                    class="user-role-label">Brembo â€¢ GT-S</small></div>
+                                        </div>
+                                    </td>
+                                    <td>Brakes</td>
+                                    <td>â‚¹34,999</td>
+                                    <td>0</td>
+                                    <td><span class="product-status-badge status-out">Out of Stock</span></td>
+                                    <td>
+                                        <div class="row-actions">
+                                            <button class="action-btn" onclick="openProductModal('view', 'PRD-BRK-443')"
+                                                title="View"><i class="fa-solid fa-eye"></i></button>
+                                            <button class="action-btn" onclick="openProductModal('edit', 'PRD-BRK-443')"
+                                                title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                            <button class="action-btn" onclick="openUpdateStockModal('PRD-BRK-443')"
+                                                style="color: #6366f1;" title="Update Stock"><i
+                                                    class="fa-solid fa-boxes-stacked"></i></button>
+                                            <button class="action-btn delete"
+                                                onclick="confirmDeleteProduct('PRD-BRK-443')" title="Delete"><i
+                                                    class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- 5. Manage Users -->
+                <div class="db-section" id="users-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Manage Users</h2>
+                        <button class="btn btn-red btn-sm" onclick="openUserModal('add')"><i
+                                class="fa-solid fa-plus"></i> Add User</button>
+                    </div>
+                    <!-- User Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
+                            <div class="stat-info">
+                                <h4>248</h4>
+                                <p>Total Users</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="stat-info">
+                                <h4>234</h4>
+                                <p>Active</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-user-plus"></i></div>
+                            <div class="stat-info">
+                                <h4>14</h4>
+                                <p>New This Month</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-ban"></i></div>
+                            <div class="stat-info">
+                                <h4>0</h4>
+                                <p>Blocked</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search & Filter Bar -->
+                    <div class="users-search-bar">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input id="users-search-input" oninput="filterUsersTable()"
+                                placeholder="Search by name, email or phoneâ€¦" type="text" />
+                        </div>
+                        <select class="users-filter-select" id="users-status-filter" onchange="filterUsersTable()">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="blocked">Blocked</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                        <select class="users-filter-select" id="users-role-filter" onchange="filterUsersTable()">
+                            <option value="">All Roles</option>
+                            <option value="customer">Customer</option>
+                            <option value="moderator">Moderator</option>
+                            <option value="garage">Garage</option>
+                        </select>
+                    </div>
+                    <!-- Users Table -->
+                    <div class="db-table-responsive">
+                        <table class="db-table" id="users-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-tbody">
+                                <td>
+                                    <div class="user-cell">
+                                        <div class="user-avatar-sm"
+                                            style="background:linear-gradient(135deg,#f59e0b,#d97706);">SR</div>
+                                        <div><span class="user-name">Sneha Reddy</span><br /><small
+                                                class="user-role-label">Customer</small></div>
+                                    </div>
+                                </td>
+                                <td>sneha@example.com</td>
+                                <!-- Dynamic Content -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="db-section" id="moderators-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Manage Moderators</h2>
+                        <button class="btn btn-red btn-sm" onclick="window.openAddModeratorModal('add')"><i
+                                class="fa-solid fa-plus"></i> Add Moderator</button>
+                    </div>
+                    <!-- User Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
+                            <div class="stat-info">
+                                <h4>248</h4>
+                                <p>Total Moderators</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="stat-info">
+                                <h4>191</h4>
+                                <p>Active</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-user-plus"></i></div>
+                            <div class="stat-info">
+                                <h4>14</h4>
+                                <p>New This Month</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-ban"></i></div>
+                            <div class="stat-info">
+                                <h4>7</h4>
+                                <p>Blocked</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search & Filter Bar -->
+                    <div class="users-search-bar">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input id="moderators-search-input" oninput="filterModeratorsTable()"
+                                placeholder="Search by name, email or phoneâ€¦" type="text" />
+                        </div>
+                        <select class="users-filter-select" id="moderators-status-filter"
+                            onchange="filterModeratorsTable()">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="blocked">Blocked</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                        <select class="users-filter-select" id="moderators-role-filter"
+                            onchange="filterModeratorsTable()">
+                            <option value="">All Roles</option>
+                            <option value="customer">Customer</option>
+                            <option value="moderator">Moderator</option>
+                            <option value="garage">Garage</option>
+                        </select>
+                    </div>
+                    <!-- Users Table -->
+                    <div class="db-table-responsive">
+                        <table class="db-table" id="moderators-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="moderators-tbody">
+                                <!-- Dynamic Content -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- 6. Manage Garages -->
+                <div class="db-section" id="garages-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Garages</h2>
+                        <button class="btn btn-red btn-sm" id="garage-add-btn" onclick="openGarageModal('add')"><i
+                                class="fa-solid fa-plus"></i> Add Garage</button>
+                    </div>
+                    <!-- Garage Stats -->
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-warehouse"></i></div>
+                            <div class="stat-info"><h4 id="garage-stat-total">â€”</h4><p>Total Garages</p></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="stat-info"><h4 id="garage-stat-active">â€”</h4><p>Active</p></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="stat-info"><h4 id="garage-stat-cities">â€”</h4><p>Cities Covered</p></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-circle-xmark"></i></div>
+                            <div class="stat-info"><h4 id="garage-stat-inactive">â€”</h4><p>Inactive</p></div>
+                        </div>
+                    </div>
+                    <!-- Search Bar -->
+                    <div class="users-search-bar">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="garages-search-input" placeholder="Search by name, city, emailâ€¦" oninput="filterGaragesTable()">
+                        </div>
+                        <select class="users-filter-select" id="garages-status-filter" onchange="filterGaragesTable()">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="verified">Verified</option>
+                            <option value="unverified">Unverified</option>
+                        </select>
+                    </div>
+                    <!-- Garages Table -->
+                    <div class="db-table-responsive">
+                        <table class="db-table" id="garages-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Garage Name</th>
+                                    <th>Owner</th>
+                                    <th>City</th>
+                                    <th>Status</th>
+                                    <th>Verified</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="garages-tbody">
+                                <tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:30px;"><i class="fa-solid fa-spinner fa-spin"></i> Loading garagesâ€¦</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- 7. Marketing -->
+                <div class="db-section" id="marketing-sec" style="display:none;">
+                    <!-- Sub-tab Bar -->
+                    <div class="db-sub-tabs">
+                        <button class="db-sub-tab-btn active" data-subtarget="banners-sub"><i
+                                class="fa-solid fa-image"></i> Banners</button>
+                        <button class="db-sub-tab-btn" data-subtarget="ads-sub"><i class="fa-solid fa-rectangle-ad"></i>
+                            Ads</button>
+                        <button class="db-sub-tab-btn" data-subtarget="blogs-sub"><i class="fa-solid fa-newspaper"></i>
+                            Blogs</button>
+                        <button class="db-sub-tab-btn" data-subtarget="subscribers-sub"><i
+                                class="fa-solid fa-envelope-open-text"></i> Subscribers</button>
+                    </div>
+                    <!-- Banners -->
+                    <div class="db-sub-panel active" id="banners-sub">
+                        <div class="db-header">
+                            <h2>Banners</h2>
+                            <button class="btn btn-red btn-sm" onclick="openMarketingModal('banner', 'add')"><i
+                                    class="fa-solid fa-plus"></i> Add Banner</button>
+                        </div>
+                        <div class="db-table-responsive">
+                            <table class="db-table">
+                                <thead>
+                                    <tr>
+                                        <th>Preview</th>
+                                        <th>Title &amp; Link</th>
+                                        <th>Position</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="banners-tbody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Ads -->
+                    <div class="db-sub-panel" id="ads-sub" style="display:none;">
+                        <div class="db-header">
+                            <h2>Advertisements</h2>
+                        </div>
+                        <span class="marketing-section-label">Primary Service Ad</span>
+                        <div class="marketing-ad-card" id="ad-card-service">
+                            <div class="ad-preview-box">
+                                <img alt="Service Banner" id="ad-img-service" src="assets/images/auto-body-paint.png" />
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                                <div>
+                                    <h4 style="color: #fff; margin-bottom: 5px;" id="ad-title-service">AUTO BODY PAINT REPAIR SERVICES</h4>
+                                    <p style="font-size: 13px; color: var(--text-muted);" id="ad-link-service">Link: coming-soon.html</p>
+                                </div>
+                                <button class="btn btn-red btn-sm outline-btn"
+                                    onclick="openAdModal('service')"><i
+                                        class="fa-solid fa-pen"></i> Edit Ad</button>
+                            </div>
+                        </div>
+                        <span class="marketing-section-label">Promotional Banners (Grid)</span>
+                        <div class="promo-grid">
+                            <div class="marketing-ad-card" id="ad-card-promo1">
+                                <div class="ad-preview-box" style="height: 120px;">
+                                    <img alt="Promo 1" id="ad-img-promo1" src="assets/images/tire.jpg" />
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <h5 style="color: #fff; margin-bottom: 4px;" id="ad-title-promo1">MICHELIN TIRE</h5>
+                                        <p style="font-size: 11px; color: var(--text-muted);" id="ad-link-promo1">Link: coming-soon.html</p>
+                                    </div>
+                                    <button class="action-btn" onclick="openAdModal('promo_1')"><i
+                                            class="fa-solid fa-pen"></i></button>
+                                </div>
+                            </div>
+                            <div class="marketing-ad-card" id="ad-card-promo2">
+                                <div class="ad-preview-box" style="height: 120px;">
+                                    <img alt="Promo 2" id="ad-img-promo2" src="assets/images/brakes-full.jpg" />
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <h5 style="color: #fff; margin-bottom: 4px;" id="ad-title-promo2">BETTER BRAKES</h5>
+                                        <p style="font-size: 11px; color: var(--text-muted);" id="ad-link-promo2">Link: coming-soon.html</p>
+                                    </div>
+                                    <button class="action-btn" onclick="openAdModal('promo_2')"><i
+                                            class="fa-solid fa-pen"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="marketing-section-label" style="margin-top:20px;">Sidebar Widgets</span>
+                        <div class="promo-grid">
+                            <!-- Product Widget -->
+                            <div class="marketing-ad-card" id="ad-card-widget-product">
+                                <div class="ad-preview-box" style="height:120px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.2);">
+                                    <img alt="Widget Product" id="ad-img-widget-product" src="assets/images/brake-pads.png" style="max-height:100px; object-fit:contain;" />
+                                </div>
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+                                    <div>
+                                        <h5 style="color:#fff; margin-bottom:3px;" id="ad-title-widget-product">High Performance Brake Pads</h5>
+                                        <p style="font-size:11px; color:var(--text-muted);" id="ad-price-widget-product">$89.00 <s>$120.00</s> &nbsp;â­ 4.5</p>
+                                    </div>
+                                    <button class="action-btn" onclick="openAdModal('widget_product')"><i class="fa-solid fa-pen"></i></button>
+                                </div>
+                            </div>
+                            <!-- Vertical Banner Widget -->
+                            <div class="marketing-ad-card" id="ad-card-widget-vertical">
+                                <div class="ad-preview-box" style="height:120px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(135deg,#1a1f2e,#2c3354);">
+                                    <p style="font-size:11px; color:#e74c3c; margin:0;" id="ad-subtitle-widget-vertical">SALE UP TO 30% OFF</p>
+                                    <h5 style="color:#fff; margin:4px 0;" id="ad-title-widget-vertical">RELIABLE ENGINES</h5>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+                                    <p style="font-size:11px; color:var(--text-muted);" id="ad-link-widget-vertical">Link: coming-soon.html</p>
+                                    <button class="action-btn" onclick="openAdModal('widget_vertical')"><i class="fa-solid fa-pen"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Blogs -->
+                    <div class="db-sub-panel" id="blogs-sub" style="display:none;">
+                        <div class="db-header">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Top 5 Tyre Brands in 2026</strong></td>
+                                    <td>Admin</td>
+                                    <td>Mar 25, 2026</td>
+                                    <td><span class="status-badge approved">Published</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn"><i
+                                                    class="fa-solid fa-pen"></i></button><button
+                                                class="action-btn delete"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Why Regular Wheel Alignment Matters</strong></td>
+                                    <td>Admin</td>
+                                    <td>â€”</td>
+                                    <td><span class="status-badge pending">Draft</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn"><i
+                                                    class="fa-solid fa-pen"></i></button><button
+                                                class="action-btn delete"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </div>
+                    <!-- Subscribers -->
+                    <div class="db-sub-panel" id="subscribers-sub" style="display:none;">
+                        <div class="db-header">
+                            <tbody>
+                                <tr>
+                                    <td>rahul@example.com</td>
+                                    <td>Jan 10, 2026</td>
+                                    <td><span class="status-badge approved">Active</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn delete"><i
+                                                    class="fa-solid fa-ban"></i></button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>priya@example.com</td>
+                                    <td>Feb 05, 2026</td>
+                                    <td><span class="status-badge approved">Active</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn delete"><i
+                                                    class="fa-solid fa-ban"></i></button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>anon@mail.com</td>
+                                    <td>Mar 12, 2026</td>
+                                    <td><span class="status-badge cancelled">Unsubscribed</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn delete"><i
+                                                    class="fa-solid fa-trash"></i></button></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </div>
+                </div>
+                <!-- 8. Services -->
+                <div class="db-section" id="services-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Services</h2>
+                        <button class="btn btn-red btn-sm" onclick="window.openAddServiceModal('add')"><i
+                                class="fa-solid fa-plus"></i> Add Service</button>
+                    </div>
+                    <!-- Search & Filter Bar -->
+                    <div class="users-search-bar">
+                        <div class="search-input-wrap">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="services-search-input" placeholder="Search by service name..."
+                                oninput="filterServicesTable()">
+                        </div>
+                        <select id="services-category-filter" class="users-filter-select"
+                            onchange="filterServicesTable()">
+                            <option value="">All Categories</option>
+                            <option value="Maintenance">Maintenance</option>
+                            <option value="Mechanical">Mechanical</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Detailing">Detailing</option>
+                            <option value="Tires">Tires & Wheels</option>
+                            <option value="Inspection">Inspection</option>
+                        </select>
+                        <select id="services-status-filter" class="users-filter-select"
+                            onchange="filterServicesTable()">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Draft</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Service Name</th>
+                                    <th>Category</th>
+                                    <th>Duration</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="services-tbody">
+                                <!-- Dynamic Content -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="db-section" id="support-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Support</h2>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Ticket #</th>
+                                    <th>Customer</th>
+                                    <th>Subject</th>
+                                    <th>Date</th>
+                                    <th>Priority</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="support-tbody">
+                                <tr>
+                                    <td>#TKT-401</td>
+                                    <td>Rahul Sharma</td>
+                                    <td>Order not delivered after 10 days</td>
+                                    <td>Mar 30, 2026</td>
+                                    <td><span class="status-badge cancelled">High</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn"><i
+                                                    class="fa-solid fa-reply"></i></button><button
+                                                class="action-btn approve"><i class="fa-solid fa-check"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#TKT-398</td>
+                                    <td>Priya Nair</td>
+                                    <td>Wrong product received</td>
+                                    <td>Mar 28, 2026</td>
+                                    <td><span class="status-badge processing">Medium</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn"><i
+                                                    class="fa-solid fa-reply"></i></button><button
+                                                class="action-btn approve"><i class="fa-solid fa-check"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#TKT-387</td>
+                                    <td>Sneha Reddy</td>
+                                    <td>Query about appointment rescheduling</td>
+                                    <td>Mar 25, 2026</td>
+                                    <td><span class="status-badge approved">Low</span></td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn"><i
+                                                    class="fa-solid fa-reply"></i></button><button
+                                                class="action-btn approve"><i class="fa-solid fa-check"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="db-section" id="reviews-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Reviews</h2>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Product / Service</th>
+                                    <th>Rating</th>
+                                    <th>Review</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reviews-tbody">
+                                <tr>
+                                    <td>Rahul Sharma</td>
+                                    <td>18" Alloy Wheel Rim</td>
+                                    <td><span style="color:#f5a623;">â˜…â˜…â˜…â˜…â˜†</span></td>
+                                    <td style="max-width:200px;color:var(--text-muted);font-size:12px;">"Great quality,
+                                        fast delivery. Fits perfectly."</td>
+                                    <td>Mar 29, 2026</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn approve" title="Approve"><i
+                                                    class="fa-solid fa-check"></i></button><button
+                                                class="action-btn delete" title="Reject"><i
+                                                    class="fa-solid fa-xmark"></i></button></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Priya Nair</td>
+                                    <td>Home Service â€“ Oil Change</td>
+                                    <td><span style="color:#f5a623;">â˜…â˜…â˜…â˜†â˜†</span></td>
+                                    <td style="max-width:200px;color:var(--text-muted);font-size:12px;">"Service was
+                                        okay but technician arrived late."</td>
+                                    <td>Mar 27, 2026</td>
+                                    <td>
+                                        <div class="row-actions"><button class="action-btn approve" title="Approve"><i
+                                                    class="fa-solid fa-check"></i></button><button
+                                                class="action-btn delete" title="Reject"><i
+                                                    class="fa-solid fa-xmark"></i></button></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+    <script src="js/script.js"></script>
+    <script src="js/add-moderator-modal.js"></script>
+    <script src="js/add-service-modal.js"></script>
+    <script>
+        // â”€â”€ Main tab switching â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        const tabBtns = document.querySelectorAll('.db-tab-btn:not(.db-subtab-btn)');
+        const sections = document.querySelectorAll('.db-section');
+
+        function activateSection(targetId) {
+            sections.forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+            const target = document.getElementById(targetId);
+            if (!target) return;
+            target.style.display = 'block';
+            setTimeout(() => target.classList.add('active'), 10);
+        }
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                if (this.classList.contains('nav-group-toggle')) {
+                    const navGroup = this.closest('.nav-group');
+                    navGroup.classList.toggle('open');
+                }
+
+                // Deactivate all top-level buttons; activate this one
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const targetId = this.getAttribute('data-target');
+                activateSection(targetId);
+
+                // If opening marketing, default to first sub-panel
+                if (targetId === 'marketing-sec') {
+                    activateSubPanel('banners-sub');
+                    document.querySelectorAll('.db-sub-tab-btn').forEach(b => b.classList.remove('active'));
+                    const first = document.querySelector('.db-sub-tab-btn[data-subtarget="banners-sub"]');
+                    if (first) first.classList.add('active');
+                }
+            });
+        });
+
+        // â”€â”€ Marketing sub-tab switching â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        function activateSubPanel(subId) {
+            document.querySelectorAll('.db-sub-panel').forEach(p => {
+                p.classList.remove('active');
+                p.style.display = 'none';
+            });
+            const panel = document.getElementById(subId);
+            if (!panel) return;
+            panel.style.display = 'block';
+            setTimeout(() => panel.classList.add('active'), 10);
+        }
+
+        // Sidebar sub-tab buttons
+        document.querySelectorAll('.db-subtab-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Open the marketing group if not open
+                const navGroup = this.closest('.nav-group');
+                if (navGroup) navGroup.classList.add('open');
+
+                // Activate marketing section
+                tabBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.db-subtab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                activateSection('marketing-sec');
+                activateSubPanel(this.getAttribute('data-subtarget'));
+
+                // Sync the inline sub-tab bar
+                const sub = this.getAttribute('data-subtarget');
+                document.querySelectorAll('.db-sub-tab-btn').forEach(b => {
+                    b.classList.toggle('active', b.getAttribute('data-subtarget') === sub);
+                });
+            });
+        });
+
+        // Inline sub-tab bar (inside Marketing content panel)
+        document.querySelectorAll('.db-sub-tab-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.db-sub-tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activateSubPanel(this.getAttribute('data-subtarget'));
+
+                // Sync sidebar
+                const sub = this.getAttribute('data-subtarget');
+                document.querySelectorAll('.db-subtab-btn').forEach(b => {
+                    b.classList.toggle('active', b.getAttribute('data-subtarget') === sub);
+                });
+            });
+        });
+    </script>
+    <style>
+        /* â”€â”€ Marketing group accordion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .nav-group .nav-sub {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-group.open .nav-sub {
+            display: block;
+        }
+
+        .nav-sub .db-tab-btn {
+            padding-left: 2.4rem;
+            font-size: 13px;
+            opacity: .85;
+        }
+
+        .group-arrow {
+            margin-left: auto;
+            font-size: 11px;
+            transition: transform .25s;
+        }
+
+        .nav-group.open .group-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-group-toggle {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            width: 100%;
+        }
+
+        /* â”€â”€ Marketing inline sub-tab bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .db-sub-tabs {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.4rem;
+            border-bottom: 2px solid rgba(255, 255, 255, .08);
+            padding-bottom: .6rem;
+        }
+
+        .db-sub-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted, #888);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: .45rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            transition: background .2s, color .2s;
+        }
+
+        .db-sub-tab-btn:hover {
+            background: rgba(255, 255, 255, .06);
+            color: #fff;
+        }
+
+        /* â”€â”€ Filter & Search Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .users-search-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 18px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-input-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-input-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .search-input-wrap input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px 15px 10px 40px;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input-wrap input:focus {
+            border-color: var(--accent-red);
+        }
+
+        .users-filter-select {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+            padding: 10px 35px 10px 15px;
+            border-radius: 10px;
+            font-size: 13.5px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 14px;
+            min-width: 160px;
+        }
+
+        .users-filter-select:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .users-filter-select:focus {
+            border-color: var(--accent-red);
+            background-color: rgba(229, 57, 53, 0.05);
+            box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.1);
+        }
+
+        .users-filter-select option {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar-sm {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent-red), #ff5252);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .user-role-label {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* â”€â”€ User Details Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .user-details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .detail-item {
+            margin-bottom: 15px;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .user-meta-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .meta-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meta-stat-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .meta-stat-row:last-child {
+            border-bottom: none;
+        }
+
+        /* â”€â”€ Garage form extras â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .form-section-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--accent-red, #e02020);
+            margin: 0 0 .75rem;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }
+
+        .req {
+            color: var(--accent-red, #e02020);
+        }
+
+        .services-checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: .5rem .75rem;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+            font-size: 13.5px;
+            cursor: pointer;
+            padding: .35rem .5rem;
+            border-radius: 6px;
+            transition: background .15s;
+        }
+
+        .check-item:hover {
+            background: rgba(255, 255, 255, .05);
+        }
+
+        .check-item input[type="checkbox"] {
+            accent-color: var(--accent-red, #e02020);
+            width: 15px;
+            height: 15px;
+        }
+
+        /* â”€â”€ Garage Modal Overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .garage-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .72);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .25s ease, visibility .25s ease;
+        }
+
+        .garage-modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* â”€â”€ Modal Box â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .garage-modal {
+            background: #141428;
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 18px;
+            width: 100%;
+            max-width: 740px;
+            max-height: 88vh;
+            overflow-y: auto;
+            padding: 2rem 2.2rem;
+            transform: translateY(30px) scale(.96);
+            transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, .15) transparent;
+        }
+
+        .garage-modal::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .garage-modal::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, .12);
+            border-radius: 8px;
+        }
+
+        .garage-modal-overlay.open .garage-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        /* â”€â”€ Modal Footer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .garage-modal-footer {
+            display: flex;
+            gap: .75rem;
+            justify-content: flex-end;
+            padding-top: 1.25rem;
+            margin-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            flex-wrap: wrap;
+        }
+
+        /* â”€â”€ Modal Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .garage-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .garage-modal-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            margin: 0;
+        }
+
+        .garage-modal-header h3 i {
+            color: #e53935;
+            font-size: 1rem;
+        }
+
+        .garage-modal-header .modal-close-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, .05);
+            color: rgba(255, 255, 255, .6);
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s, color .2s;
+            flex-shrink: 0;
+        }
+
+        .garage-modal-header .modal-close-btn:hover {
+            background: rgba(229, 57, 53, .15);
+            color: #e57373;
+            border-color: rgba(229, 57, 53, .35);
+        }
+
+        /* â”€â”€ Form Grid inside Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .garage-modal .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 1.25rem;
+        }
+
+        .garage-modal .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .garage-modal .form-group label {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .55);
+            letter-spacing: .02em;
+        }
+
+        .garage-modal .form-group input,
+        .garage-modal .form-group select,
+        .garage-modal .form-group textarea {
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 9px;
+            color: #fff;
+            padding: .65rem .9rem;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color .2s, background .2s;
+            width: 100%;
+        }
+
+        .garage-modal .form-group input::placeholder,
+        .garage-modal .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, .25);
+        }
+
+        .garage-modal .form-group input:focus,
+        .garage-modal .form-group select:focus,
+        .garage-modal .form-group textarea:focus {
+            border-color: #e53935;
+            background: rgba(229, 57, 53, .04);
+        }
+
+        .garage-modal .form-group textarea {
+            resize: vertical;
+            min-height: 84px;
+        }
+
+        /* â”€â”€ Product Form specific â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .product-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-section-header {
+            grid-column: 1 / -1;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-img-preview-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .preview-img-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .preview-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-img-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(229, 57, 53, 0.9);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-status-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-stock {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+        }
+
+        .status-low {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        .status-out {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+
+        .product-thumbnail-cell {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            flex-shrink: 0;
+        }
+
+        .product-thumbnail-cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* â”€â”€ Marketing Module Extras â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        .marketing-ad-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .ad-preview-box {
+            width: 100%;
+            height: 180px;
+            background: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .ad-preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .marketing-thumbnail {
+            width: 80px;
+            height: 45px;
+            border-radius: 4px;
+            object-fit: cover;
+            background: #111;
+        }
+
+        .blog-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .marketing-section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--accent-red);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .user-details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .garage-modal {
+                padding: 1.4rem;
+            }
+
+            .garage-modal .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        // â”€â”€ User Management Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        function openUserModal(mode, userId) {
+            alert(mode === 'add' ? 'Add User Form would open here' : 'Edit User Form for ' + userId);
+        }
+
+        function openUserDetails(userId) {
+            // In a real app, you'd fetch data. Here we'll just show the modal.
+            document.getElementById('user-details-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeUserDetails() {
+            document.getElementById('user-details-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        window.openUserDetails = function (id) {
+            if (window.openUserModal) window.openUserModal('view', id);
+        };
+
+        function toggleUserBlock(btn) {
+            const isBlocked = btn.title === 'Unblock';
+            if (confirm(`Are you sure you want to ${isBlocked ? 'unblock' : 'block'} this user?`)) {
+                const row = btn.closest('tr');
+                const badge = row.querySelector('.status-badge');
+                const nameEl = row.querySelector('.user-name');
+                const userName = nameEl ? nameEl.innerText.trim() : "";
+
+                if (isBlocked) {
+                    badge.className = 'status-badge approved';
+                    badge.innerText = 'Active';
+                    btn.title = 'Block';
+                    btn.style.color = '#f59e0b';
+                    btn.innerHTML = '<i class="fa-solid fa-ban"></i>';
+                    if (userName) syncUserAppointments(userName, false);
+                    API.toast('User unblocked successfully', 'success');
+                } else {
+                    badge.className = 'status-badge cancelled';
+                    badge.innerText = 'Blocked';
+                    btn.title = 'Unblock';
+                    btn.style.color = '#10b981';
+                    btn.innerHTML = '<i class="fa-solid fa-lock-open"></i>';
+                    if (userName) syncUserAppointments(userName, true);
+                    API.toast('User blocked & appointments disabled', 'warning');
+                }
+            }
+        }
+
+        function syncUserAppointments(userName, block) {
+            const appRows = document.querySelectorAll('#appointments-tbody tr');
+            appRows.forEach(row => {
+                const nameEl = row.querySelector('.user-name');
+                if (nameEl && nameEl.innerText.trim() === userName) {
+                    const badge = row.querySelector('.status-badge');
+                    const btns = row.querySelectorAll('.action-btn');
+
+                    if (block) {
+                        row.style.opacity = '0.4';
+                        row.style.pointerEvents = 'none';
+                        badge.className = 'status-badge cancelled';
+                        badge.innerText = 'Disabled (User Blocked)';
+                        btns.forEach(b => b.disabled = true);
+                    } else {
+                        row.style.opacity = '1';
+                        row.style.pointerEvents = 'auto';
+                        const status = row.getAttribute('data-status') || 'pending';
+                        badge.className = `status-badge ${status}`;
+                        badge.innerText = status.charAt(0).toUpperCase() + status.slice(1);
+                        btns.forEach(b => b.disabled = false);
+                    }
+                }
+            });
+        }
+
+        function confirmDeleteUser(btn) {
+            if (confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
+                btn.closest('tr').remove();
+            }
+        }
+
+        function filterUsersTable() {
+            const query = document.getElementById('users-search-input').value.toLowerCase();
+            const status = document.getElementById('users-status-filter').value;
+            const role = document.getElementById('users-role-filter').value;
+            const rows = document.querySelectorAll('#users-tbody tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                const rowStatus = row.getAttribute('data-status');
+                const rowRole = row.getAttribute('data-role');
+
+                const matchesSearch = text.includes(query);
+                const matchesStatus = !status || rowStatus === status;
+                const matchesRole = !role || rowRole === role;
+
+                if (matchesSearch && matchesStatus && matchesRole) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // â”€â”€ Moderator Management Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        async function loadModerators() {
+            const tbody = document.getElementById('moderators-tbody');
+            if (!tbody) return;
+
+            try {
+                // Try fetching from API, fallback to mock if it fails
+                let moderators = [];
+                try {
+                    const res = await API.req('/users/?role=moderator');
+                    moderators = res.results || res; // Handle both paginated and flat lists
+                } catch (apiErr) {
+                    console.warn('API fetch failed, using mock data:', apiErr);
+                    moderators = [
+                        { id: 'USR-001', name: 'Rahul Sharma', email: 'rahul@example.com', phone: '+91 98765 43210', status: 'active', role: 'moderator' },
+                        { id: 'USR-002', name: 'John Moderator', email: 'mod@motohub.com', phone: '+91 91234 56789', status: 'active', role: 'moderator' },
+                        { id: 'USR-003', name: 'AutoFix Bhubaneswar', email: 'garage@autofix.com', phone: '+91 70001 22334', status: 'pending', role: 'moderator' }
+                    ];
+                }
+
+                tbody.innerHTML = moderators.map(m => `
+                    <tr data-role="${m.role}" data-status="${m.status}">
+                        <td><strong>#${m.id}</strong></td>
+                        <td>
+                            <div class="user-cell">
+                                <div class="user-avatar-sm">${m.name ? m.name.split(' ').map(n => n[0]).join('') : 'U'}</div>
+                                <div><span class="user-name">${m.name || 'Unknown'}</span><br/><small class="user-role-label">${m.role}</small></div>
+                            </div>
+                        </td>
+                        <td>${m.email}</td>
+                        <td>${m.phone || 'â€”'}</td>
+                        <td><span class="status-badge ${API.statusBadge(m.status)}">${m.status.charAt(0).toUpperCase() + m.status.slice(1)}</span></td>
+                        <td>
+                            <div class="row-actions">
+                                <button class="action-btn" onclick="window.openAddModeratorModal('view','${m.id}')" title="View Details"><i class="fa-solid fa-eye"></i></button>
+                                <button class="action-btn" onclick="window.openAddModeratorModal('edit','${m.id}')" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                <button class="action-btn assign" onclick="window.openAddModeratorModal('edit','${m.id}')" title="Assign Role" style="color:#3b82f6;"><i class="fa-solid fa-user-tag"></i></button>
+                                <button class="action-btn" onclick="toggleUserBlock(this)" style="color:#f59e0b;" title="Block"><i class="fa-solid fa-ban"></i></button>
+                                <button class="action-btn delete" onclick="confirmDeleteUser(this)" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                console.error('Fatal error loading moderators:', err);
+            }
+        }
+
+        function filterModeratorsTable() {
+            const query = document.getElementById('moderators-search-input').value.toLowerCase();
+            const status = document.getElementById('moderators-status-filter').value;
+            const role = document.getElementById('moderators-role-filter').value;
+            const rows = document.querySelectorAll('#moderators-tbody tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                const rowStatus = row.getAttribute('data-status');
+                const rowRole = row.getAttribute('data-role');
+
+                const matchesSearch = text.includes(query);
+                const matchesStatus = !status || rowStatus === status;
+                const matchesRole = !role || rowRole === role;
+
+                row.style.display = (matchesSearch && matchesStatus && matchesRole) ? '' : 'none';
+            });
+        }
+
+        // Initialize dashboard modules on load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadModerators();
+            loadServices();
+            // loadGarages() is handled by admin-dashboard.js (the real backend-connected version)
+            loadTickets();
+            loadReviews();
+        });
+
+        // â”€â”€ Services Management Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        async function loadServices() {
+            const tbody = document.getElementById('services-tbody');
+            if (!tbody) return;
+
+            try {
+                let services = [];
+                try {
+                    const res = await API.req('/services');
+                    services = res.results || res;
+                } catch (apiErr) {
+                    console.warn('API fetch failed for services, using mock:', apiErr);
+                    services = [
+                        { id: '1', name: 'Simple Inspection', category: 'Inspection', duration: '30 min', price: 499, status: 'active' },
+                        { id: '2', name: 'Home Service', category: 'Maintenance', duration: '1â€“2 hrs', price: 1299, status: 'active' },
+                        { id: '3', name: 'Major Garage Service', category: 'Mechanical', duration: 'Full Day', price: 4999, status: 'active' },
+                        { id: '4', name: 'Wheel Alignment & Balancing', category: 'Tires', duration: '45 min', price: 799, status: 'pending' }
+                    ];
+                }
+
+                tbody.innerHTML = services.map(s => `
+                    <tr data-category="${s.category}" data-status="${s.status}">
+                        <td><strong>${s.name}</strong></td>
+                        <td>${s.category}</td>
+                        <td>${s.duration}</td>
+                        <td>â‚¹${s.price}</td>
+                        <td><span class="status-badge ${API.statusBadge(s.status)}">${s.status.charAt(0).toUpperCase() + s.status.slice(1)}</span></td>
+                        <td>
+                            <div class="row-actions">
+                                <button class="action-btn" onclick="window.openAddServiceModal('view', '${s.id}')" title="View"><i class="fa-solid fa-eye"></i></button>
+                                <button class="action-btn" onclick="window.openAddServiceModal('edit', '${s.id}')" title="Edit"><i class="fa-solid fa-pen"></i></button>
+                                <button class="action-btn delete" onclick="confirmDeleteService('${s.id}')" title="Delete"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                console.error('Fatal error loading services:', err);
+            }
+        }
+
+        // â”€â”€ Garages Management Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // NOTE: The main loadGarages() is in admin-dashboard.js. This stub is kept
+        // only for backward compat with confirmDeleteGarage below.
+        async function loadGarages() {
+            if (window._refreshGaragesTable) window._refreshGaragesTable();
+        }
+
+        // â”€â”€ Support Management Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        async function loadTickets() {
+            const tbody = document.getElementById('support-tbody');
+            if (!tbody) return;
+
+            try {
+                const res = await API.req('/support/tickets/');
+                const tickets = res.results || res;
+
+                tbody.innerHTML = tickets.map(t => {
+                    const statusClass = t.status === 'open' ? 'cancelled' : (t.status === 'in_progress' ? 'processing' : 'approved');
+                    return `
+                    <tr>
+                        <td>#${t.id}</td>
+                        <td>${t.user_email || 'Customer'}</td>
+                        <td>${t.subject}</td>
+                        <td>${API.fmtDate(t.created_at)}</td>
+                        <td><span class="status-badge ${statusClass}">${t.status.replace('_', ' ').toUpperCase()}</span></td>
+                        <td>
+                            <div class="row-actions">
+                                <button class="action-btn" onclick="replyTicket('${t.id}')" title="Reply"><i class="fa-solid fa-reply"></i></button>
+                                ${t.status !== 'resolved' && t.status !== 'closed' ? `<button class="action-btn approve" onclick="resolveTicket('${t.id}')" title="Resolve"><i class="fa-solid fa-check"></i></button>` : ''}
+                            </div>
+                        </td>
+                    </tr>
+                `}).join('');
+            } catch (err) { console.error('Error loading tickets:', err); }
+        }
+
+        // â”€â”€ Reviews Management Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        async function loadReviews() {
+            const tbody = document.getElementById('reviews-tbody');
+            if (!tbody) return;
+
+            try {
+                const res = await API.req('/reviews/admin/');
+                const reviews = res.results || res;
+
+                tbody.innerHTML = reviews.map(r => {
+                    let target = 'Unknown';
+                    if (r.product) target = `Product #${r.product}`;
+                    else if (r.service) target = `Service #${r.service}`;
+                    return `
+                    <tr>
+                        <td>${r.author_name || 'Customer'}</td>
+                        <td>${target}</td>
+                        <td><span style="color:#f5a623;">${'â˜…'.repeat(r.rating)}${'â˜†'.repeat(5 - r.rating)}</span></td>
+                        <td style="max-width:200px;color:var(--text-muted);font-size:12px;">"${r.comment || ''}"</td>
+                        <td>${API.fmtDate(r.created_at)}</td>
+                        <td>
+                            <div class="row-actions">
+                                ${r.status === 'pending' || r.status === 'rejected' ? `<button class="action-btn approve" onclick="approveReview('${r.id}')" title="Approve"><i class="fa-solid fa-check"></i></button>` : ''}
+                                ${r.status === 'pending' || r.status === 'approved' ? `<button class="action-btn delete" onclick="rejectReview('${r.id}')" title="Reject"><i class="fa-solid fa-xmark"></i></button>` : ''}
+                            </div>
+                        </td>
+                    </tr>
+                `}).join('');
+            } catch (err) { console.error('Error loading reviews:', err); }
+        }
+
+        // â”€â”€ Action Handlers for Garages, Support, Reviews â”€â”€â”€â”€â”€
+        function confirmDeleteGarage(id) {
+            if (confirm(`Are you sure you want to delete garage #${id}?`)) {
+                console.log('Deleting garage:', id);
+                API.toast('Garage deleted from system', 'info');
+                loadGarages();
+            }
+        }
+
+        function replyTicket(id) {
+            const msg = prompt(`Enter your reply for Ticket #${id}:`);
+            if (msg) {
+                API.req(`/support/tickets/${id}/messages/`, 'POST', { message: msg })
+                    .then(() => {
+                        API.toast('Reply sent to customer', 'success');
+                        loadTickets();
+                    })
+                    .catch(err => {
+                        console.error('Reply failed', err);
+                        API.toast('Failed to send reply', 'error');
+                    });
+            }
+        }
+
+        function resolveTicket(id) {
+            if (confirm(`Mark Ticket #${id} as Resolved?`)) {
+                API.req(`/support/tickets/${id}/status/`, 'PATCH', { status: 'resolved' })
+                    .then(() => {
+                        API.toast('Ticket marked as resolved', 'success');
+                        loadTickets();
+                    })
+                    .catch(err => {
+                        console.error('Resolve failed', err);
+                        API.toast('Failed to resolve ticket', 'error');
+                    });
+            }
+        }
+
+        function approveReview(id) {
+            API.req(`/reviews/${id}/moderate/`, 'PATCH', { status: 'approved' })
+                .then(() => {
+                    API.toast('Review approved and published', 'success');
+                    loadReviews();
+                })
+                .catch(err => {
+                    console.error('Approve failed', err);
+                    API.toast('Failed to approve review', 'error');
+                });
+        }
+
+        function rejectReview(id) {
+            if (confirm('Are you sure you want to reject and hide this review?')) {
+                API.req(`/reviews/${id}/moderate/`, 'PATCH', { status: 'rejected' })
+                    .then(() => {
+                        API.toast('Review rejected', 'info');
+                        loadReviews();
+                    })
+                    .catch(err => {
+                        console.error('Reject failed', err);
+                        API.toast('Failed to reject review', 'error');
+                    });
+            }
+        }
+
+        function filterServicesTable() {
+            const query = document.getElementById('services-search-input').value.toLowerCase();
+            const category = document.getElementById('services-category-filter').value;
+            const status = document.getElementById('services-status-filter').value;
+            const rows = document.querySelectorAll('#services-tbody tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                const rowCat = row.getAttribute('data-category');
+                const rowStatus = row.getAttribute('data-status');
+
+                const matchesSearch = text.includes(query);
+                const matchesCategory = !category || rowCat === category;
+                const matchesStatus = !status || rowStatus === status;
+
+                row.style.display = (matchesSearch && matchesCategory && matchesStatus) ? '' : 'none';
+            });
+        }
+
+        function confirmDeleteService(id) {
+            if (confirm('Are you sure you want to delete this service?')) {
+                console.log('Deleting service:', id);
+                // API.req(\`/services/\${id}\`, 'DELETE');
+                loadServices();
+            }
+        }
+
+        // â”€â”€ Orders Management Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        let currentOrderRow = null;
+
+        function filterOrdersTable() {
+            const status = document.getElementById('orders-status-filter').value;
+            const date = document.getElementById('orders-date-filter').value;
+            const rows = document.querySelectorAll('#orders-tbody tr');
+
+            rows.forEach(row => {
+                const rowStatus = row.getAttribute('data-status');
+                const rowDate = row.getAttribute('data-date');
+
+                const matchesStatus = !status || rowStatus === status;
+                const matchesDate = !date || rowDate === date;
+
+                if (matchesStatus && matchesDate) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function cancelOrder(btn) {
+            if (confirm('Are you sure you want to cancel this order?')) {
+                const row = btn.closest('tr');
+                row.setAttribute('data-status', 'cancelled');
+                const badge = row.querySelector('.status-badge');
+                badge.className = 'status-badge cancelled';
+                badge.innerText = 'Cancelled';
+            }
+        }
+
+        function openOrderStatusModal(btn) {
+            currentOrderRow = btn.closest('tr');
+            const orderId = currentOrderRow.querySelector('td strong').innerText;
+            const currentStatus = currentOrderRow.getAttribute('data-status');
+
+            document.getElementById('status-order-id-label').innerText = orderId;
+            document.getElementById('update-order-status-select').value = currentStatus;
+
+            document.getElementById('order-status-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOrderStatusModal() {
+            document.getElementById('order-status-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+            currentOrderRow = null;
+        }
+
+        function saveOrderStatus() {
+            if (currentOrderRow) {
+                const newStatus = document.getElementById('update-order-status-select').value;
+                currentOrderRow.setAttribute('data-status', newStatus);
+                const badge = currentOrderRow.querySelector('.status-badge');
+
+                let badgeClass = 'status-badge ';
+                let statusText = '';
+                switch (newStatus) {
+                    case 'pending': badgeClass += 'processing'; statusText = 'Pending'; break;
+                    case 'confirmed': badgeClass += 'approved'; statusText = 'Confirmed'; break;
+                    case 'shipped': badgeClass += 'in-progress'; statusText = 'Shipped'; break;
+                    case 'delivered': badgeClass += 'delivered'; statusText = 'Delivered'; break;
+                    case 'cancelled': badgeClass += 'cancelled'; statusText = 'Cancelled'; break;
+                }
+
+                badge.className = badgeClass;
+                badge.innerText = statusText;
+
+                closeOrderStatusModal();
+            }
+        }
+
+        // â”€â”€ Appointments Management Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        let currentAppointmentRow = null;
+
+        function filterAppointmentsTable() {
+            const query = document.getElementById('appointments-search-input').value.toLowerCase();
+            const type = document.getElementById('appointments-type-filter').value;
+            const status = document.getElementById('appointments-status-filter').value;
+            const rows = document.querySelectorAll('#appointments-tbody tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                const rowType = row.getAttribute('data-type');
+                const rowStatus = row.getAttribute('data-status');
+
+                const matchesSearch = text.includes(query);
+                const matchesType = !type || rowType === type;
+                const matchesStatus = !status || rowStatus === status;
+
+                if (matchesSearch && matchesType && matchesStatus) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function viewAppointment(id) {
+            document.getElementById('appointment-id-display').innerText = id;
+            document.getElementById('appointment-details-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAppointmentDetails() {
+            document.getElementById('appointment-details-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function openAssignGarageModal(btn) {
+            currentAppointmentRow = btn.closest('tr');
+            document.getElementById('assign-garage-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAssignGarageModal() {
+            document.getElementById('assign-garage-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+            currentAppointmentRow = null;
+        }
+
+        function saveGarageAssignment() {
+            if (currentAppointmentRow) {
+                const garageSelect = document.getElementById('garage-select');
+                const garageName = garageSelect.options[garageSelect.selectedIndex].text;
+                // Update the garage column (index 3)
+                currentAppointmentRow.querySelector('td:nth-child(4)').innerHTML = garageName;
+                closeAssignGarageModal();
+            }
+        }
+
+        function openAppointmentStatusModal(btn) {
+            currentAppointmentRow = btn.closest('tr');
+            const currentStatus = currentAppointmentRow.getAttribute('data-status');
+            document.getElementById('update-appointment-status-select').value = currentStatus;
+            document.getElementById('appointment-status-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAppointmentStatusModal() {
+            document.getElementById('appointment-status-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+            currentAppointmentRow = null;
+        }
+
+        function saveAppointmentStatus() {
+            if (currentAppointmentRow) {
+                const newStatus = document.getElementById('update-appointment-status-select').value;
+                currentAppointmentRow.setAttribute('data-status', newStatus);
+                const badge = currentAppointmentRow.querySelector('.status-badge');
+
+                let badgeClass = 'status-badge ';
+                let statusText = '';
+                switch (newStatus) {
+                    case 'pending': badgeClass += 'pending'; statusText = 'Pending'; break;
+                    case 'confirmed': badgeClass += 'approved'; statusText = 'Confirmed'; break;
+                    case 'in-progress': badgeClass += 'in-progress'; statusText = 'In Progress'; break;
+                    case 'completed': badgeClass += 'delivered'; statusText = 'Completed'; break;
+                    case 'cancelled': badgeClass += 'cancelled'; statusText = 'Cancelled'; break;
+                }
+
+                badge.className = badgeClass;
+                badge.innerText = statusText;
+
+                closeAppointmentStatusModal();
+            }
+        }
+
+        // â”€â”€ Products Management Functions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        let currentStockProductId = null;
+
+        function filterProductsTable() {
+            const query = document.getElementById('products-search-input').value.toLowerCase();
+            const category = document.getElementById('products-category-filter').value;
+            const status = document.getElementById('products-status-filter').value;
+            const rows = document.querySelectorAll('#products-tbody tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                const rowCategory = row.getAttribute('data-category');
+                const rowStatus = row.getAttribute('data-status');
+
+                const matchesSearch = text.includes(query);
+                const matchesCategory = !category || rowCategory === category;
+                const matchesStatus = !status || rowStatus === status;
+
+                if (matchesSearch && matchesCategory && matchesStatus) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Product modal functions moved to js/add-product-modal.js
+
+        function openUpdateStockModal(productId) {
+            currentStockProductId = productId;
+            document.getElementById('stock-p-id').innerText = `#${productId}`;
+            // Mock name
+            document.getElementById('stock-p-name').innerText = '18" Black Alloy Wheel Rim (BMW)';
+            document.getElementById('stock-qty').value = 0;
+
+            document.getElementById('update-stock-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeUpdateStockModal() {
+            document.getElementById('update-stock-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+            currentStockProductId = null;
+        }
+
+        function saveStockUpdate() {
+            const qty = parseInt(document.getElementById('stock-qty').value);
+            if (qty === 0) {
+                alert('Please enter a quantity adjustment.');
+                return;
+            }
+
+            // Logic would update stock in backend and DOM here
+            alert(`Stock adjusted by ${qty > 0 ? '+' : ''}${qty} units (Mock)`);
+            closeUpdateStockModal();
+        }
+
+        function confirmDeleteProduct(id) {
+            if (confirm(`Are you sure you want to delete product #${id}? This action cannot be undone.`)) {
+                // Logic would call API and then remove row
+                console.log(`Product ${id} deleted.`);
+                // For demo, find and remove the nearest row if it matched ID
+                const rows = document.querySelectorAll('#products-tbody tr');
+                rows.forEach(r => {
+                    if (r.innerText.includes(id)) r.remove();
+                });
+            }
+        }
+
+        // ── Marketing Management Functions ─────────────────────────
+        window._banners = [];
+        window._ads = {};
+
+        function toggleImgInput() {
+            var isUrl = document.getElementById('img_type_url').checked;
+            document.getElementById('m-field-img').style.display = isUrl ? 'block' : 'none';
+            document.getElementById('m-field-img-file').style.display = isUrl ? 'none' : 'block';
+        }
+
+        async function loadBanners() {
+            var tbody = document.getElementById('banners-tbody');
+            if (!tbody) return;
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:20px;">Loading banners...</td></tr>';
+            try {
+                var res = await API.req('/products/banners/');
+                window._banners = res.results || res;
+                if (!window._banners.length) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:20px;">No banners found.</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = window._banners.map(function(b) {
+                    return '<tr>' +
+                        '<td><img alt="Banner" class="marketing-thumbnail" src="' + (b.display_image || b.image || 'assets/images/placeholder.jpg') + '" /></td>' +
+                        '<td>' +
+                            '<strong>' + (b.title || '--') + '</strong><br />' +
+                            '<small style="color:var(--text-muted);">' + (b.subtitle || '') + '</small><br/>' +
+                            '<small style="color:var(--text-muted);">Link: ' + (b.button_link || '#') + '</small>' +
+                        '</td>' +
+                        '<td>Order: ' + b.order + '</td>' +
+                        '<td><span class="status-badge ' + (b.is_active ? 'approved' : 'pending') + '">' + (b.is_active ? 'Active' : 'Draft') + '</span></td>' +
+                        '<td><div class="row-actions">' +
+                            '<button class="action-btn" onclick="openMarketingModal(\'banner\', \'edit\', ' + b.id + ')" title="Edit"><i class="fa-solid fa-pen"></i></button>' +
+                            '<button class="action-btn delete" onclick="confirmDeleteMarketing(\'banner\', ' + b.id + ')" title="Delete"><i class="fa-solid fa-trash"></i></button>' +
+                        '</div></td>' +
+                    '</tr>';
+                }).join('');
+            } catch (err) {
+                console.error('[Marketing] Error loading banners:', err);
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#e74c3c;padding:20px;">Failed to load banners. Check console.</td></tr>';
+                API.toast('Could not load banners', 'error');
+            }
+        }
+
+        function openMarketingModal(type, mode, id) {
+            id = (id !== undefined && id !== null) ? id : null;
+            console.log('[Marketing] openMarketingModal: type=' + type + ', mode=' + mode + ', id=' + id);
+
+            var modal      = document.getElementById('marketing-modal-overlay');
+            var titleEl    = document.getElementById('m-modal-title');
+            var typeInput  = document.getElementById('m-type');
+            var idInput    = document.getElementById('m-id');
+            var field1     = document.getElementById('m-field-1');
+            var fieldLink  = document.getElementById('m-field-link');
+            var fieldContent = document.getElementById('m-field-content');
+            var fieldImg   = document.getElementById('m-field-img');
+            var fieldBtnText = document.getElementById('m-field-btn-text');
+            var fieldStatus= document.getElementById('m-field-status');
+            var label1     = document.getElementById('m-label-1');
+            var labelContent = document.getElementById('m-label-content');
+            var groupLink  = document.getElementById('m-group-link');
+            var groupContent = document.getElementById('m-group-content');
+            var groupStatus= document.getElementById('m-group-status');
+
+            // Reset form cleanly
+            document.getElementById('marketing-form').reset();
+            typeInput.value = type;
+            idInput.value = (id !== null) ? String(id) : '';
+            document.getElementById('img_type_url').checked = true;
+            toggleImgInput();
+
+            groupLink.style.display = 'block';
+            groupContent.style.display = (type === 'banner' || type === 'ad') ? 'block' : 'none';
+            groupStatus.style.display = 'block';
+
+            if (type === 'banner') {
+                titleEl.innerText = (mode === 'add') ? 'Add New Banner' : 'Edit Banner';
+                label1.innerText = 'Banner Title';
+                if (labelContent) labelContent.innerText = 'Subtitle / Subtext';
+            } else if (type === 'ad') {
+                titleEl.innerText = 'Edit Advertisement';
+                label1.innerText = 'Ad Title';
+                if (labelContent) labelContent.innerText = 'Ad Subtitle';
+            }
+
+            // Pre-fill for edit mode
+            if (mode === 'edit' && id !== null) {
+                if (type === 'banner') {
+                    var banner = null;
+                    for (var i = 0; i < window._banners.length; i++) {
+                        if (String(window._banners[i].id) === String(id)) {
+                            banner = window._banners[i];
+                            break;
+                        }
+                    }
+                    var fillBanner = function(b) {
+                        field1.value   = b.title || '';
+                        fieldLink.value = b.button_link || '';
+                        if (fieldContent) fieldContent.value = b.subtitle || '';
+                        fieldImg.value = b.image || '';
+                        if (fieldBtnText) fieldBtnText.value = b.button_text || 'SHOP NOW';
+                        fieldStatus.value = b.is_active ? 'Active' : 'Draft';
+                        console.log('[Marketing] Pre-filled banner id=' + b.id + ' title=' + b.title);
+                    };
+                    if (banner) {
+                        fillBanner(banner);
+                    } else {
+                        console.warn('[Marketing] Banner id=' + id + ' not in cache. Fetching from API...');
+                        API.req('/products/banners/' + id + '/').then(fillBanner).catch(function(e) {
+                            console.error('[Marketing] Could not fetch banner id=' + id, e);
+                            API.toast('Could not load banner data', 'error');
+                        });
+                    }
+                } else if (type === 'ad') {
+                    var ad = null;
+                    var adKeys = Object.keys(window._ads);
+                    for (var k = 0; k < adKeys.length; k++) {
+                        if (String(window._ads[adKeys[k]].id) === String(id)) {
+                            ad = window._ads[adKeys[k]];
+                            break;
+                        }
+                    }
+                    if (ad) {
+                        field1.value   = ad.title || '';
+                        fieldLink.value = ad.button_link || '';
+                        if (fieldContent) fieldContent.value = ad.subtitle || '';
+                        fieldImg.value = ad.image || '';
+                        if (fieldBtnText) fieldBtnText.value = ad.button_text || 'SHOP NOW';
+                        fieldStatus.value = ad.is_active !== false ? 'Active' : 'Draft';
+                        console.log('[Marketing] Pre-filled ad id=' + ad.id + ' title=' + ad.title);
+                    }
+                }
+            }
+            
+            // Set action URL correctly for form POST
+            if (mode === 'edit' && id !== null) {
+                document.getElementById('marketing-form').action = '/api/marketing/banners/update/' + id + '/';
+            } else {
+                document.getElementById('marketing-form').action = '/api/marketing/banners/create/';
+            }
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMarketingModal() {
+            document.getElementById('marketing-modal-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        async function saveMarketingData() {
+            var type = document.getElementById('m-type').value;
+            var id   = document.getElementById('m-id').value.trim();
+
+            console.log('[Marketing] saveMarketingData: type=' + type + ', id="' + id + '"');
+
+            // Validation
+            var titleVal = document.getElementById('m-field-1').value.trim();
+            if (!titleVal) {
+                API.toast('Title is required.', 'error');
+                document.getElementById('m-field-1').focus();
+                return;
+            }
+
+            if (type === 'banner' || type === 'ad') {
+                var isUrl = document.getElementById('img_type_url').checked;
+                var imgUrlVal = document.getElementById('m-field-img').value.trim();
+                var fileInput = document.getElementById('m-field-img-file');
+                var hasFile = !isUrl && fileInput.files.length > 0;
+                var hasUrl  = isUrl && imgUrlVal.length > 0;
+
+                // Adding new: require image. Editing: image is optional (keep existing).
+                if (!id && !hasFile && !hasUrl) {
+                    API.toast('Please provide an image URL or upload a file.', 'error');
+                    return;
+                }
+
+                var formData = new FormData();
+                formData.append('title',       titleVal);
+                formData.append('subtitle',    (document.getElementById('m-field-content').value || '').trim());
+                formData.append('button_link', (document.getElementById('m-field-link').value || 'coming-soon.html').trim());
+                formData.append('is_active',   document.getElementById('m-field-status').value === 'Active' ? 'true' : 'false');
+                var btnTextField = document.getElementById('m-field-btn-text');
+                if (btnTextField) formData.append('button_text', (btnTextField.value || 'SHOP NOW').trim());
+
+                if (isUrl && imgUrlVal) {
+                    formData.append('image', imgUrlVal);
+                } else if (hasFile) {
+                    formData.append('image_file', fileInput.files[0]);
+                }
+
+                var endpoint, method;
+                if (type === 'banner') {
+                    endpoint = id ? '/products/banners/' + id + '/' : '/products/banners/';
+                    method   = id ? 'PATCH' : 'POST';
+                } else {
+                    if (!id) {
+                        API.toast('Ad ID is missing. Cannot update.', 'error');
+                        return;
+                    }
+                    endpoint = '/products/ads/' + id + '/';
+                    method   = 'PATCH';
+                }
+
+                console.log('[Marketing] ' + method + ' ' + endpoint);
+                try {
+                    await API.req(endpoint, { method: method, body: formData });
+                    API.toast((type === 'banner' ? 'Banner' : 'Ad') + ' ' + (id ? 'updated' : 'created') + ' successfully!', 'success');
+                    closeMarketingModal();
+                    if (type === 'banner') { loadBanners(); } else { loadAds(); }
+                } catch (err) {
+                    console.error('[Marketing] Save ' + type + ' failed:', err);
+                    var msg = (err && (err.detail || err.message || JSON.stringify(err))) || 'Unknown error';
+                    API.toast('Save failed: ' + msg, 'error');
+                }
+            } else {
+                API.toast(type + ' saved (not yet wired to backend)', 'info');
+                closeMarketingModal();
+            }
+        }
+
+        async function confirmDeleteMarketing(type, id) {
+            if (!confirm('Are you sure you want to delete this ' + type + '? This action cannot be undone.')) return;
+            console.log('[Marketing] DELETE ' + type + ' id=' + id);
+            if (type === 'banner') {
+                try {
+                    await API.req('/products/banners/' + id + '/', { method: 'DELETE' });
+                    API.toast('Banner deleted successfully', 'success');
+                    loadBanners();
+                } catch (err) {
+                    console.error('[Marketing] Delete banner failed:', err);
+                    API.toast('Failed to delete banner', 'error');
+                }
+            } else {
+                API.toast(type + ' #' + id + ' deleted (mock)', 'info');
+            }
+        }
+
+        setTimeout(loadBanners, 500);
+
+        // ── Ads Management ──────────────────────────────────────────
+
+        async function loadAds() {
+            try {
+                var res = await API.req('/products/ads/');
+                var ads = res.results || res;
+                ads.forEach(function(ad) {
+                    window._ads[ad.banner_type] = ad;
+                    var img = ad.display_image || ad.image;
+                    if (ad.banner_type === 'service') {
+                        var el = document.getElementById('ad-img-service');
+                        if (el && img) el.src = img;
+                        var t = document.getElementById('ad-title-service');
+                        if (t) t.textContent = (ad.title || '').replace(/\n/g, ' ');
+                        var l = document.getElementById('ad-link-service');
+                        if (l) l.textContent = 'Link: ' + (ad.button_link || '#');
+                    } else if (ad.banner_type === 'promo_1') {
+                        var el2 = document.getElementById('ad-img-promo1');
+                        if (el2 && img) el2.src = img;
+                        var t2 = document.getElementById('ad-title-promo1');
+                        if (t2) t2.textContent = ad.title || '';
+                        var l2 = document.getElementById('ad-link-promo1');
+                        if (l2) l2.textContent = 'Link: ' + (ad.button_link || '#');
+                    } else if (ad.banner_type === 'promo_2') {
+                        var el3 = document.getElementById('ad-img-promo2');
+                        if (el3 && img) el3.src = img;
+                        var t3 = document.getElementById('ad-title-promo2');
+                        if (t3) t3.textContent = ad.title || '';
+                        var l3 = document.getElementById('ad-link-promo2');
+                        if (l3) l3.textContent = 'Link: ' + (ad.button_link || '#');
+                    }
+                });
+            } catch(err) { console.error('[Marketing] loadAds failed:', err); }
+        }
+
+        function openAdModal(bannerType) {
+            var ad = window._ads[bannerType] || {};
+            console.log('[Marketing] openAdModal: bannerType=' + bannerType + ', id=' + ad.id);
+            document.getElementById('marketing-form').reset();
+            document.getElementById('m-type').value = 'ad';
+            document.getElementById('m-id').value = ad.id !== undefined ? String(ad.id) : '';
+            document.getElementById('m-modal-title').innerText = 'Edit Advertisement';
+            document.getElementById('m-label-1').innerText = 'Ad Title';
+            document.getElementById('m-group-link').style.display = 'block';
+            document.getElementById('m-group-content').style.display = 'block';
+            var lc = document.getElementById('m-label-content');
+            if (lc) lc.innerText = 'Ad Subtitle';
+            document.getElementById('m-group-status').style.display = 'block';
+            document.getElementById('m-field-1').value = ad.title || '';
+            document.getElementById('m-field-link').value = ad.button_link || '';
+            var fc = document.getElementById('m-field-content');
+            if (fc) fc.value = ad.subtitle || '';
+            document.getElementById('m-field-img').value = ad.image || '';
+            var fbt = document.getElementById('m-field-btn-text');
+            if (fbt) fbt.value = ad.button_text || 'SHOP NOW';
+            document.getElementById('m-field-status').value = ad.is_active !== false ? 'Active' : 'Draft';
+            document.getElementById('img_type_url').checked = true;
+            toggleImgInput();
+            document.getElementById('marketing-modal-overlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        setTimeout(loadAds, 600);
+    </script>
+    <!-- â”€â”€ User Details Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="garage-modal-overlay" id="user-details-overlay" onclick="if(event.target===this) closeUserDetails()">
+        <div class="garage-modal" style="max-width: 600px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-user-circle"></i> User Details</h3>
+                <button class="modal-close-btn" onclick="closeUserDetails()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="user-cell"
+                style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                <div class="user-avatar-sm" id="det-avatar" style="width:60px; height:60px; font-size:22px;">RS</div>
+                <div>
+                    <h2 id="det-name" style="font-size:1.4rem; color:#fff; margin-bottom:2px;">Rahul Sharma</h2>
+                    <span class="status-badge approved" id="det-status">Active</span>
+                </div>
+            </div>
+            <div class="user-details-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Email Address</span>
+                    <span class="detail-value" id="det-email">rahul@example.com</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Phone Number</span>
+                    <span class="detail-value" id="det-phone">+91 98765 43210</span>
+                </div>
+                <div class="detail-item" style="grid-column: 1/-1;">
+                    <span class="detail-label">Address</span>
+                    <span class="detail-value" id="det-address">House No. 123, Nayapalli, Bhubaneswar, Odisha -
+                        751015</span>
+                </div>
+            </div>
+            <div class="user-meta-box">
+                <p class="meta-title"><i class="fa-solid fa-car"></i> Vehicle Info</p>
+                <div class="meta-stat-row">
+                    <span>Model</span>
+                    <span class="detail-value" id="det-vehicle">Maruti Suzuki Swift (OD-02-AX-1234)</span>
+                </div>
+            </div>
+            <div class="user-meta-box">
+                <p class="meta-title"><i class="fa-solid fa-chart-simple"></i> Activity Overview</p>
+                <div class="meta-stat-row">
+                    <span>Total Orders</span>
+                    <span class="detail-value" id="det-orders">12 Orders</span>
+                </div>
+                <div class="meta-stat-row">
+                    <span>Total Bookings</span>
+                    <span class="detail-value" id="det-bookings">4 Appointments</span>
+                </div>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm" onclick="openUserModal('edit')">Edit User</button>
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeUserDetails()">Close</button>
+            </div>
+        </div>
+    </div>
+    <!-- â”€â”€ Update Order Status Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="garage-modal-overlay" id="order-status-overlay"
+        onclick="if(event.target===this) closeOrderStatusModal()">
+        <div class="garage-modal" style="max-width: 450px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-truck-fast"></i> Update Order Status</h3>
+                <button class="modal-close-btn" onclick="closeOrderStatusModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label>Order ID: <strong id="status-order-id-label"
+                        style="color:var(--accent-red);">#MH----</strong></label>
+            </div>
+            <!-- Workflow visualization -->
+            <div class="order-workflow"
+                style="margin-bottom: 25px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px;">
+                <p style="font-size:12px; color:var(--text-muted); margin-bottom:8px;">Workflow Sequence:</p>
+                <div
+                    style="font-size:14px; font-weight:600; color:#fff; display:flex; justify-content:space-between; align-items:center;">
+                    <span>Pending</span> <i class="fa-solid fa-arrow-right"
+                        style="color:var(--text-muted); font-size:10px;"></i>
+                    <span>Confirmed</span> <i class="fa-solid fa-arrow-right"
+                        style="color:var(--text-muted); font-size:10px;"></i>
+                    <span>Shipped</span> <i class="fa-solid fa-arrow-right"
+                        style="color:var(--text-muted); font-size:10px;"></i>
+                    <span>Delivered</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Current Status</label>
+                <select class="users-filter-select" id="update-order-status-select" style="width:100%; margin-top:8px;">
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm" onclick="saveOrderStatus()">Update Status</button>
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeOrderStatusModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- â”€â”€ Appointment Details Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="garage-modal-overlay" id="appointment-details-overlay"
+        onclick="if(event.target===this) closeAppointmentDetails()">
+        <div class="garage-modal" style="max-width: 600px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-calendar-check"></i> Appointment <span id="appointment-id-display"></span>
+                </h3>
+                <button class="modal-close-btn" onclick="closeAppointmentDetails()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="user-details-grid" style="margin-top: 20px;">
+                <div class="detail-item">
+                    <span class="detail-label">Customer Info</span>
+                    <span class="detail-value">Rahul Sharma<br /><small
+                            style="color:var(--text-muted); font-weight:400;">+91 98765 43210</small></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Vehicle Info</span>
+                    <span class="detail-value">Toyota Fortuner<br /><small
+                            style="color:var(--text-muted); font-weight:400;">OD-02-AX-1234</small></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Appointment Type</span>
+                    <span class="detail-value">Home Service</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Date &amp; Time</span>
+                    <span class="detail-value">Apr 05, 2026 at 10:00 AM</span>
+                </div>
+                <div class="detail-item" style="grid-column: 1/-1;">
+                    <span class="detail-label">Assigned Garage</span>
+                    <span class="detail-value" style="color:var(--accent-red);">Unassigned</span>
+                </div>
+                <div class="detail-item" style="grid-column: 1/-1;">
+                    <span class="detail-label">Customer Note</span>
+                    <span class="detail-value" style="font-weight:400; color:rgba(255,255,255,0.85);">"Please call
+                        before reaching. Suspecting an issue with the brake pads."</span>
+                </div>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeAppointmentDetails()">Close</button>
+            </div>
+        </div>
+    </div>
+    <!-- â”€â”€ Assign Garage Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="garage-modal-overlay" id="assign-garage-overlay"
+        onclick="if(event.target===this) closeAssignGarageModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-warehouse"></i> Assign to Garage</h3>
+                <button class="modal-close-btn" onclick="closeAssignGarageModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="form-group" style="margin-top:20px;">
+                <label>Select Garage</label>
+                <select class="users-filter-select" id="garage-select" style="width:100%; margin-top:8px;">
+                    <option value="g1">MOTOHUB Garage â€“ Nayapalli</option>
+                    <option value="g2">MOTOHUB Garage â€“ Patia</option>
+                    <option value="g3">AutoFix Bhubaneswar</option>
+                </select>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm" onclick="saveGarageAssignment()">Assign</button>
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeAssignGarageModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- â”€â”€ Update Appointment Status Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="garage-modal-overlay" id="appointment-status-overlay"
+        onclick="if(event.target===this) closeAppointmentStatusModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-arrows-rotate"></i> Update Status</h3>
+                <button class="modal-close-btn" onclick="closeAppointmentStatusModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="form-group" style="margin-top:20px;">
+                <label>Appointment Status</label>
+                <select class="users-filter-select" id="update-appointment-status-select"
+                    style="width:100%; margin-top:8px;">
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm" onclick="saveAppointmentStatus()">Update</button>
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeAppointmentStatusModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- Product popup is dynamically injected via js/add-product-modal.js -->
+    <!-- ––– Update Stock Modal ––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="garage-modal-overlay" id="update-stock-overlay"
+        onclick="if(event.target===this) closeUpdateStockModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-boxes-stacked"></i> Update Stock</h3>
+                <button class="modal-close-btn" onclick="closeUpdateStockModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div
+                style="margin-top:20px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 20px;">
+                <p id="stock-p-name" style="font-weight: 600; color: #fff; margin-bottom: 4px;">Product Name</p>
+                <small id="stock-p-id" style="color: var(--text-muted);">#ID-XXXX</small>
+            </div>
+            <div class="form-group">
+                <label>Add/Remove Quantity</label>
+                <div style="display: flex; align-items: center; gap: 15px; margin-top: 8px;">
+                    <button class="btn btn-red btn-sm outline-btn"
+                        onclick="document.getElementById('stock-qty').stepDown()" style="min-width: 40px;"
+                        type="button">-</button>
+                    <input id="stock-qty" style="text-align: center; font-size: 1.2rem; font-weight: 700;" type="number"
+                        value="0" />
+                    <button class="btn btn-red btn-sm outline-btn"
+                        onclick="document.getElementById('stock-qty').stepUp()" style="min-width: 40px;"
+                        type="button">+</button>
+                </div>
+                <small style="display: block; margin-top: 10px; color: var(--text-muted); font-size: 11px;">Enter
+                    positive to add, negative to remove.</small>
+            </div>
+            <div class="garage-modal-footer">
+                <button class="btn btn-red btn-sm" onclick="saveStockUpdate()" type="button">Save Adjustment</button>
+                <button class="btn btn-red btn-sm outline-btn" onclick="closeUpdateStockModal()"
+                    type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- â”€â”€ Marketing Management Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="garage-modal-overlay" id="marketing-modal-overlay"
+        onclick="if(event.target===this) closeMarketingModal()">
+        <div class="garage-modal" style="max-width: 500px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-bullhorn"></i> <span id="m-modal-title">Marketing Management</span></h3>
+                <button class="modal-close-btn" onclick="closeMarketingModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="marketing-form" method="POST" action="/api/marketing/banners/update/0/" enctype="multipart/form-data">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token|default:'' }}">
+                <input id="m-type" type="hidden" />
+                <input id="m-id" type="hidden" />
+                <div class="form-group">
+                    <label id="m-label-1">Title / Name</label>
+                    <input id="m-field-1" name="title" placeholder="Enter title..." required="" type="text" />
+                </div>
+                <div class="form-group" id="m-group-link">
+                    <label>Action Link / URL</label>
+                    <input id="m-field-link" name="link" placeholder="e.g. /shop/wheels" type="text" />
+                </div>
+                <div class="form-group" id="m-group-content">
+                    <label id="m-label-content">Content / Text</label>
+                    <textarea id="m-field-content" name="content" placeholder="Enter content..." rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Thumbnail Image</label>
+                    <div style="display:flex; gap: 10px; margin-bottom: 5px;">
+                        <label style="font-weight:normal; cursor:pointer;"><input type="radio" name="img_type" id="img_type_url" value="url" checked onchange="toggleImgInput()"> Image URL</label>
+                        <label style="font-weight:normal; cursor:pointer;"><input type="radio" name="img_type" id="img_type_file" value="file" onchange="toggleImgInput()"> Upload File</label>
+                    </div>
+                    <input id="m-field-img" placeholder="Paste image URL here..." type="text" />
+                    <input id="m-field-img-file" type="file" accept="image/*" style="display:none; padding: 6px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.1); width: 100%; border-radius: 6px; color: #fff;" />
+                </div>
+                <div class="form-group" id="m-group-btn-text">
+                    <label>Button Text</label>
+                    <input id="m-field-btn-text" placeholder="e.g. SHOP NOW" type="text" value="SHOP NOW" />
+                </div>
+                <div class="form-group" id="m-group-status">
+                    <label>Current Status</label>
+                    <select class="users-filter-select" id="m-field-status" style="width: 100%;">
+                        <option value="Active">Active / Published</option>
+                        <option value="Draft">Draft / Hidden</option>
+                    </select>
+                </div>
+                <div class="garage-modal-footer">
+                    <button class="btn btn-red btn-sm" id="m-save-btn" type="submit">Save Changes</button>
+                    <button class="btn btn-red btn-sm outline-btn" onclick="closeMarketingModal()"
+                        type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- â”€â”€ Assign Role Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="garage-modal-overlay" id="assign-role-overlay" onclick="if(event.target===this) closeAssignRoleModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-user-tag"></i> Assign Role</h3>
+                <button class="modal-close-btn" onclick="closeAssignRoleModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="assign-role-form" onsubmit="event.preventDefault(); closeAssignRoleModal();">
+                <div class="form-group" style="margin-top:20px;">
+                    <label>Select Role</label>
+                    <select class="users-filter-select" id="m-role-select" style="width: 100%;">
+                        <option value="moderator_limited">Moderator (Limited)</option>
+                        <option value="moderator_full">Moderator (Full Access)</option>
+                        <option value="moderator_support">Support Specialist</option>
+                        <option value="admin">Administrator</option>
+                    </select>
+                </div>
+                <div class="garage-modal-footer">
+                    <button class="btn btn-red btn-sm" type="submit">Save Role</button>
+                    <button class="btn btn-red btn-sm outline-btn" onclick="closeAssignRoleModal()"
+                        type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openAssignRoleModal(userId) {
+            document.getElementById('assign-role-overlay').classList.add('active');
+        }
+        function closeAssignRoleModal() {
+            document.getElementById('assign-role-overlay').classList.remove('active');
+        }
+    </script>
+    <!-- â”€â”€ Assign Garage Appt Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="garage-modal-overlay" id="appt-assign-modal-overlay"
+        onclick="if(event.target===this) closeApptAssignModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-warehouse"></i> Assign Garage</h3>
+                <button class="modal-close-btn" onclick="closeApptAssignModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <input type="hidden" id="appt-assign-id">
+            <div class="form-grid" style="grid-template-columns: 1fr;">
+                <div class="form-group">
+                    <label>Select Garage <span class="req">*</span></label>
+                    <select id="appt-garage-select">
+                        <option value="">Loading garages...</option>
+                    </select>
+                </div>
+                <div class="garage-modal-footer"
+                    style="display: flex; gap: 10px; margin-top: 15px; justify-content: flex-end;">
+                    <button class="btn btn-red btn-sm" onclick="submitApptGarageAssign()">Assign Garage</button>
+                    <button class="btn btn-red btn-sm outline-btn"
+                        style="background: rgba(255,255,255,0.05); color: #fff;"
+                        onclick="closeApptAssignModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- â”€â”€ Update Appt Status Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <div class="garage-modal-overlay" id="appt-status-modal-overlay"
+        onclick="if(event.target===this) closeApptStatusModal()">
+        <div class="garage-modal" style="max-width: 400px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-arrows-rotate"></i> Update Status</h3>
+                <button class="modal-close-btn" onclick="closeApptStatusModal()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <input type="hidden" id="appt-status-id">
+            <div class="form-grid" style="grid-template-columns: 1fr;">
+                <div class="form-group">
+                    <label>New Status <span class="req">*</span></label>
+                    <select class="users-filter-select" id="appt-status-select" style="width: 100%;">
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                        <option value="assigned">Assigned</option>
+                        <option value="in_progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="garage-modal-footer"
+                    style="display: flex; gap: 10px; margin-top: 15px; justify-content: flex-end;">
+                    <button class="btn btn-red btn-sm" onclick="submitApptStatusUpdate()">Save Status</button>
+                    <button class="btn btn-red btn-sm outline-btn"
+                        style="background: rgba(255,255,255,0.05); color: #fff;"
+                        onclick="closeApptStatusModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openApptAssignModal(id) {
+            document.getElementById('appt-assign-id').value = id;
+            document.getElementById('appt-assign-modal-overlay').classList.add('open');
+        }
+        function closeApptAssignModal() {
+            document.getElementById('appt-assign-modal-overlay').classList.remove('open');
+        }
+        function openApptStatusModal(id) {
+            document.getElementById('appt-status-id').value = id;
+            document.getElementById('appt-status-modal-overlay').classList.add('open');
+        }
+        function closeApptStatusModal() {
+            document.getElementById('appt-status-modal-overlay').classList.remove('open');
+        }
+    </script>
+
+    <!-- â•â• Garage Add/Edit Modal â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+    <div class="garage-modal-overlay" id="garageModalOverlay" onclick="if(event.target===this) closeGarageModal()">
+        <div class="garage-modal" style="max-width:660px;">
+            <div class="garage-modal-header">
+                <h3><i class="fa-solid fa-warehouse"></i> <span id="garageModalTitle">Add Garage</span></h3>
+                <button class="modal-close-btn" onclick="closeGarageModal()" title="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="garageModalForm" onsubmit="submitGarageModal(event)">
+                <input type="hidden" id="garageModalId">
+
+                <!-- Section: Garage Info -->
+                <p class="form-section-label"><i class="fa-solid fa-circle-info"></i> Garage Info</p>
+                <div class="form-grid">
+                    <div class="form-group" style="grid-column:1/-1;">
+                        <label>Garage Name <span class="req">*</span></label>
+                        <input type="text" id="garageName" placeholder="e.g. MOTOHUB â€“ Nayapalli" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Owner First Name <span class="req">*</span></label>
+                        <input type="text" id="garageFirstName" placeholder="First name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Owner Last Name</label>
+                        <input type="text" id="garageLastName" placeholder="Last name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span class="req">*</span></label>
+                        <input type="email" id="garageEmail" placeholder="garage@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" id="garagePhone" placeholder="+91 98765 00000">
+                    </div>
+                    <div class="form-group" id="garagePasswordGroup" style="grid-column:1/-1;">
+                        <label>Password <small style="color:var(--text-muted);font-weight:400;">(required for new garage)</small></label>
+                        <input type="password" id="garagePassword" placeholder="Set a login password">
+                    </div>
+                </div>
+
+                <!-- Section: Location -->
+                <p class="form-section-label" style="margin-top:1.5rem;"><i class="fa-solid fa-map-location-dot"></i> Location</p>
+                <div class="form-grid">
+                    <div class="form-group" style="grid-column:1/-1;">
+                        <label>Street / Area <span class="req">*</span></label>
+                        <textarea id="garageAddress" placeholder="Full street address, landmarkâ€¦" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>City <span class="req">*</span></label>
+                        <input type="text" id="garageCity" placeholder="e.g. Bhubaneswar" required>
+                    </div>
+                    <div class="form-group">
+                        <label>State <span class="req">*</span></label>
+                        <input type="text" id="garageState" placeholder="e.g. Odisha" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Pincode <span class="req">*</span></label>
+                        <input type="text" id="garagePincode" placeholder="6-digit pincode" maxlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <label>GSTIN <small style="color:var(--text-muted);font-weight:400;">(optional)</small></label>
+                        <input type="text" id="garageGstin" placeholder="GST Number">
+                    </div>
+                </div>
+
+                <!-- Verified toggle -->
+                <div style="margin-top:1.2rem;display:flex;align-items:center;gap:10px;">
+                    <input type="checkbox" id="garageVerified" style="width:16px;height:16px;accent-color:var(--accent-red);cursor:pointer;">
+                    <label for="garageVerified" style="font-size:14px;color:rgba(255,255,255,.75);cursor:pointer;">Mark garage as <strong style="color:#10b981;">Verified</strong></label>
+                </div>
+
+                <!-- Footer buttons -->
+                <div class="garage-modal-footer" style="margin-top:1.8rem;">
+                    <button type="submit" class="btn btn-red btn-sm" id="garageSubmitBtn">
+                        <i class="fa-solid fa-plus"></i> Save Garage
+                    </button>
+                    <button type="button" class="btn btn-red btn-sm"
+                        style="background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);"
+                        onclick="closeGarageModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // â”€â”€ Garage Modal helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+        // Exposed on window so admin-dashboard.js can call window.openGarageModal('edit', data)
+        window.openGarageModal = function(mode, data) {
+            const title   = document.getElementById('garageModalTitle');
+            const idInput = document.getElementById('garageModalId');
+            const pwGrp   = document.getElementById('garagePasswordGroup');
+            const pwInput = document.getElementById('garagePassword');
+            const submitBtn = document.getElementById('garageSubmitBtn');
+
+            if (mode === 'add') {
+                title.textContent = 'Add Garage';
+                idInput.value = '';
+                pwInput.required = true;
+                pwGrp.style.display = 'block';
+                submitBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Create Garage';
+                document.getElementById('garageModalForm').reset();
+            } else {
+                title.textContent = 'Edit Garage';
+                idInput.value = data.id;
+                pwInput.required = false;
+                pwGrp.style.display = 'block';  // show but optional
+                pwInput.value = '';
+                pwInput.placeholder = 'Leave blank to keep current password';
+                submitBtn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Save Changes';
+                // Prefill all fields from backend data
+                document.getElementById('garageName').value       = data.garage_name || '';
+                document.getElementById('garageFirstName').value  = data.first_name  || '';
+                document.getElementById('garageLastName').value   = data.last_name   || '';
+                document.getElementById('garageEmail').value      = data.email       || '';
+                document.getElementById('garagePhone').value      = data.phone       || '';
+                document.getElementById('garageAddress').value    = data.address     || '';
+                document.getElementById('garageCity').value       = data.city        || '';
+                document.getElementById('garageState').value      = data.state       || '';
+                document.getElementById('garagePincode').value    = data.pincode     || '';
+                document.getElementById('garageGstin').value      = data.gstin       || '';
+                document.getElementById('garageVerified').checked = !!data.is_verified;
+            }
+            document.getElementById('garageModalOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        };
+
+        window.closeGarageModal = function() {
+            document.getElementById('garageModalOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        };
+
+        // Also wire the "Add Garage" button in the header
+        document.addEventListener('DOMContentLoaded', () => {
+            const addBtn = document.getElementById('garage-add-btn');
+            if (addBtn) addBtn.addEventListener('click', () => window.openGarageModal('add'));
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && document.getElementById('garageModalOverlay').classList.contains('open')) {
+                window.closeGarageModal();
+            }
+        });
+
+        async function submitGarageModal(e) {
+            e.preventDefault();
+            const id       = document.getElementById('garageModalId').value;
+            const isEdit   = !!id;
+            const password = document.getElementById('garagePassword').value.trim();
+
+            if (!isEdit && !password) {
+                API.toast('Password is required for a new garage account.', 'error');
+                return;
+            }
+
+            const payload = {
+                garage_name: document.getElementById('garageName').value.trim(),
+                first_name:  document.getElementById('garageFirstName').value.trim(),
+                last_name:   document.getElementById('garageLastName').value.trim(),
+                email:       document.getElementById('garageEmail').value.trim(),
+                phone:       document.getElementById('garagePhone').value.trim(),
+                address:     document.getElementById('garageAddress').value.trim(),
+                city:        document.getElementById('garageCity').value.trim(),
+                state:       document.getElementById('garageState').value.trim(),
+                pincode:     document.getElementById('garagePincode').value.trim(),
+                gstin:       document.getElementById('garageGstin').value.trim(),
+                is_verified: document.getElementById('garageVerified').checked,
+            };
+            // Only include password if provided
+            if (password) payload.password = password;
+
+            const btn = document.getElementById('garageSubmitBtn');
+            const origLabel = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Savingâ€¦';
+            btn.disabled = true;
+            try {
+                if (isEdit) {
+                    await API.req(`/auth/garages/admin/${id}/`, { method: 'PATCH', body: JSON.stringify(payload) });
+                } else {
+                    await API.req('/auth/garages/admin/', { method: 'POST', body: JSON.stringify(payload) });
+                }
+                API.toast(`Garage ${isEdit ? 'updated' : 'created'} successfully!`, 'success');
+                window.closeGarageModal();
+                if (window._refreshGaragesTable) window._refreshGaragesTable();
+            } catch(err) {
+                // Django returns {field: ["msg"]} or {detail: "msg"}
+                let errMsg = 'Failed to save garage.';
+                if (err && typeof err === 'object') {
+                    if (err.detail) {
+                        errMsg = err.detail;
+                    } else {
+                        const msgs = Object.entries(err)
+                            .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(', ') : v}`)
+                            .join(' | ');
+                        if (msgs) errMsg = msgs;
+                    }
+                }
+                API.toast(errMsg, 'error');
+                console.error('Garage save error:', err);
+            } finally {
+                btn.innerHTML = origLabel;
+                btn.disabled = false;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

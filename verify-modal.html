@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>MOTOHUB — Modal Verification</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/dashboard.css"/>
+<style>
+  body { font-family: Inter, sans-serif; background: #0a0a1a; color: #fff; padding: 32px; }
+  h1   { font-size: 22px; margin-bottom: 6px; }
+  p    { color: rgba(255,255,255,0.5); margin-bottom: 28px; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-bottom: 32px; }
+  .card { background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+          border-radius: 12px; padding: 20px; }
+  .card h3 { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.6);
+             text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 14px; }
+  .test-btn { display: block; width: 100%; margin-bottom: 8px; padding: 10px 16px;
+              background: rgba(229,57,53,0.12); border: 1px solid rgba(229,57,53,0.3);
+              color: #e57373; border-radius: 8px; cursor: pointer; font-size: 13px;
+              font-family: inherit; text-align: left; transition: all 0.2s; }
+  .test-btn:hover { background: rgba(229,57,53,0.22); color: #fff; }
+  .test-btn i { margin-right: 8px; width: 16px; text-align: center; }
+  .log { background: #080818; border:1px solid rgba(255,255,255,0.08);
+         border-radius: 8px; padding: 16px; font-family: monospace; font-size: 12px;
+         height: 160px; overflow-y: auto; margin-top: 20px; }
+  .log .ok  { color: #1db954; }
+  .log .err { color: #e57373; }
+  .log .inf { color: #64b5f6; }
+  .badge-ok  { background: rgba(29,185,84,0.15); color: #1db954; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  .badge-err { background: rgba(229,57,53,0.15); color: #e57373; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<h1><i class="fa-solid fa-vial" style="color:#e53e3e;margin-right:10px;"></i> MOTOHUB Modal Verification</h1>
+<p>Click each button to physically verify every modal function works. Check the log at the bottom.</p>
+
+<div class="grid">
+
+  <!-- Add Product Modal -->
+  <div class="card">
+    <h3><i class="fa-solid fa-box"></i> Add Product Modal</h3>
+
+    <button class="test-btn" onclick="testOpen('add')">
+      <i class="fa-solid fa-plus"></i> Open — Add Mode
+    </button>
+    <button class="test-btn" onclick="testOpen('edit', 1)">
+      <i class="fa-solid fa-pen"></i> Open — Edit Mode (ID 1)
+    </button>
+    <button class="test-btn" onclick="testOpen('view', 1)">
+      <i class="fa-solid fa-eye"></i> Open — View Mode (ID 1)
+    </button>
+    <button class="test-btn" onclick="testCategoryChange()">
+      <i class="fa-solid fa-list"></i> Test All 12 Category Dropdowns
+    </button>
+  </div>
+
+  <!-- Mini Modals -->
+  <div class="card">
+    <h3><i class="fa-solid fa-window-restore"></i> Mini Modals</h3>
+    <button class="test-btn" onclick="testStock()">
+      <i class="fa-solid fa-boxes-stacked" style="color:#6366f1;"></i> Update Stock Modal
+    </button>
+    <button class="test-btn" onclick="testDelete()">
+      <i class="fa-solid fa-trash" style="color:#e57373;"></i> Delete Confirm Modal
+    </button>
+  </div>
+
+  <!-- Function checklist -->
+  <div class="card">
+    <h3><i class="fa-solid fa-clipboard-check"></i> Function Checklist</h3>
+    <button class="test-btn" onclick="runChecklist()">
+      <i class="fa-solid fa-play"></i> Run All Checks
+    </button>
+    <button class="test-btn" onclick="checkCSS()">
+      <i class="fa-solid fa-palette"></i> Check CSS Classes
+    </button>
+    <button class="test-btn" onclick="testImageUpload()">
+      <i class="fa-solid fa-images"></i> Test Image Upload Zone
+    </button>
+  </div>
+
+  <!-- Dashboard Links -->
+  <div class="card">
+    <h3><i class="fa-solid fa-link"></i> Open Dashboards</h3>
+    <button class="test-btn" onclick="openDash('admin')">
+      <i class="fa-solid fa-shield-halved"></i> Admin Dashboard
+    </button>
+    <button class="test-btn" onclick="openDash('moderator')">
+      <i class="fa-solid fa-user-shield"></i> Moderator Dashboard
+    </button>
+    <button class="test-btn" onclick="injectAuth()">
+      <i class="fa-solid fa-key"></i> Inject Auth Tokens
+    </button>
+  </div>
+
+</div>
+
+<!-- Log Panel -->
+<div class="log" id="log">
+  <span class="inf">ℹ Ready — click a test button above to start.</span>
+</div>
+
+<!-- Load the real scripts in the correct order -->
+<script src="js/api.js"></script>
+<script src="js/add-product-modal.js"></script>
+
+<script>
+/* ── Logging ── */
+const logEl = document.getElementById('log');
+function log(msg, type = 'inf') {
+  const line = document.createElement('div');
+  line.className = type;
+  line.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  logEl.appendChild(line);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+/* ── Tests ── */
+function testOpen(mode, id) {
+  try {
+    window.openAddProductModal(mode, id || null);
+    log(`✅ openAddProductModal('${mode}'${id ? ', '+id : ''}) — modal opened`, 'ok');
+  } catch(e) {
+    log(`❌ openAddProductModal error: ${e.message}`, 'err');
+  }
+}
+
+function testCategoryChange() {
+  const cats = [
+    "Headlights & Lighting","Car Audio System","Wheels & Tires","Suspension",
+    "Tools & Equipments","Oil Car","Brakes","Auto Safety & Security",
+    "Automotive Rims","Automotive Display","Battery","Engine Components"
+  ];
+  let pass = 0, fail = 0;
+  cats.forEach(cat => {
+    try {
+      // Open modal first if not open
+      if (!document.getElementById('product-modal-dynamic-overlay')) {
+        window.openAddProductModal('add');
+      }
+      const sel = document.getElementById('dp-category');
+      if (!sel) throw new Error('Category select not found');
+      sel.value = cat;
+      window.handleCategoryChange(true);
+      const dynContainer = document.getElementById('dp-dynamic-fields-container');
+      const fieldCount = dynContainer ? dynContainer.querySelectorAll('.pm-field').length : 0;
+      if (fieldCount > 0) {
+        log(`  ✅ ${cat} → ${fieldCount} fields rendered`, 'ok');
+        pass++;
+      } else {
+        log(`  ⚠️ ${cat} → no dynamic fields?`, 'err');
+        fail++;
+      }
+    } catch(e) {
+      log(`  ❌ ${cat}: ${e.message}`, 'err');
+      fail++;
+    }
+  });
+  log(`Category test complete: ${pass}/12 passed`, pass === 12 ? 'ok' : 'err');
+}
+
+function testStock() {
+  try {
+    window.openUpdateStockModal(42, 'Test Product — BMW Alloy Rim', 17);
+    log('✅ openUpdateStockModal() — stock modal opened', 'ok');
+  } catch(e) {
+    log(`❌ openUpdateStockModal error: ${e.message}`, 'err');
+  }
+}
+
+function testDelete() {
+  try {
+    window.confirmDeleteProduct(99, () => log('  ↩ onSuccess callback fired', 'ok'));
+    log('✅ confirmDeleteProduct() — delete modal opened', 'ok');
+  } catch(e) {
+    log(`❌ confirmDeleteProduct error: ${e.message}`, 'err');
+  }
+}
+
+function runChecklist() {
+  const checks = [
+    ['window.openAddProductModal',       window.openAddProductModal],
+    ['window.openProductModal',          window.openProductModal],
+    ['window.closeAddProductModal',      window.closeAddProductModal],
+    ['window.handleCategoryChange',      window.handleCategoryChange],
+    ['window.saveDynamicProduct',        window.saveDynamicProduct],
+    ['window.openUpdateStockModal',      window.openUpdateStockModal],
+    ['window.saveStockUpdate',           window.saveStockUpdate],
+    ['window.confirmDeleteProduct',      window.confirmDeleteProduct],
+    ['window.executeDeleteProduct',      window.executeDeleteProduct],
+    ['window.validateAndPreviewImages',  window.validateAndPreviewImages],
+    ['window._pmUploadedFiles',          Array.isArray(window._pmUploadedFiles)],
+  ];
+  log('── Function Checklist ──', 'inf');
+  checks.forEach(([name, fn]) => {
+    if (fn) log(`  ✅ ${name}`, 'ok');
+    else    log(`  ❌ ${name} — NOT DEFINED`, 'err');
+  });
+}
+
+function checkCSS() {
+  const el = document.createElement('div');
+  el.className = 'garage-modal-overlay';
+  el.style.position = 'absolute';
+  el.style.visibility = 'hidden';
+  document.body.appendChild(el);
+  const style = getComputedStyle(el);
+  const opacity  = style.opacity;
+  const position = style.position;
+  document.body.removeChild(el);
+
+  if (position === 'fixed' || position === 'absolute') {
+    log(`✅ .garage-modal-overlay CSS found — opacity:${opacity}, position:${style.position}`, 'ok');
+  } else {
+    log(`❌ .garage-modal-overlay CSS NOT applying (position=${position}). Check dashboard.css`, 'err');
+  }
+
+  // Test .open class
+  el2 = document.createElement('div');
+  el2.className = 'garage-modal-overlay open';
+  el2.style.position = 'absolute';
+  el2.style.visibility = 'hidden';
+  document.body.appendChild(el2);
+  const style2 = getComputedStyle(el2);
+  const openOpacity = parseFloat(style2.opacity);
+  document.body.removeChild(el2);
+  if (openOpacity > 0) {
+    log(`✅ .garage-modal-overlay.open opacity:${openOpacity} — modal will be visible`, 'ok');
+  } else {
+    log(`❌ .garage-modal-overlay.open opacity is 0 — modal will still be hidden!`, 'err');
+  }
+}
+
+function testImageUpload() {
+  // Open modal and check the dropzone exists
+  window.openAddProductModal('add');
+  setTimeout(() => {
+    const dz = document.getElementById('dp-dropzone');
+    const inp = document.getElementById('dp-image-upload');
+    const preview = document.getElementById('dp-preview-row');
+    if (dz && inp && preview) {
+      log('✅ Image upload zone — dropzone, input, preview all present', 'ok');
+    } else {
+      log(`❌ Image upload zone missing: dropzone=${!!dz} input=${!!inp} preview=${!!preview}`, 'err');
+    }
+  }, 200);
+}
+
+function injectAuth() {
+  localStorage.setItem('mh_access', 'verify-test-token');
+  localStorage.setItem('mh_user', JSON.stringify({
+    id: 1, role: 'admin', first_name: 'Admin', last_name: 'User',
+    email: 'admin@motohub.com', username: 'admin'
+  }));
+  localStorage.setItem('motohub_logged_in', 'true');
+  localStorage.setItem('motohub_user_role', 'admin');
+  log('✅ Auth tokens injected into localStorage', 'ok');
+}
+
+function openDash(role) {
+  injectAuth();
+  window.open(`dashboard-${role}.html`, '_blank');
+  log(`🔗 Opening ${role} dashboard in new tab…`, 'inf');
+}
+
+// Auto-run checklist on load
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    log('── Auto-checklist on page load ──', 'inf');
+    runChecklist();
+    checkCSS();
+  }, 600);
+});
+</script>
+</body>
+</html>

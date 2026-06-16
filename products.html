@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - MOTOHUB</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+    <script src="js/components.js" defer></script>
+</head>
+
+<body>
+
+    
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+
+    <!-- Page Header Hero -->
+    <section class="page-header products-hero">
+        <div class="container">
+            <h1>BROWSE COLLECTION</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> Collection
+            </div>
+        </div>
+    </section>
+
+    <div class="main-container container">
+        <div class="shop-layout">
+            <!-- Sidebar Filters -->
+            <aside class="shop-sidebar">
+                <div class="filter-widget">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul class="filter-list">
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="all" checked>
+                                <span class="checkmark"></span>
+                                All Parts <span class="count">(124)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="lighting">
+                                <span class="checkmark"></span>
+                                Headlights & Lighting <span class="count">(11)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="audio">
+                                <span class="checkmark"></span>
+                                Car Audio System <span class="count">(8)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="wheels">
+                                <span class="checkmark"></span>
+                                Wheels & Tires <span class="count">(42)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="suspension">
+                                <span class="checkmark"></span>
+                                Suspension <span class="count">(18)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="tools">
+                                <span class="checkmark"></span>
+                                Tools & Equipments <span class="count">(15)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="oil">
+                                <span class="checkmark"></span>
+                                Oil Car <span class="count">(22)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="brakes">
+                                <span class="checkmark"></span>
+                                Brakes <span class="count">(26)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="safety">
+                                <span class="checkmark"></span>
+                                Auto Safety & Security <span class="count">(10)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="rims">
+                                <span class="checkmark"></span>
+                                Automotive Rims <span class="count">(14)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="display">
+                                <span class="checkmark"></span>
+                                Automotive Display <span class="count">(6)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="battery">
+                                <span class="checkmark"></span>
+                                Battery <span class="count">(19)</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="engine">
+                                <span class="checkmark"></span>
+                                Engine Components <span class="count">(32)</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="filter-widget">
+                    <h3 class="widget-title">Price Filter</h3>
+                    <div class="price-range">
+                        <input type="range" min="1" max="1000" value="500" class="slider" id="priceRange">
+                        <div class="price-value">
+                            Price: <span>$0</span> - <span>$<span id="maxValue">500</span></span>
+                        </div>
+                        <button class="btn btn-red outline-btn filter-btn">Filter</button>
+                    </div>
+                </div>
+
+                <div class="filter-widget">
+                    <h3 class="widget-title">Brands</h3>
+                    <ul class="filter-list">
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Brembo
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Michelin
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                K&N
+                            </label>
+                        </li>
+                        <li>
+                            <label class="custom-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Bosch
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Shop Content -->
+            <div class="shop-content">
+                <div class="shop-toolbar">
+                    <div class="toolbar-left">
+                        <p>Showing 1â€“9 of 124 results</p>
+                    </div>
+                    <div class="toolbar-right">
+                        <div class="sort-by">
+                            <label>Sort by:</label>
+                            <select>
+                                <option>Default Sorting</option>
+                                <option>Sort by Popularity</option>
+                                <option>Sort by Latest</option>
+                                <option>Sort by Price: Low to High</option>
+                                <option>Sort by Price: High to Low</option>
+                            </select>
+                        </div>
+                        <div class="view-mode">
+                            <button class="active"><i class="fa-solid fa-grid-2"></i></button>
+                            <button><i class="fa-solid fa-list"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products-grid cols-3">
+                    <!-- Product Card 1 -->
+                    <div class="product-card">
+                        <a href="product-detail.html" class="product-image">
+                            <img src="assets/images/wheel-1.jpg" alt="Spoke Wheel">
+                            <div class="product-badges">
+                                <span class="badge sale">Sale</span>
+                            </div>
+                        </a>
+                        <div class="product-info">
+                            <p class="category">WHEELS</p>
+                            <h3><a href="product-detail.html">18 Inch Black Alloy Wheel Rim for BMW</a></h3>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <span>(12)</span>
+                            </div>
+                            <div class="price">
+                                <span class="current">$450.00</span>
+                                <span class="old">$500.00</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="add-to-cart-btn btn btn-red"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+                            <button class="action-btn"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="product-card">
+                        <a href="product-detail.html" class="product-image">
+                            <img src="assets/images/wheel 4.jpg" alt="Wheel">
+                        </a>
+                        <div class="product-info">
+                            <p class="category">TIRES</p>
+                            <h3><a href="product-detail.html">High Performance Summer Tire 225/45R17</a></h3>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                                <span>(8)</span>
+                            </div>
+                            <div class="price">
+                                <span class="current">$120.00</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="add-to-cart-btn btn btn-red"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+                            <button class="action-btn"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="product-card">
+                        <a href="product-detail.html" class="product-image">
+                            <img src="assets/images/brake.jpg" alt="Brakes">
+                            <div class="product-badges">
+                                <span class="badge new">New</span>
+                            </div>
+                        </a>
+                        <div class="product-info">
+                            <p class="category">BRAKES</p>
+                            <h3><a href="product-detail.html">Sport Performance Brake Kit Front/Rear</a></h3>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star-half-stroke"></i>
+                                <span>(18)</span>
+                            </div>
+                            <div class="price">
+                                <span class="current">$420.00</span>
+                                <span class="old">$499.00</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="add-to-cart-btn btn btn-red"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+                            <button class="action-btn"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="product-card">
+                        <a href="product-detail.html" class="product-image">
+                            <img src="assets/images/wheel 5.webp" alt="Wheel">
+                        </a>
+                        <div class="product-info">
+                            <p class="category">STEERING</p>
+                            <h3><a href="product-detail.html">Carbon Fiber Racing Steering Wheel</a></h3>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span>(24)</span>
+                            </div>
+                            <div class="price">
+                                <span class="current">$299.99</span>
+                                <span class="old">$350.00</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="add-to-cart-btn btn btn-red"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+                            <button class="action-btn"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="product-card">
+                        <a href="product-detail.html" class="product-image">
+                            <img src="assets/images/spoke-wheel.png" alt="Wheel">
+                        </a>
+                        <div class="product-info">
+                            <p class="category">WHEELS</p>
+                            <h3><a href="product-detail.html">Custom 20-inch Forged Chrome Wheel</a></h3>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span>(5)</span>
+                            </div>
+                            <div class="price">
+                                <span class="current">$650.00</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="add-to-cart-btn btn btn-red"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+                            <button class="action-btn"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 6 -->
+                    <div class="product-card">
+                        <a href="product-detail.html" class="product-image">
+                            <img src="assets/images/crank.jpg" alt="Engine">
+                            <div class="product-badges">
+                                <span class="badge sale">Sale</span>
+                            </div>
+                        </a>
+                        <div class="product-info">
+                            <p class="category">ENGINE</p>
+                            <h3><a href="product-detail.html">Forged Steel Crankshaft Replacement</a></h3>
+                            <div class="rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                                <span>(3)</span>
+                            </div>
+                            <div class="price">
+                                <span class="current">$890.00</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn"><i class="fa-regular fa-heart"></i></button>
+                            <button class="add-to-cart-btn btn btn-red"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
+                            <button class="action-btn"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <ul>
+                        <li><a href="#" class="prev"><i class="fa-solid fa-angle-left"></i></a></li>
+                        <li><a href="#" class="active">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><span>...</span></li>
+                        <li><a href="#">12</a></li>
+                        <li><a href="#" class="next"><i class="fa-solid fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-bar" style="margin-top: 50px;">
+        <div class="container newsletter-inner">
+            <div class="newsletter-left">
+                <div class="newsletter-icon">
+                    <i class="fa-regular fa-envelope-open"></i>
+                </div>
+                <div class="newsletter-text">
+                    <h3>SUBSCRIBE NEWSLETTER</h3>
+                    <p>Get all the latest information on Events, Sales and Offers. Sign up for newsletter today.</p>
+                </div>
+            </div>
+            <div class="newsletter-right form-group">
+                <input type="email" placeholder="Email Address Here...">
+                <button type="submit" class="btn btn-red">SUBSCRIBE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/products-api.js"></script>
+    <script>
+        // Simple slider value update
+        const slider = document.getElementById("priceRange");
+        const output = document.getElementById("maxValue");
+        if(slider && output) {
+            slider.oninput = function() {
+                output.innerHTML = this.value;
+            }
+        }
+
+        // Category filtering logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const activeCategory = urlParams.get('category');
+            
+            const categoryCheckboxes = document.querySelectorAll('.filter-widget:first-of-type input[type="checkbox"]');
+            const productCards = document.querySelectorAll('.product-card');
+
+            // Set initial checkbox state based on URL
+            if (activeCategory) {
+                let foundMatch = false;
+                categoryCheckboxes.forEach(cb => {
+                    if (cb.value === activeCategory) {
+                        cb.checked = true;
+                        foundMatch = true;
+                    } else {
+                        cb.checked = false;
+                    }
+                });
+                
+                if (!foundMatch && categoryCheckboxes.length > 0) {
+                    categoryCheckboxes[0].checked = true; // Default to 'all'
+                }
+            }
+
+            // Function to filter products visually
+            const filterProducts = () => {
+                const checkedValues = Array.from(categoryCheckboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+
+                const showAll = checkedValues.includes('all') || checkedValues.length === 0;
+
+                productCards.forEach(card => {
+                    if (showAll) {
+                        card.style.display = 'block';
+                        return;
+                    }
+
+                    const catText = card.querySelector('.category').textContent.trim().toLowerCase();
+                    let cardValue = 'all';
+                    
+                    if (catText.includes('wheel') || catText.includes('tires')) cardValue = 'wheels';
+                    if (catText.includes('brake')) cardValue = 'brakes';
+                    if (catText.includes('engine')) cardValue = 'engine';
+                    if (catText.includes('steering')) cardValue = 'wheels';
+
+                    if (checkedValues.includes(cardValue)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            };
+
+            // Run initial filter
+            filterProducts();
+
+            // Handle checkbox changes
+            categoryCheckboxes.forEach(cb => {
+                cb.addEventListener('change', (e) => {
+                    const isAllBox = e.target.value === 'all';
+                    
+                    if (isAllBox && e.target.checked) {
+                        // Uncheck others
+                        categoryCheckboxes.forEach(other => {
+                            if (other.value !== 'all') other.checked = false;
+                        });
+                    } else if (!isAllBox && e.target.checked) {
+                        // Uncheck 'all'
+                        const allBox = Array.from(categoryCheckboxes).find(c => c.value === 'all');
+                        if (allBox) allBox.checked = false;
+                    }
+                    
+                    filterProducts();
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

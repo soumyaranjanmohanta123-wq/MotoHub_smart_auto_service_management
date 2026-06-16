@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Appointment - MOTOHUB</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/service-appointment.css">
+    <!-- Component Loader Script -->
+    <script src="js/components.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Page Header Breadcrumb -->
+    <section class="page-header sa-hero">
+        <div class="container">
+            <h1>BOOK AN APPOINTMENT</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> <a href="services.html">Services</a> <span>/</span>
+                Appointment
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Form Section -->
+    <section class="appointment-section container">
+        <div class="appointment-wrapper">
+            <div class="sa-header">
+                <h2>Schedule Your Service</h2>
+                <p>Select the type of service you need and provide the required details. We'll handle the rest.</p>
+            </div>
+
+            <form id="serviceForm" class="sa-form"
+                onsubmit="event.preventDefault(); alert('Appointment Request Submitted Successfully! Our team will contact you shortly.');">
+
+                <!-- 1. Service Type Selection (Always visible) -->
+                <div class="form-section">
+                    <h3 class="section-title"><i class="fa-solid fa-wrench"></i> What kind of service do you need?</h3>
+                    <div class="service-type-options">
+
+                        <label class="sa-radio-card">
+                            <input type="radio" name="service_type" value="inspection" checked
+                                onchange="handleServiceChange()">
+                            <div class="card-content">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <h4>Inspection</h4>
+                                <p>Basic checkup, diagnostics &amp; estimates at your home.</p>
+                            </div>
+                        </label>
+
+                        <label class="sa-radio-card">
+                            <input type="radio" name="service_type" value="home_service"
+                                onchange="handleServiceChange()">
+                            <div class="card-content">
+                                <i class="fa-solid fa-house"></i>
+                                <h4>Home Service</h4>
+                                <p>Oil change, battery, or minor repairs at your doorstep.</p>
+                            </div>
+                        </label>
+
+                        <label class="sa-radio-card">
+                            <input type="radio" name="service_type" value="garage_service"
+                                onchange="handleServiceChange()">
+                            <div class="card-content">
+                                <i class="fa-solid fa-warehouse"></i>
+                                <h4>Garage Service</h4>
+                                <p>Major repairs at a nearby service garage.</p>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+
+                <!-- =====================================================
+                     BRANCH 1: INSPECTION
+                     ===================================================== -->
+                <div id="branch-inspection" class="service-branch">
+
+                    <!-- Basic Information -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-regular fa-id-card"></i> Basic Information</h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="insp-name">Full Name *</label>
+                                <input type="text" id="insp-name" class="branch-insp-req" required
+                                    placeholder="e.g. Rahul Sharma">
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-phone">Phone Number *</label>
+                                <input type="tel" id="insp-phone" class="branch-insp-req" required
+                                    placeholder="+91 98765 43210">
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-altphone">Alternate Phone (Optional)</label>
+                                <input type="tel" id="insp-altphone" placeholder="+91 98765 43210">
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-email">Email Address</label>
+                                <input type="email" id="insp-email" placeholder="rahul@example.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Information -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-car-side"></i> Vehicle Information</h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="insp-brand">Vehicle Brand *</label>
+                                <select id="insp-brand" class="branch-insp-req" required
+                                    onchange="updateModels('insp-brand','insp-model')">
+                                    <option value="">Select Brand</option>
+                                    <option>Maruti Suzuki</option>
+                                    <option>Hyundai</option>
+                                    <option>Tata</option>
+                                    <option>Mahindra</option>
+                                    <option>Honda</option>
+                                    <option>Toyota</option>
+                                    <option>Kia</option>
+                                    <option>MG</option>
+                                    <option>Volkswagen</option>
+                                    <option>Skoda</option>
+                                    <option>Ford</option>
+                                    <option>Renault</option>
+                                    <option>Nissan</option>
+                                    <option>BMW</option>
+                                    <option>Mercedes-Benz</option>
+                                    <option>Audi</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-model">Vehicle Model *</label>
+                                <select id="insp-model" class="branch-insp-req" required>
+                                    <option value="">Select Brand First</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-fuel">Fuel Type *</label>
+                                <select id="insp-fuel" class="branch-insp-req" required>
+                                    <option value="">Select Fuel Type</option>
+                                    <option>Petrol</option>
+                                    <option>Diesel</option>
+                                    <option>CNG</option>
+                                    <option>Electric</option>
+                                    <option>Hybrid</option>
+                                    <option>LPG</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-year">Year *</label>
+                                <select id="insp-year" class="branch-insp-req" required>
+                                    <option value="">Select Year</option>
+                                    <option>2025</option>
+                                    <option>2024</option>
+                                    <option>2023</option>
+                                    <option>2022</option>
+                                    <option>2021</option>
+                                    <option>2020</option>
+                                    <option>2019</option>
+                                    <option>2018</option>
+                                    <option>2017</option>
+                                    <option>2016</option>
+                                    <option>2015</option>
+                                    <option>2014</option>
+                                    <option>2013</option>
+                                    <option>2012</option>
+                                    <option>2011</option>
+                                    <option>2010</option>
+                                    <option>2009</option>
+                                    <option>2008</option>
+                                    <option>2007</option>
+                                    <option>2006</option>
+                                    <option>Before 2006</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-regno">Registration No. *</label>
+                                <input type="text" id="insp-regno" class="branch-insp-req" required
+                                    placeholder="e.g. OD-05-AB-1234">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inspection Type -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-clipboard-list"></i> Inspection Type</h3>
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label for="insp-type-select">Select Inspection Category *</label>
+                            <select id="insp-type-select" class="branch-insp-req" required>
+                                <option value="">Select Inspection Type</option>
+                                <option>General Checkup</option>
+                                <option>Engine Issue</option>
+                                <option>Brake Issue</option>
+                                <option>Battery Problem</option>
+                                <option>Noise Issue</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label for="insp-describe">Describe the Issue</label>
+                            <textarea id="insp-describe" rows="4"
+                                placeholder="Please describe the symptoms or issues you are experiencing with your vehicle in detail..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Inspection Location & Schedule -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-location-dot"></i> Inspection Location &amp;
+                            Schedule</h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="insp-city">City *</label>
+                                <select id="insp-city" class="branch-insp-req" required>
+                                    <option value="">Select City</option>
+                                    <option>Bhubaneswar</option>
+                                    <option>Cuttack</option>
+                                    <option>Mumbai</option>
+                                    <option>Delhi</option>
+                                    <option>Bangalore</option>
+                                    <option>Chennai</option>
+                                    <option>Hyderabad</option>
+                                    <option>Pune</option>
+                                    <option>Kolkata</option>
+                                    <option>Ahmedabad</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-landmark">Landmark</label>
+                                <input type="text" id="insp-landmark" placeholder="e.g. Near Apollo Hospital">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="insp-address">Full Address *</label>
+                                <input type="text" id="insp-address" class="branch-insp-req" required
+                                    placeholder="Flat No, Street, Area, City - Pincode">
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-date">Preferred Date *</label>
+                                <input type="date" id="insp-date" class="branch-insp-req" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="insp-time">Preferred Time *</label>
+                                <select id="insp-time" class="branch-insp-req" required>
+                                    <option value="">Select a time slot</option>
+                                    <option>08:00 AM – 10:00 AM</option>
+                                    <option>10:00 AM – 12:00 PM</option>
+                                    <option>12:00 PM – 02:00 PM</option>
+                                    <option>02:00 PM – 04:00 PM</option>
+                                    <option>04:00 PM – 06:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /branch-inspection -->
+
+                <!-- =====================================================
+                     BRANCH 2: HOME SERVICE
+                     ===================================================== -->
+                <div id="branch-home" class="service-branch" style="display:none;">
+
+                    <!-- Basic Information -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-regular fa-id-card"></i> Basic Information</h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="home-name">Full Name *</label>
+                                <input type="text" id="home-name" class="branch-home-req"
+                                    placeholder="e.g. Rahul Sharma">
+                            </div>
+                            <div class="form-group">
+                                <label for="home-phone">Phone Number *</label>
+                                <input type="tel" id="home-phone" class="branch-home-req" placeholder="+91 98765 43210">
+                            </div>
+                            <div class="form-group">
+                                <label for="home-altphone">Alternate Phone (Optional)</label>
+                                <input type="tel" id="home-altphone" placeholder="+91 98765 43210">
+                            </div>
+                            <div class="form-group">
+                                <label for="home-email">Email Address</label>
+                                <input type="email" id="home-email" placeholder="rahul@example.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Information -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-car-side"></i> Vehicle Information</h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="home-brand">Vehicle Brand *</label>
+                                <select id="home-brand" class="branch-home-req"
+                                    onchange="updateModels('home-brand','home-model')">
+                                    <option value="">Select Brand</option>
+                                    <option>Maruti Suzuki</option>
+                                    <option>Hyundai</option>
+                                    <option>Tata</option>
+                                    <option>Mahindra</option>
+                                    <option>Honda</option>
+                                    <option>Toyota</option>
+                                    <option>Kia</option>
+                                    <option>MG</option>
+                                    <option>Volkswagen</option>
+                                    <option>Skoda</option>
+                                    <option>Ford</option>
+                                    <option>Renault</option>
+                                    <option>Nissan</option>
+                                    <option>BMW</option>
+                                    <option>Mercedes-Benz</option>
+                                    <option>Audi</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="home-model">Vehicle Model *</label>
+                                <select id="home-model" class="branch-home-req">
+                                    <option value="">Select Brand First</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="home-fuel">Fuel Type *</label>
+                                <select id="home-fuel" class="branch-home-req">
+                                    <option value="">Select Fuel Type</option>
+                                    <option>Petrol</option>
+                                    <option>Diesel</option>
+                                    <option>CNG</option>
+                                    <option>Electric</option>
+                                    <option>Hybrid</option>
+                                    <option>LPG</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="home-year">Year *</label>
+                                <select id="home-year" class="branch-home-req">
+                                    <option value="">Select Year</option>
+                                    <option>2025</option>
+                                    <option>2024</option>
+                                    <option>2023</option>
+                                    <option>2022</option>
+                                    <option>2021</option>
+                                    <option>2020</option>
+                                    <option>2019</option>
+                                    <option>2018</option>
+                                    <option>2017</option>
+                                    <option>2016</option>
+                                    <option>2015</option>
+                                    <option>2014</option>
+                                    <option>2013</option>
+                                    <option>2012</option>
+                                    <option>2011</option>
+                                    <option>2010</option>
+                                    <option>Before 2010</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="home-regno">Registration No. *</label>
+                                <input type="text" id="home-regno" class="branch-home-req"
+                                    placeholder="e.g. OD-05-AB-1234">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Type -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-screwdriver-wrench"></i> Service Type</h3>
+                        <p class="field-hint">Select all services required:</p>
+                        <div class="checkbox-grid cols-3">
+                            <label class="sa-check-card">
+                                <input type="checkbox" name="home_service" value="oil_change">
+                                <div class="check-content"><i class="fa-solid fa-oil-can"></i><span>Oil Change</span>
+                                </div>
+                            </label>
+                            <label class="sa-check-card">
+                                <input type="checkbox" name="home_service" value="battery">
+                                <div class="check-content"><i class="fa-solid fa-car-battery"></i><span>Battery
+                                        Replacement</span></div>
+                            </label>
+                            <label class="sa-check-card">
+                                <input type="checkbox" name="home_service" value="car_wash">
+                                <div class="check-content"><i class="fa-solid fa-soap"></i><span>Car Wash</span></div>
+                            </label>
+                            <label class="sa-check-card">
+                                <input type="checkbox" name="home_service" value="interior_cleaning">
+                                <div class="check-content"><i class="fa-solid fa-spray-can-sparkles"></i><span>Interior
+                                        Cleaning</span></div>
+                            </label>
+                            <label class="sa-check-card">
+                                <input type="checkbox" name="home_service" value="minor_repair">
+                                <div class="check-content"><i class="fa-solid fa-toolbox"></i><span>Minor Repair</span>
+                                </div>
+                            </label>
+                            <label class="sa-check-card">
+                                <input type="checkbox" name="home_service" value="general_maintenance">
+                                <div class="check-content"><i class="fa-solid fa-gears"></i><span>General
+                                        Maintenance</span></div>
+                            </label>
+                            <label class="sa-check-card">
+                                <input type="checkbox" name="home_service" value="other">
+                                <div class="check-content"><i class="fa-solid fa-circle-question"></i><span>Other</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label for="home-describe">Describe the Issue / Request</label>
+                            <textarea id="home-describe" rows="4"
+                                placeholder="Please describe what needs to be done or any specific issues you're facing..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Home Location & Schedule -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-location-dot"></i> Home Location &amp; Schedule
+                        </h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="home-city">City *</label>
+                                <select id="home-city" class="branch-home-req">
+                                    <option value="">Select City</option>
+                                    <option>Bhubaneswar</option>
+                                    <option>Cuttack</option>
+                                    <option>Mumbai</option>
+                                    <option>Delhi</option>
+                                    <option>Bangalore</option>
+                                    <option>Chennai</option>
+                                    <option>Hyderabad</option>
+                                    <option>Pune</option>
+                                    <option>Kolkata</option>
+                                    <option>Ahmedabad</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="home-landmark">Landmark</label>
+                                <input type="text" id="home-landmark" placeholder="e.g. Near Apollo Hospital">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="home-address">Full Address *</label>
+                                <input type="text" id="home-address" class="branch-home-req"
+                                    placeholder="Flat No, Street, Area, City - Pincode">
+                            </div>
+                            <div class="form-group">
+                                <label for="home-date">Preferred Date *</label>
+                                <input type="date" id="home-date" class="branch-home-req">
+                            </div>
+                            <div class="form-group">
+                                <label for="home-time">Preferred Time *</label>
+                                <select id="home-time" class="branch-home-req">
+                                    <option value="">Select a time slot</option>
+                                    <option>08:00 AM – 10:00 AM</option>
+                                    <option>10:00 AM – 12:00 PM</option>
+                                    <option>12:00 PM – 02:00 PM</option>
+                                    <option>02:00 PM – 04:00 PM</option>
+                                    <option>04:00 PM – 06:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /branch-home -->
+
+                <!-- =====================================================
+                     BRANCH 3: GARAGE SERVICE
+                     ===================================================== -->
+                <div id="branch-garage" class="service-branch" style="display:none;">
+
+                    <!-- Basic Information -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-regular fa-id-card"></i> Basic Information</h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="garage-name">Full Name *</label>
+                                <input type="text" id="garage-name" class="branch-garage-req"
+                                    placeholder="e.g. Rahul Sharma">
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-phone">Phone Number *</label>
+                                <input type="tel" id="garage-phone" class="branch-garage-req"
+                                    placeholder="+91 98765 43210">
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-altphone">Alternate Phone (Optional)</label>
+                                <input type="tel" id="garage-altphone" placeholder="+91 98765 43210">
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-email">Email Address</label>
+                                <input type="email" id="garage-email" placeholder="rahul@example.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Information -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-car-side"></i> Vehicle Information</h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="garage-brand">Vehicle Brand *</label>
+                                <select id="garage-brand" class="branch-garage-req"
+                                    onchange="updateModels('garage-brand','garage-model')">
+                                    <option value="">Select Brand</option>
+                                    <option>Maruti Suzuki</option>
+                                    <option>Hyundai</option>
+                                    <option>Tata</option>
+                                    <option>Mahindra</option>
+                                    <option>Honda</option>
+                                    <option>Toyota</option>
+                                    <option>Kia</option>
+                                    <option>MG</option>
+                                    <option>Volkswagen</option>
+                                    <option>Skoda</option>
+                                    <option>Ford</option>
+                                    <option>Renault</option>
+                                    <option>Nissan</option>
+                                    <option>BMW</option>
+                                    <option>Mercedes-Benz</option>
+                                    <option>Audi</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-model">Vehicle Model *</label>
+                                <select id="garage-model" class="branch-garage-req">
+                                    <option value="">Select Brand First</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-fuel">Fuel Type *</label>
+                                <select id="garage-fuel" class="branch-garage-req">
+                                    <option value="">Select Fuel Type</option>
+                                    <option>Petrol</option>
+                                    <option>Diesel</option>
+                                    <option>CNG</option>
+                                    <option>Electric</option>
+                                    <option>Hybrid</option>
+                                    <option>LPG</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-year">Year *</label>
+                                <select id="garage-year" class="branch-garage-req">
+                                    <option value="">Select Year</option>
+                                    <option>2025</option>
+                                    <option>2024</option>
+                                    <option>2023</option>
+                                    <option>2022</option>
+                                    <option>2021</option>
+                                    <option>2020</option>
+                                    <option>2019</option>
+                                    <option>2018</option>
+                                    <option>2017</option>
+                                    <option>2016</option>
+                                    <option>2015</option>
+                                    <option>2014</option>
+                                    <option>2013</option>
+                                    <option>2012</option>
+                                    <option>2011</option>
+                                    <option>2010</option>
+                                    <option>Before 2010</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-regno">Registration No. *</label>
+                                <input type="text" id="garage-regno" class="branch-garage-req"
+                                    placeholder="e.g. OD-05-AB-1234">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Type -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-warehouse"></i> Service Type</h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="garage-service-type">Select Service Required *</label>
+                                <select id="garage-service-type" class="branch-garage-req">
+                                    <option value="">Select Service</option>
+                                    <option>Full Service</option>
+                                    <option>Engine Repair</option>
+                                    <option>Brake Repair</option>
+                                    <option>Suspension Repair</option>
+                                    <option>Transmission Service</option>
+                                    <option>Electrical Repair</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-km">Current KM Reading *</label>
+                                <input type="number" id="garage-km" class="branch-garage-req" placeholder="e.g. 45000"
+                                    min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-last-service">Last Service Date</label>
+                                <input type="date" id="garage-last-service">
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="garage-describe">Describe the Issue / Textbox</label>
+                                <textarea id="garage-describe" rows="4"
+                                    placeholder="Describe the problems, symptoms or any known issues with your vehicle..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slot Booking -->
+                    <div class="form-section">
+                        <h3 class="section-title"><i class="fa-solid fa-calendar-check"></i> Slot Booking</h3>
+                        <div class="form-grid cols-2">
+                            <div class="form-group">
+                                <label for="garage-city">City *</label>
+                                <select id="garage-city" class="branch-garage-req" onchange="updateGarages()">
+                                    <option value="">Select City</option>
+                                    <option>Bhubaneswar</option>
+                                    <option>Cuttack</option>
+                                    <option>Mumbai</option>
+                                    <option>Delhi</option>
+                                    <option>Bangalore</option>
+                                    <option>Chennai</option>
+                                    <option>Hyderabad</option>
+                                    <option>Pune</option>
+                                    <option>Kolkata</option>
+                                    <option>Ahmedabad</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-garage-name">Garage Name *</label>
+                                <select id="garage-garage-name" class="branch-garage-req">
+                                    <option value="">Select City First</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-date">Date *</label>
+                                <input type="date" id="garage-date" class="branch-garage-req">
+                            </div>
+                            <div class="form-group">
+                                <label for="garage-time">Time *</label>
+                                <select id="garage-time" class="branch-garage-req">
+                                    <option value="">Select Drop-off Window</option>
+                                    <option>Morning (08:00 AM – 11:00 AM)</option>
+                                    <option>Mid-day (11:00 AM – 02:00 PM)</option>
+                                    <option>Afternoon (02:00 PM – 05:00 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /branch-garage -->
+
+                <!-- Submit -->
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-red sa-submit-btn">CONFIRM APPOINTMENT <i
+                            class="fa-solid fa-check"></i></button>
+                    <p class="submit-disclaimer">By submitting this form, you agree to our <a
+                            href="coming-soon.html">Terms of Service</a> and <a href="coming-soon.html">Privacy
+                            Policy</a>. Our team will contact you shortly to confirm your slot.</p>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        // =============================================
+        // Car Brand → Model Mapping
+        // =============================================
+        const carModels = {
+            'Maruti Suzuki': ['Alto', 'Alto K10', 'WagonR', 'Swift', 'Dzire', 'Baleno', 'Celerio', 'Ignis', 'Vitara Brezza', 'Ertiga', 'XL6', 'S-Presso', 'Ciaz', 'Grand Vitara', 'Fronx', 'Jimny', 'Invicto'],
+            'Hyundai': ['i10', 'Grand i10 Nios', 'i20', 'Aura', 'Verna', 'Exter', 'Venue', 'Creta', 'Alcazar', 'Tucson', 'Ioniq 5', 'Kona Electric', 'Sonata'],
+            'Tata': ['Tiago', 'Tigor', 'Altroz', 'Punch', 'Nexon', 'Nexon EV', 'Harrier', 'Safari', 'Tiago EV', 'Tigor EV'],
+            'Mahindra': ['KUV100', 'Bolero', 'Thar', 'XUV300', 'XUV400', 'Scorpio', 'Scorpio-N', 'XUV700', 'Alturas G4', 'BE 6e', 'XEV 9e'],
+            'Honda': ['Amaze', 'Jazz', 'WR-V', 'City', 'City Hybrid', 'Elevate', 'Accord (Discontinued)'],
+            'Toyota': ['Glanza', 'Urban Cruiser Hyryder', 'Innova Crysta', 'Innova HyCross', 'Fortuner', 'Hilux', 'Camry', 'Vellfire', 'Land Cruiser'],
+            'Kia': ['Sonet', 'Seltos', 'Carens', 'EV6', 'EV9'],
+            'MG': ['Hector', 'Hector Plus', 'Astor', 'Gloster', 'ZS EV', 'Comet EV'],
+            'Volkswagen': ['Polo (Discontinued)', 'Vento (Discontinued)', 'Taigun', 'Virtus', 'Tiguan'],
+            'Skoda': ['Kushaq', 'Slavia', 'Kodiaq', 'Superb', 'Octavia'],
+            'Ford': ['Figo (Discontinued)', 'Aspire (Discontinued)', 'Freestyle (Discontinued)', 'EcoSport (Discontinued)', 'Endeavour (Discontinued)'],
+            'Renault': ['Kwid', 'Triber', 'Kiger', 'Duster (Discontinued)'],
+            'Nissan': ['Magnite', 'GT-R'],
+            'BMW': ['1 Series', '2 Series', '3 Series', '4 Series', '5 Series', '6 Series', '7 Series', 'X1', 'X3', 'X5', 'X7', 'iX', 'i4', 'i7'],
+            'Mercedes-Benz': ['A-Class', 'C-Class', 'E-Class', 'S-Class', 'GLA', 'GLC', 'GLE', 'GLS', 'EQS', 'EQB', 'AMG GT'],
+            'Audi': ['A3', 'A4', 'A6', 'A8', 'Q3', 'Q5', 'Q7', 'Q8', 'e-tron', 'RS5', 'TT'],
+            'Other': ['Other / Not Listed']
+        };
+
+        // =============================================
+        // Garage Name Mapping by City
+        // =============================================
+        const garagesByCity = {
+            'Bhubaneswar': ['MOTOHUB Garage - Nayapalli', 'AutoFix Bhubaneswar', 'Capital Motors Service'],
+            'Cuttack': ['MOTOHUB Garage - Cuttack', 'River City Auto Service'],
+            'Mumbai': ['MOTOHUB Garage - Andheri', 'MOTOHUB Garage - Thane', 'SpeedTech Motors Mumbai'],
+            'Delhi': ['MOTOHUB Garage - Connaught Place', 'MOTOHUB Garage - Dwarka', 'AutoHub Delhi'],
+            'Bangalore': ['MOTOHUB Garage - Koramangala', 'MOTOHUB Garage - Whitefield', 'MG Road Auto Service'],
+            'Chennai': ['MOTOHUB Garage - Anna Nagar', 'MOTOHUB Garage - OMR', 'Adyar Auto Workshop'],
+            'Hyderabad': ['MOTOHUB Garage - Banjara Hills', 'MOTOHUB Garage - Gachibowli'],
+            'Pune': ['MOTOHUB Garage - Hinjewadi', 'MOTOHUB Garage - Koregaon Park'],
+            'Kolkata': ['MOTOHUB Garage - Park Street', 'MOTOHUB Garage - Salt Lake'],
+            'Ahmedabad': ['MOTOHUB Garage - Navrangpura', 'MOTOHUB Garage - Prahlad Nagar']
+        };
+
+        function updateModels(brandId, modelId) {
+            const brand = document.getElementById(brandId).value;
+            const modelSelect = document.getElementById(modelId);
+            modelSelect.innerHTML = '<option value="">Select Model</option>';
+            if (brand && carModels[brand]) {
+                carModels[brand].forEach(m => {
+                    const opt = document.createElement('option');
+                    opt.value = m;
+                    opt.textContent = m;
+                    modelSelect.appendChild(opt);
+                });
+            } else {
+                modelSelect.innerHTML = '<option value="">Select Brand First</option>';
+            }
+        }
+
+        function updateGarages() {
+            const city = document.getElementById('garage-city').value;
+            const garageSelect = document.getElementById('garage-garage-name');
+            garageSelect.innerHTML = '<option value="">Select Garage</option>';
+            if (city && garagesByCity[city]) {
+                garagesByCity[city].forEach(g => {
+                    const opt = document.createElement('option');
+                    opt.value = g;
+                    opt.textContent = g;
+                    garageSelect.appendChild(opt);
+                });
+            } else {
+                garageSelect.innerHTML = '<option value="">Select City First</option>';
+            }
+        }
+
+        // =============================================
+        // Branch Switching Logic
+        // =============================================
+        function handleServiceChange() {
+            const selected = document.querySelector('input[name="service_type"]:checked').value;
+
+            const branches = {
+                inspection: document.getElementById('branch-inspection'),
+                home_service: document.getElementById('branch-home'),
+                garage_service: document.getElementById('branch-garage')
+            };
+
+            // Hide all branches and disable all branch-specific required fields
+            Object.values(branches).forEach(b => {
+                b.style.display = 'none';
+            });
+
+            // Remove required from all conditional fields
+            document.querySelectorAll('.branch-insp-req, .branch-home-req, .branch-garage-req').forEach(el => {
+                el.required = false;
+            });
+
+            // Show active branch and re-enable required
+            let activeKey = selected === 'inspection' ? 'inspection' : selected === 'home_service' ? 'home_service' : 'garage_service';
+            let activeBranch = selected === 'inspection' ? branches.inspection : selected === 'home_service' ? branches.home_service : branches.garage_service;
+            let reqClass = selected === 'inspection' ? '.branch-insp-req' : selected === 'home_service' ? '.branch-home-req' : '.branch-garage-req';
+
+            activeBranch.style.display = 'block';
+            document.querySelectorAll(reqClass).forEach(el => {
+                el.required = true;
+            });
+        }
+
+        // Set minimum date on all date inputs to today
+        document.addEventListener('DOMContentLoaded', function () {
+            const today = new Date().toISOString().split('T')[0];
+            document.querySelectorAll('input[type="date"]').forEach(input => {
+                if (!input.id.includes('last-service')) {
+                    input.min = today;
+                }
+            });
+            handleServiceChange();
+        });
+    </script>
+    <script src="js/api.js"></script>
+    <script src="js/appointment-api.js"></script>
+</body>
+
+</html>

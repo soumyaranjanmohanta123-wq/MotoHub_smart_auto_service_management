@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Dashboard - MOTOHUB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/components.js" defer></script>
+</head>
+
+<body>
+
+    <section class="page-header db-hero">
+        <div class="container">
+            <h1>GARAGE DASHBOARD</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> <span>/</span> Garage Portal
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-section container">
+        <div class="dashboard-layout">
+
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+                <div class="user-profile-summary">
+                    <div class="avatar">
+                        <i class="fa-solid fa-warehouse"></i>
+                    </div>
+                    <h3>MOTOHUB – Nayapalli</h3>
+                    <p>garage@motohub.com</p>
+                    <span class="role-badge garage">Garage Partner</span>
+                </div>
+
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li><button class="db-tab-btn active" data-target="overview-sec"><i class="fa-solid fa-gauge-high"></i> Overview</button></li>
+                        <li><button class="db-tab-btn" data-target="appointments-sec"><i class="fa-regular fa-calendar-check"></i> My Appointments</button></li>
+                        <li><button class="db-tab-btn" data-target="history-sec"><i class="fa-solid fa-clock-rotate-left"></i> Service History</button></li>
+                        <li><button class="db-tab-btn" data-target="invoices-sec"><i class="fa-solid fa-file-invoice"></i> Invoices</button></li>
+                        <li><button class="db-tab-btn" data-target="profile-sec"><i class="fa-solid fa-store"></i> Garage Profile</button></li>
+                        <li><a href="login.html" class="logout-link"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <main class="dashboard-content">
+
+                <!-- 1. Overview -->
+                <div class="db-section active" id="overview-sec">
+                    <div class="db-header">
+                        <h2>Today's Schedule</h2>
+                        <span style="font-size:13px;color:var(--text-muted);">April 1, 2026</span>
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon amber"><i class="fa-solid fa-hourglass-half"></i></div>
+                            <div class="stat-info"><h4>4</h4><p>Today's Appointments</p></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon blue"><i class="fa-solid fa-spinner"></i></div>
+                            <div class="stat-info"><h4>2</h4><p>In Progress</p></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+                            <div class="stat-info"><h4>18</h4><p>Completed This Month</p></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon red"><i class="fa-solid fa-file-invoice"></i></div>
+                            <div class="stat-info"><h4>3</h4><p>Pending Invoices</p></div>
+                        </div>
+                    </div>
+
+                    <div class="db-header"><h2>Today's Appointments</h2></div>
+                    <div class="appointment-cards">
+                        <div class="appt-card upcoming">
+                            <div class="appt-date"><span class="month">APR</span><span class="day">01</span></div>
+                            <div class="appt-details">
+                                <h4>Garage Service – Full Service</h4>
+                                <p><i class="fa-solid fa-car"></i> 2021 Hyundai Creta</p>
+                                <p><i class="fa-regular fa-clock"></i> 08:00 AM – 12:00 PM</p>
+                                <p><i class="fa-solid fa-user"></i> Rahul Sharma · +91 98765 43210</p>
+                            </div>
+                            <div class="appt-status">
+                                <span class="status-badge pending">Pending</span>
+                                <select class="db-select" style="margin-top:8px;padding:5px 8px;font-size:12px;display:block;">
+                                    <option>Update Status</option>
+                                    <option>In Progress</option>
+                                    <option>Ready for Pickup</option>
+                                    <option>Completed</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="appt-card upcoming">
+                            <div class="appt-date"><span class="month">APR</span><span class="day">01</span></div>
+                            <div class="appt-details">
+                                <h4>Brake Repair</h4>
+                                <p><i class="fa-solid fa-car"></i> 2019 Tata Nexon</p>
+                                <p><i class="fa-regular fa-clock"></i> 10:00 AM – 01:00 PM</p>
+                                <p><i class="fa-solid fa-user"></i> Priya Nair · +91 97654 32100</p>
+                            </div>
+                            <div class="appt-status">
+                                <span class="status-badge in-progress">In Progress</span>
+                                <select class="db-select" style="margin-top:8px;padding:5px 8px;font-size:12px;display:block;">
+                                    <option>Update Status</option>
+                                    <option>Ready for Pickup</option>
+                                    <option>Completed</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="appt-card upcoming">
+                            <div class="appt-date"><span class="month">APR</span><span class="day">01</span></div>
+                            <div class="appt-details">
+                                <h4>Engine Diagnostics</h4>
+                                <p><i class="fa-solid fa-car"></i> 2022 Maruti Baleno</p>
+                                <p><i class="fa-regular fa-clock"></i> 02:00 PM – 04:00 PM</p>
+                                <p><i class="fa-solid fa-user"></i> Arjun Patel · +91 96543 21000</p>
+                            </div>
+                            <div class="appt-status">
+                                <span class="status-badge pending">Pending</span>
+                                <select class="db-select" style="margin-top:8px;padding:5px 8px;font-size:12px;display:block;">
+                                    <option>Update Status</option>
+                                    <option>In Progress</option>
+                                    <option>Ready for Pickup</option>
+                                    <option>Completed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. My Appointments (full list) -->
+                <div class="db-section" id="appointments-sec" style="display:none;">
+                    <div class="db-header"><h2>My Appointments</h2></div>
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr><th>Ref #</th><th>Customer</th><th>Service</th><th>Vehicle</th><th>Date</th><th>Status</th><th>Update</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#SA-1098</td><td>Priya Nair</td><td>Brake Repair</td><td>Tata Nexon 2019</td><td>Apr 01, 2026</td>
+                                    <td><span class="status-badge in-progress">In Progress</span></td>
+                                    <td><select class="db-select" style="padding:4px 8px;font-size:12px;"><option>In Progress</option><option>Ready for Pickup</option><option>Completed</option></select></td>
+                                </tr>
+                                <tr>
+                                    <td>#SA-1101</td><td>Rahul Sharma</td><td>Full Service</td><td>Hyundai Creta 2021</td><td>Apr 01, 2026</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td><select class="db-select" style="padding:4px 8px;font-size:12px;"><option>Pending</option><option>In Progress</option><option>Ready for Pickup</option><option>Completed</option></select></td>
+                                </tr>
+                                <tr>
+                                    <td>#SA-1082</td><td>Arjun Patel</td><td>Engine Diagnostics</td><td>Maruti Baleno 2022</td><td>Mar 28, 2026</td>
+                                    <td><span class="status-badge delivered">Completed</span></td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td>#SA-1075</td><td>Sneha Reddy</td><td>Suspension Repair</td><td>Honda City 2020</td><td>Mar 25, 2026</td>
+                                    <td><span class="status-badge delivered">Completed</span></td>
+                                    <td>—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3. Service History -->
+                <div class="db-section" id="history-sec" style="display:none;">
+                    <div class="db-header"><h2>Service History</h2></div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="tl-icon"><i class="fa-solid fa-compact-disc"></i></div>
+                            <div class="tl-content">
+                                <div class="tl-header">
+                                    <h4>Brake Pad Replacement (Full Set)</h4>
+                                    <span class="tl-date">Mar 25, 2026</span>
+                                </div>
+                                <p class="tl-vehicle">Honda City 2020 – Sneha Reddy · OD-05-XY-7890</p>
+                                <p class="tl-desc">Replaced all 4 brake pads with ceramic ones. Resurfaced rotors. Bled brake lines and topped up fluid.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="tl-icon"><i class="fa-solid fa-oil-can"></i></div>
+                            <div class="tl-content">
+                                <div class="tl-header">
+                                    <h4>Full Synthetic Oil Change</h4>
+                                    <span class="tl-date">Mar 20, 2026</span>
+                                </div>
+                                <p class="tl-vehicle">Maruti Swift 2018 – Kiran Das · OD-06-AB-3221</p>
+                                <p class="tl-desc">Oil changed with Castrol Edge 5W-30. Oil filter replaced. Multi-point inspection done.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="tl-icon"><i class="fa-solid fa-gears"></i></div>
+                            <div class="tl-content">
+                                <div class="tl-header">
+                                    <h4>Transmission Service</h4>
+                                    <span class="tl-date">Mar 15, 2026</span>
+                                </div>
+                                <p class="tl-vehicle">Toyota Innova 2022 – Rajeev Kumar · OD-07-PQ-9988</p>
+                                <p class="tl-desc">Automatic transmission fluid flushed and refilled. Solenoids tested. Functioning normally.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Invoices -->
+                <div class="db-section" id="invoices-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Invoices</h2>
+                        <button class="btn btn-red btn-sm"><i class="fa-solid fa-upload"></i> Upload Invoice</button>
+                    </div>
+                    <div class="db-table-responsive">
+                        <table class="db-table">
+                            <thead>
+                                <tr><th>Invoice #</th><th>Appointment Ref</th><th>Customer</th><th>Amount</th><th>Date</th><th>Status</th><th>Actions</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>INV-2026-031</strong></td><td>#SA-1082</td><td>Arjun Patel</td><td>₹4,200</td><td>Mar 28, 2026</td>
+                                    <td><span class="status-badge approved">Submitted</span></td>
+                                    <td><div class="row-actions"><button class="action-btn" title="Download"><i class="fa-solid fa-download"></i></button></div></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>INV-2026-028</strong></td><td>#SA-1075</td><td>Sneha Reddy</td><td>₹3,800</td><td>Mar 25, 2026</td>
+                                    <td><span class="status-badge approved">Submitted</span></td>
+                                    <td><div class="row-actions"><button class="action-btn" title="Download"><i class="fa-solid fa-download"></i></button></div></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>INV-2026-041</strong></td><td>#SA-1098</td><td>Priya Nair</td><td>₹2,500</td><td>Apr 01, 2026</td>
+                                    <td><span class="status-badge pending">Pending Upload</span></td>
+                                    <td><div class="row-actions"><button class="action-btn approve" title="Upload"><i class="fa-solid fa-upload"></i></button></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5. Garage Profile -->
+                <div class="db-section" id="profile-sec" style="display:none;">
+                    <div class="db-header">
+                        <h2>Garage Profile</h2>
+                        <button class="btn btn-red btn-sm" style="background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);"><i class="fa-solid fa-pen"></i> Edit</button>
+                    </div>
+                    <div class="db-card">
+                        <form class="db-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Garage Name</label>
+                                    <input type="text" value="MOTOHUB – Nayapalli" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Owner Name</label>
+                                    <input type="text" value="Suresh Panda" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" value="+91 98765 43210" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" value="garage@motohub.com" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input type="text" value="Bhubaneswar" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Operating Hours</label>
+                                    <input type="text" value="08:00 AM – 06:00 PM (Mon–Sat)" readonly>
+                                </div>
+                                <div class="form-group" style="grid-column:span 2">
+                                    <label>Full Address</label>
+                                    <input type="text" value="Plot 14, Nayapalli, Bhubaneswar, Odisha – 751012" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Capacity (slots/day)</label>
+                                    <input type="number" value="8" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>GST Number</label>
+                                    <input type="text" value="21AABCU9603R1ZX" readonly>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/script.js"></script>
+    <script>
+        const tabBtns = document.querySelectorAll('.db-tab-btn');
+        const sections = document.querySelectorAll('.db-section');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                sections.forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+                this.classList.add('active');
+                const target = document.getElementById(this.getAttribute('data-target'));
+                target.style.display = 'block';
+                setTimeout(() => target.classList.add('active'), 10);
+            });
+        });
+    </script>
+</body>
+</html>
