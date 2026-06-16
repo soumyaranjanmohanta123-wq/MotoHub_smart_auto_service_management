@@ -65,36 +65,17 @@ The project aims to provide a centralized and user-friendly vehicle service ecos
 	* SQLite
 
 
-## Project Structure
-
-MotoHub/
-│
-├── manage.py
-├── requirements.txt
-├── db.sqlite3
-├── media/
-├── static/
-├── templates/
-├── app/
-├── users/
-├── products/
-├── services/
-└── README.md
-
-
-
-
 ## Dependencies
 
-asgiref==3.11.1
-Django==5.2.12
-django-cors-headers==4.9.0
-djangorestframework==3.17.1
-djangorestframework_simplejwt==5.5.1
-pillow==12.2.0
-PyJWT==2.12.1
-sqlparse==0.5.5
-tzdata==2026.1
+	* asgiref==3.11.1, 
+	* Django==5.2.12
+	* django-cors-headers==4.9.0
+	* djangorestframework==3.17.1
+	* djangorestframework_simplejwt==5.5.1
+	* pillow==12.2.0
+	* PyJWT==2.12.1
+	* sqlparse==0.5.5
+	* tzdata==2026.1
 
 
 ## Future Enhancements
